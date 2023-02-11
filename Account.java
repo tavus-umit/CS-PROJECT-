@@ -7,7 +7,7 @@ public class Account {
 
     public String realName;
 
-    public int BilkentID;
+    public String BilkentID;
     public ArrayList<String> IDArrayList = new ArrayList<>();
 
     public String password;
@@ -32,8 +32,10 @@ public class Account {
     public ArrayList<String> usersLikes = new ArrayList<>();
 
     //constructor, takes only Bilkent id as parameter.
-    public Account(int studentid){
+    public Account(String studentid, String password){
         this.BilkentID = studentid ;
+        this.password=password;
+        IDandPasswords.logininfo.put(studentid, password);
     }
 
     //setter methods
@@ -47,6 +49,8 @@ public class Account {
             return false;
         }
         else{
+            userNamesArrayList.remove(this.userName);
+            userNamesArrayList.add(username);
             System.out.println("Username set to:" + username);
             return true;
         }

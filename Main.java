@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Account acc1 = new Account(22203691);
+        Account acc1 = new Account("22203691","password");
         acc1.setAge(19);
         acc1.setDepartment("CS");
         acc1.addUserLike("art");
