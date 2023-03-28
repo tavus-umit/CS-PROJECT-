@@ -1,6 +1,5 @@
 // Author Muhammed Ümit Tavus
 import java.util.*;
-
 public class EventsMain{
 
     public static void main(String[] args) {

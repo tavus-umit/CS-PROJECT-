@@ -34,6 +34,5 @@ public class Date {
                 break;
         }
         this.year=year;
-
     }
 }
