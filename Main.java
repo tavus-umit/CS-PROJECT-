@@ -15,7 +15,7 @@ public class Main {
         Category cardGames = new Category("Card Games");
         Category VideoGames = new Category("Board Games");
 
-        Category Music = new Category("Music")
+        Category Music = new Category("Music");
         Category Science = new Category("Science");
         Category SocialSciences = new Category("Social Sciences");
         Category Cinema = new Category("Cinema");

@@ -18,7 +18,7 @@ public class Profile {
     }
 
     public boolean setFeatures(String name, String department,
-                               String aboutMePart, String ){
+                               String aboutMePart, String yearsInBilkent ){
         this.name =name;
         
         return true;
