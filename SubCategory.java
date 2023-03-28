@@ -1,4 +1,14 @@
-public class Main {
+public class SubCategory {
+
+    public static String name;
+    public static Category category;
+    public SubCategory(String name, Category category) {
+        this.name = name;
+        this.category = category;
+        category.addSubcategory(this);
+    }
+
+
     public static void main(String[] args) {
 
         // CREATION OF CATEGORIES
@@ -167,4 +177,5 @@ public class Main {
         SubCategory supSmashBros = new SubCategory("Super Smash Bros", eSports);
 
     }
+
 }
