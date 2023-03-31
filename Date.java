@@ -35,4 +35,8 @@ public class Date {
         }
         this.year=year;
     }
+    public String toString()
+    {
+        return this.day + '/' + this.monthName + '/' + this.year;
+    }
 }
