@@ -1,6 +1,9 @@
 package Bilkay;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.SoftBevelBorder;
+import java.awt.*;
 
 public class mainLoginMenu {
 
@@ -15,9 +18,18 @@ public class mainLoginMenu {
     private JPanel rightCenter;
     private JTextField usernameTextField;
     private JButton loginButton;
-    private JButton button2;
+    private JButton registerButton;
     private JButton forgotPasswordButton;
     private JPasswordField passwordPasswordField;
+    private JLabel userIcon;
+    private JLabel passwordLabel;
+
+
+    public mainLoginMenu() {
+
+
+
+    }
 
     public JPanel getMainPanelForMenu() {
         return mainPanelForMenu;
