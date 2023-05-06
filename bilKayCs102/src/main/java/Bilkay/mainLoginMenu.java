@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 public class mainLoginMenu {
 
@@ -28,14 +31,21 @@ public class mainLoginMenu {
     public mainLoginMenu() {
 
 
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginTheUser();
 
+            }
+        });
+    }
+
+    private void loginTheUser() {
     }
 
     public JPanel getMainPanelForMenu() {
         return mainPanelForMenu;
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
+
 }
