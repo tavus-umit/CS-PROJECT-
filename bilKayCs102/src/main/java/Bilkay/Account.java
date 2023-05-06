@@ -1,3 +1,5 @@
+package Bilkay;
+
 import java.util.ArrayList;
 
 public class Account {
@@ -35,7 +37,7 @@ public class Account {
     public Account(String studentid, String password){
         this.BilkentID = studentid ;
         this.password=password;
-        IDandPasswords.logininfo.put(studentid, password);
+
     }
 
     //setter methods

@@ -7,10 +7,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.Arrays;
 
 public class mainLoginMenu {
 
-
+    private final JFrame myMainFrame;
     private JPanel mainPanelForMenu;
     private JPanel leftPanel;
     private JPanel rightPanel;
@@ -27,9 +28,12 @@ public class mainLoginMenu {
     private JLabel userIcon;
     private JLabel passwordLabel;
 
+    public Account accountOfTheUser;
 
-    public mainLoginMenu() {
 
+    public mainLoginMenu(JFrame myMainFrameInput) {
+
+        this.myMainFrame = myMainFrameInput;
 
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -41,6 +45,25 @@ public class mainLoginMenu {
     }
 
     private void loginTheUser() {
+        String username = usernameTextField.getText();
+        String password = Arrays.toString(passwordPasswordField.getPassword());
+
+        if (username.isEmpty() || password.isEmpty()) {
+
+            JOptionPane.showMessageDialog(myMainFrame, "Username or password is empty.", "Login Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+
+        accountOfTheUser = theAuthenticatedAccount(username,password);
+
+
+
+
+    }
+
+    private Account theAuthenticatedAccount(String username, String password) {
+        return null;
     }
 
     public JPanel getMainPanelForMenu() {
