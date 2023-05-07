@@ -2,31 +2,178 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Bilkay.mainDashboardMenu">
   <grid id="27dc6" binding="mainPanelForMenu" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="1168" height="578"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="10e91" binding="leftSideMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="10e91" binding="leftSideMenuBackgroundPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="West"/>
         <properties>
-          <background color="-14145493"/>
-          <foreground color="-21"/>
+          <background color="-21"/>
+          <foreground color="-14145493"/>
+          <minimumSize width="120" height="166"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="78bb2" class="javax.swing.JButton" binding="button1" default-binding="true">
+          <grid id="2f866" binding="leftSideMenuForegroundPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Button"/>
+              <background color="-14145493"/>
+              <foreground color="-21"/>
+              <opaque value="true"/>
             </properties>
-          </component>
+            <border type="none"/>
+            <children>
+              <grid id="78494" binding="topUserPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="5" left="5" bottom="5" right="5"/>
+                <constraints border-constraint="North"/>
+                <properties>
+                  <background color="-14145493"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="f258d" class="javax.swing.JLabel" binding="nameOfTheUserLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <font name="Times New Roman" size="14" style="0"/>
+                      <foreground color="-21"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="9c154" class="javax.swing.JLabel" binding="pointsOfTheUserLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <font name="Times New Roman" size="14" style="0"/>
+                      <foreground color="-21"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="febbb" class="javax.swing.JSeparator" binding="seperatorJseperator">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-21"/>
+                      <foreground color="-21"/>
+                    </properties>
+                  </component>
+                  <component id="b7f2e" class="javax.swing.JButton" binding="userPP">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-14145493"/>
+                      <label value=""/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="73f76" binding="bottomMenuPanel" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <background color="-14145493"/>
+                  <foreground color="-21"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="6f350" class="javax.swing.JButton" binding="homeButton">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-14145493"/>
+                      <icon value="homeIcon.png"/>
+                      <selected value="true"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="e7f58" class="javax.swing.JButton" binding="settingsButton">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-14145493"/>
+                      <icon value="settingsIcon.png"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="7ced4" class="javax.swing.JButton" binding="gymButton">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-14145493"/>
+                      <icon value="gymIcon.png"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="bb4db" class="javax.swing.JButton" binding="webButton">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-14145493"/>
+                      <icon value="webIcon.png"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="1455a" class="javax.swing.JButton" binding="peopleButton">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-14145493"/>
+                      <icon value="peopleIcon.png"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="ba751" class="javax.swing.JButton" binding="mailButton">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-14145493"/>
+                      <icon value="messagesIcon.png"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="2cfc6" class="javax.swing.JButton" binding="bilUberButton">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-14145493"/>
+                      <icon value="carIcon.png"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
         </children>
       </grid>
-      <grid id="d1207" binding="rightMainDashboardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="d1207" binding="rightMainDashboardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="Center"/>
         <properties>
@@ -34,16 +181,7 @@
           <foreground color="-14145493"/>
         </properties>
         <border type="none"/>
-        <children>
-          <component id="c6167" class="javax.swing.JButton" binding="button2" default-binding="true">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Button"/>
-            </properties>
-          </component>
-        </children>
+        <children/>
       </grid>
     </children>
   </grid>

@@ -57,6 +57,14 @@ public class mainRegisterMenu {
 
             }
         });
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame).getMainPanelForMenu());
+                myMainFrame.revalidate();
+                myMainFrame.repaint();
+            }
+        });
     }
 
     private void registerTheUser() {
