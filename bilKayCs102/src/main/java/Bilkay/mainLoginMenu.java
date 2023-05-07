@@ -42,11 +42,31 @@ public class mainLoginMenu {
 
             }
         });
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openTheRegisterMenu();
+            }
+        });
+    }
+
+    private void openTheRegisterMenu() {
+        myMainFrame.setContentPane(new mainRegisterMenu(myMainFrame).getMainPanelForMenu());
+        myMainFrame.revalidate();
+        myMainFrame.repaint();
     }
 
     private void loginTheUser() {
         String username = usernameTextField.getText();
-        String password = Arrays.toString(passwordPasswordField.getPassword());
+        char[] passwordArray = passwordPasswordField.getPassword();
+        StringBuilder passwordBuilder = new StringBuilder();
+        for (char c : passwordArray) {
+            passwordBuilder.append(c);
+        }
+
+        String password = passwordBuilder.toString();
+        System.out.println(password);
+        System.out.println(username);
 
         if (username.isEmpty() || password.isEmpty()) {
 
@@ -55,7 +75,7 @@ public class mainLoginMenu {
         }
 
 
-        accountOfTheUser = theAuthenticatedAccount(username,password);
+        accountOfTheUser = theAuthenticatedAccount(username, password);
 
 
 

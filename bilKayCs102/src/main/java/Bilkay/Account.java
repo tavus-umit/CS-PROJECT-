@@ -24,11 +24,11 @@ public class Account {
     //public static String 
     
     //array for all possible likes for users to choose theirs from.
-    public static final String[] likes = {"voleyball", "tennis", "cinema", "art", "science", "football","animals", "writing", "literature", "blogging", 
-    "photography", "travel", "sports/fitness", "reading", "yoga", "dance","acting","journaling", "cooking", "calligraphy", "collectioner", "embroidery",
-    "community activism", "card & board games", "cosplaying", "decoration", "drama","drawing","painting","engraving", "coding","model building", "nail art",
-    "make up","manga books","origami","animes","sit-coms", "poetry", "puppetry" ,"Rubik's cube","sculpting","knitting", "tattoo","thrifting", "shopping", 
-    "game development", };
+    public static final String[] likes = {"Volleyball", "Tennis", "Cinema", "Art", "Science", "Football", "Animals", "Writing", "Literature", "Blogging",
+            "Photography", "Travel", "Sports/fitness", "Reading", "Yoga", "Dance", "Acting", "Journaling", "Cooking", "Calligraphy", "Collection", "Embroidery",
+            "Community Activism", "Card & Board Games", "Cosplay", "Decoration", "Drama", "Drawing", "Painting", "Engraving", "Coding", "Model Building", "Nail Art",
+            "Make Up", "Manga Books", "Origami", "Anime", "Sitcoms", "Poetry", "Puppetry", "Rubik's Cube", "Sculpting", "Knitting", "Tattoo", "Thrifting", "Shopping",
+            "Game Development",};
     
     //arraylist containing the users's own likes
     public ArrayList<String> usersLikes = new ArrayList<>();
