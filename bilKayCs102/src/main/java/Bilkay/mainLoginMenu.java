@@ -58,6 +58,8 @@ public class mainLoginMenu {
 
     private void loginTheUser() {
         String username = usernameTextField.getText();
+
+
         char[] passwordArray = passwordPasswordField.getPassword();
         StringBuilder passwordBuilder = new StringBuilder();
         for (char c : passwordArray) {

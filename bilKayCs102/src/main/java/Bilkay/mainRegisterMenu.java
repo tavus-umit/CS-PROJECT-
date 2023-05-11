@@ -57,20 +57,36 @@ public class mainRegisterMenu {
 
             }
         });
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame).getMainPanelForMenu());
-                myMainFrame.revalidate();
-                myMainFrame.repaint();
-            }
-        });
     }
 
     private void registerTheUser() {
-        System.out.println(interestsJList.getSelectedValuesList().getClass());
+        String username = usernameTextField.getText();
 
+        char[] passwordArray = passwordPasswordField.getPassword();
+        StringBuilder passwordBuilder = new StringBuilder();
+        for (char c : passwordArray) {
+            passwordBuilder.append(c);
+        }
+        String password = passwordBuilder.toString();
+
+        char[] confirmPasswordArray = confirmPasswordField.getPassword();
+        StringBuilder confirmPasswordBuilder = new StringBuilder();
+        for (char c : confirmPasswordArray) {
+            confirmPasswordBuilder.append(c);
+        }
+        String confirmedPassword = confirmPasswordBuilder.toString();
+
+        if (!password.equals(confirmedPassword)) {
+            JOptionPane.showMessageDialog(myMainFrame, "Passwords do not match.", "Register Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        System.out.println(interestsJList.getSelectedValuesList().getClass());
+        myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame).getMainPanelForMenu());
+        myMainFrame.revalidate();
+        myMainFrame.repaint();
     }
+
 
 
     private void fillTheJList() {
