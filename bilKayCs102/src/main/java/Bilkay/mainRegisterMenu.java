@@ -34,7 +34,6 @@ public class mainRegisterMenu {
         this.keyboardController = new keyboardControl();
         fillTheJList();
 
-
         interestsJList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -53,7 +52,6 @@ public class mainRegisterMenu {
             public void actionPerformed(ActionEvent e) {
 
                 registerTheUser();
-
 
             }
         });
@@ -81,7 +79,11 @@ public class mainRegisterMenu {
             return;
         }
 
-        System.out.println(interestsJList.getSelectedValuesList().getClass());
+        if (interestsJList.getSelectedValuesList().isEmpty()) {
+            JOptionPane.showMessageDialog(myMainFrame, "Your interests list is empty, please choose one or more.", "Register Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame).getMainPanelForMenu());
         myMainFrame.revalidate();
         myMainFrame.repaint();
