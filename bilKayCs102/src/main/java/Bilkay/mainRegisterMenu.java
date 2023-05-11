@@ -1,7 +1,6 @@
 package Bilkay;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 
@@ -26,7 +25,8 @@ public class mainRegisterMenu {
     private JLabel mottoLabel;
     private JList<String> interestsJList;
     private JScrollPane interestScrollPane;
-
+    private JPasswordField confirmPasswordField;
+    private JLabel passwordLabel2;
 
 
     public mainRegisterMenu(JFrame myMainFrameInput) {
