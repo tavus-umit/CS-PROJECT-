@@ -27,6 +27,10 @@ public class mainRegisterMenu {
     private JScrollPane interestScrollPane;
     private JPasswordField confirmPasswordField;
     private JLabel passwordLabel2;
+    private JLabel emailIconLabel;
+    private JTextField emailJtextField;
+    private JLabel nameSurbaneJlabel;
+    private JTextField nameSurnameJTextField;
 
 
     public mainRegisterMenu(JFrame myMainFrameInput) {
