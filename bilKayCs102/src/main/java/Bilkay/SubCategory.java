@@ -6,7 +6,7 @@ public class SubCategory {
             "Animation", "Photoshop", "3D Printing", "Printmaking"};
     public static String[] subCategoryNamesForPerformArts = {"Music", "Dancing", "Theatre", "Ballet", "Illusion", "Pantomime",
             "Improv", "Opera", "Modern Dancing", "Hiphop Dancing","Tap Dance", "Modern Dance", "Folk Dance","Disco Dancing",
-            "Electronic Dance", "Partner Dances", "Breakdance", "Music"};
+            "Electronic Dance", "Partner Dances", "Breakdance"};
     public static String[] subCategoryNamesForScience = {"Mathematics", "Physics", "Chemistry", "Biology", "Geology",
             "Data Science", "Computer Science", "Biochemistry", "Zoology", "Botany", "Medicine", "Engineering"};
     public static String[] subCategoryNamesForSocialSciences= {"Psychology", "Sociology", "Political Science", "Geography",
