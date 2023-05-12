@@ -15,7 +15,7 @@ public class Account {
     public String password;
 
     public String department;
-    public static final String[] departmentArray = {"CTIS", "COMD","CS", "GRA", "EEE", "IE", "PHYS", "MATH", "POLS", "AMER", "TRIN", "ME", "IR", "ECON", "MAN","MBG", 
+    public static final String[] departmentArray = {"CTIS", "COMD","CS", "GRA", "EEE", "IE", "PHYS", "MATH", "POLS", "AMER", "TRIN", "ME", "IR", "ECON", "MAN","MBG",
     "ELIT", "LAUD", "LAW","HART","IAED","PHIL","PSYC","THEA","TURK","CHEM","MUS","HIST","FA","ARCH"};
 
     public String aboutMePart;
@@ -30,7 +30,6 @@ public class Account {
             "Make Up", "Manga Books", "Origami", "Anime", "Sitcoms", "Poetry", "Puppetry", "Rubik's Cube", "Sculpting", "Knitting", "Tattoo", "Thrifting", "Shopping",
             "Game Development",};
     
-    //arraylist containing the users's own likes
     public ArrayList<String> usersLikes = new ArrayList<>();
 
     //constructor, takes only Bilkent id as parameter.

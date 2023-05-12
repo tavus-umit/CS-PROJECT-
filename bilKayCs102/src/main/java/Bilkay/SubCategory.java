@@ -10,6 +10,13 @@ public class SubCategory {
         category.addSubcategory(this);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
 
     public static void main(String[] args) {
 

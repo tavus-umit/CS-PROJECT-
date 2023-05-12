@@ -23,14 +23,19 @@ public class mainRegisterMenu {
     private JLabel logoLabel;
     private JPanel bottomLeftPanel;
     private JLabel mottoLabel;
-    private JList<String> interestsJList;
-    private JScrollPane interestScrollPane;
+    private JList<String> interestsCategoryJList;
+    private JScrollPane interestCategoryScrollPane;
     private JPasswordField confirmPasswordField;
     private JLabel passwordLabel2;
     private JLabel emailIconLabel;
     private JTextField emailJtextField;
     private JLabel nameSurbaneJlabel;
     private JTextField nameSurnameJTextField;
+    private JPanel interstJpanel;
+    private JList<String> interestSubCategoryJlist;
+    private JScrollPane interestSubCategoryScrollPane;
+    private JLabel categoriesJlabel;
+    private JLabel subCategoriesJlabel;
 
 
     public mainRegisterMenu(JFrame myMainFrameInput) {
@@ -38,19 +43,20 @@ public class mainRegisterMenu {
         this.keyboardController = new keyboardControl();
         fillTheJList();
 
-        interestsJList.addMouseListener(new MouseAdapter() {
+        interestsCategoryJList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
                 keyboardController.holdCTRL();
             }
         });
-        interestsJList.addMouseListener(new MouseAdapter() {
+        interestsCategoryJList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
                 keyboardController.releaseCTRL();
             }
         });
+
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,7 +89,7 @@ public class mainRegisterMenu {
             return;
         }
 
-        if (interestsJList.getSelectedValuesList().isEmpty()) {
+        if (interestsCategoryJList.getSelectedValuesList().isEmpty()) {
             JOptionPane.showMessageDialog(myMainFrame, "Your interests list is empty, please choose one or more.", "Register Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -96,11 +102,14 @@ public class mainRegisterMenu {
 
 
     private void fillTheJList() {
-        DefaultListModel<String> listModel = new DefaultListModel<>();
+        DefaultListModel<String> interestCategoryModel = new DefaultListModel<>();
         for (String like : Account.likes) {
-            listModel.addElement(like);
+            interestCategoryModel.addElement(like);
         }
-        interestsJList.setModel(listModel);
+        interestsCategoryJList.setModel(interestCategoryModel);
+        interestSubCategoryJlist.setModel(interestCategoryModel);
+
+
 
     }
 

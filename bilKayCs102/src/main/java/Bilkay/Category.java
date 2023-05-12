@@ -18,10 +18,12 @@ public class Category {
         this.subcategories.add(subcategory);
     }
 
-    public String printSubcategories() {
-
-        return null;
+    public ArrayList<SubCategory> getSubcategories() {
+        return subcategories;
     }
 
+    public String getName() {
+        return name;
+    }
 }
 
