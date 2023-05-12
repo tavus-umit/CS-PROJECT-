@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class RegisterPanel extends JPanel {
+public class RegisterPanelTest extends JPanel {
     JLabel email;
     JTextField emailField;
     JLabel password;
