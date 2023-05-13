@@ -33,6 +33,15 @@ public class TestRegisterPanelTestForMail extends JPanel {
         this.add(register);
     }
 
+    public static void main(String[] args) {
+        JFrame myframe = new JFrame("haha");
+        myframe.setSize(300,300);
+        myframe.getContentPane().add(new TestRegisterPanelTestForMail());
+        myframe.setVisible(true);
+        myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
     public class RButton extends JButton implements ActionListener
     {
         @Override
@@ -67,14 +76,8 @@ public class TestRegisterPanelTestForMail extends JPanel {
     }
     public boolean isEmailValid(String email)
     {
-        String domainAddress = email.substring(email.length()-14,email.length());
-        if(domainAddress.equals("bilkent.edu.tr"))
-        {
-            return true;
-        }
-        else{
-            return false;
-        }
+        String domainAddress = email.substring(email.length()-14);
+        return domainAddress.equals("bilkent.edu.tr");
 
     }
 }

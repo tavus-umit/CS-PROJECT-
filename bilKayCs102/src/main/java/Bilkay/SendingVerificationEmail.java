@@ -14,7 +14,7 @@ public class SendingVerificationEmail {
 
 	private String userEmail;
 	private final String adminEmail = "bilkayadmn@gmail.com";
-	private final String adminPassword =  "qsvgukfrisibxzbl";
+	private final String adminPassword =  "ftohrufjibdxzdpi";
 	private Properties prop;
 	private Session session;
 	private MimeMessage message;

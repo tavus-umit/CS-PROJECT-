@@ -5,6 +5,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class mainRegisterMenu {
@@ -210,7 +211,15 @@ public class mainRegisterMenu {
     }
 
     private void registerTheUser()  {
+
         String username = usernameTextField.getText();
+        String nameSurname = nameSurnameJTextField.getText();
+        String webmail = emailJtextField.getText();
+
+        if (webmail.length() < 14) {
+            JOptionPane.showMessageDialog(myMainFrame, "Enter a valid webmail address.", "Webmail Confirmation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         char[] passwordArray = passwordPasswordField.getPassword();
         StringBuilder passwordBuilder = new StringBuilder();
@@ -227,12 +236,13 @@ public class mainRegisterMenu {
         String confirmedPassword = confirmPasswordBuilder.toString();
 
 
-
         if (usernameTextField.getText().isEmpty() || nameSurnameJTextField.getText().isEmpty() || emailJtextField.getText().isEmpty() ||
                 password.isEmpty() || confirmedPassword.isEmpty()) {
             JOptionPane.showMessageDialog(myMainFrame, "Your credentials are empty, please fill all of it.", "Credentials Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+
 
         if (!password.equals(confirmedPassword)) {
             JOptionPane.showMessageDialog(myMainFrame, "Passwords do not match.", "Password Confirmation Error", JOptionPane.ERROR_MESSAGE);
@@ -251,13 +261,37 @@ public class mainRegisterMenu {
         }
 
 
+        if(isEmailValid(webmail))
+        {
+            Random rand = new Random();
+            long VerifyCode = rand.nextLong(100000,1000000);
+            SendingVerificationEmail se = new SendingVerificationEmail(webmail);
+            se.setProperties();
+            se.setMessage(VerifyCode);
+            if (se.sendMail())
+            {
+                String code = JOptionPane.showInputDialog(null, "Enter the verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
+                if(Long.parseLong(code) == VerifyCode)
+                {
+                    JOptionPane.showMessageDialog(null, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,"Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
 
         myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame).getMainPanelForMenu());
         myMainFrame.revalidate();
         myMainFrame.repaint();
 
     }
-
 
 
     private void fillTheCategoryJList() {
@@ -269,6 +303,12 @@ public class mainRegisterMenu {
         interestsCategoryJList.setModel(interestCategoryModel);
     }
 
+    public boolean isEmailValid(String email)
+    {
+        String domainAddress = email.substring(email.length()-14);
+        return domainAddress.equals("bilkent.edu.tr");
+
+    }
     public JPanel getMainPanelForMenu() {
         return mainPanelForMenu;
     }
