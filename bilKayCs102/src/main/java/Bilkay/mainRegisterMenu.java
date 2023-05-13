@@ -146,35 +146,70 @@ public class mainRegisterMenu {
         for (Category categoryItem : categoryItems) {
             switch (categoryItem.getName()) {
                 case "Visual Arts" -> {
-                    for (String subCategoryNamesForVisualArt : SubCategory.subCategoryNamesForVisualArts) {
-                        subCategoryItems.add(new SubCategory(subCategoryNamesForVisualArt, categoryItem));
+                    for (String x : SubCategory.subCategoryNamesForVisualArts) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
                     }
                 }
                 case "Science" -> {
-                    for (String subCategoryNamesForScienc : SubCategory.subCategoryNamesForScience) {
-                        subCategoryItems.add(new SubCategory(subCategoryNamesForScienc, categoryItem));
+                    for (String x : SubCategory.subCategoryNamesForScience) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
                     }
                 }
                 case "Performing Arts" -> {
-                    for (String subCategoryNamesForPerformArt : SubCategory.subCategoryNamesForPerformArts) {
-                        subCategoryItems.add(new SubCategory(subCategoryNamesForPerformArt, categoryItem));
+                    for (String x : SubCategory.subCategoryNamesForPerformArts) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
                     }
                 }
                 case "Social Sciences" -> {
-                    for (String subCategoryNamesForSocialScience : SubCategory.subCategoryNamesForSocialSciences) {
-                        subCategoryItems.add(new SubCategory(subCategoryNamesForSocialScience, categoryItem));
+                    for (String x : SubCategory.subCategoryNamesForSocialSciences) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
                     }
                 }
                 case "Physical Sports" -> {
-                    for (String subCategoryNamesForPhysicalSport : SubCategory.subCategoryNamesForPhysicalSports) {
-                        subCategoryItems.add(new SubCategory(subCategoryNamesForPhysicalSport, categoryItem));
+                    for (String x : SubCategory.subCategoryNamesForPhysicalSports) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
+                    }
+                }
+                case "Board and Card Games" -> {
+                    for (String x : SubCategory.subCategoryNamesForBoardAndCardGames) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
+                    }
+                }
+                case "Music" -> {
+                    for (String x : SubCategory.subCategoryNamesForMusic) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
+                    }
+                }
+                case "Cinema" -> {
+                    for (String x : SubCategory.subCategoryNamesForCinema) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
+                    }
+                }
+                case "Outdoor Activities" -> {
+                    for (String x : SubCategory.subCategoryNamesForOutdoorActivities) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
+                    }
+                }
+                case "Community Services" -> {
+                    for (String x : SubCategory.subCategoryNamesForCommunityServices) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
+                    }
+                }
+                case "Writing" -> {
+                    for (String x : SubCategory.subCategoryNamesForWritings) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
+                    }
+                }
+                case "Reading" -> {
+                    for (String x : SubCategory.subCategoryNamesForReadings) {
+                        subCategoryItems.add(new SubCategory(x, categoryItem));
                     }
                 }
             }
         }
     }
 
-    private void registerTheUser() {
+    private void registerTheUser()  {
         String username = usernameTextField.getText();
 
         char[] passwordArray = passwordPasswordField.getPassword();
@@ -191,25 +226,35 @@ public class mainRegisterMenu {
         }
         String confirmedPassword = confirmPasswordBuilder.toString();
 
+
+
+        if (usernameTextField.getText().isEmpty() || nameSurnameJTextField.getText().isEmpty() || emailJtextField.getText().isEmpty() ||
+                password.isEmpty() || confirmedPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(myMainFrame, "Your credentials are empty, please fill all of it.", "Credentials Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         if (!password.equals(confirmedPassword)) {
-            JOptionPane.showMessageDialog(myMainFrame, "Passwords do not match.", "Register Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(myMainFrame, "Passwords do not match.", "Password Confirmation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if (interestsCategoryJList.getSelectedValuesList().isEmpty()) {
-            JOptionPane.showMessageDialog(myMainFrame, "Your interests list is empty, please choose one or more.", "Register Error", JOptionPane.ERROR_MESSAGE);
+        if (interestsCategoryJList.getSelectedValuesList().isEmpty() || interestSubCategoryJlist.getSelectedValuesList().isEmpty() ) {
+            JOptionPane.showMessageDialog(myMainFrame, "Your interests category or subcategory list is empty, please choose one or more.", "Interests Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame).getMainPanelForMenu());
-        myMainFrame.revalidate();
-        myMainFrame.repaint();
 
 
         ArrayList<Category> chosenCategoryItems = (ArrayList<Category>) interestsCategoryJList.getSelectedValuesList();
         for (Category chosenCategoryItem : chosenCategoryItems) {
             System.out.println(chosenCategoryItem.getCategoryID());
         }
+
+
+
+        myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame).getMainPanelForMenu());
+        myMainFrame.revalidate();
+        myMainFrame.repaint();
 
     }
 

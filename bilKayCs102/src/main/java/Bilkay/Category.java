@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Category {
 
     public static String[] categoryNames = {"Visual Arts", "Performing Arts", "Physical Sports",
-            "Mind Sports", "Board Games", "Card Games", "Music", "Science", "Social Sciences",
+            "Board and Card Games", "Music", "Science", "Social Sciences",
             "Cinema", "Outdoor Activities", "Community Services", "Writing", "Reading"};
     public static int categoryIDGenerator = 1;
     private int categoryID;
