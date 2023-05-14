@@ -25,16 +25,19 @@ public class mainDashboardMenu {
     private JButton mailButton;
     private JButton bilUberButton;
 
-    public mainDashboardMenu(JFrame myMainFrameInput) {
+    private user currentUser;
+
+    public mainDashboardMenu(JFrame myMainFrameInput, user currentUser) {
         this.myMainFrame = myMainFrameInput;
+        this.currentUser = currentUser;
 
 
         ImageIcon iconPP = new ImageIcon(new ImageIcon("C:\\Users\\emirh\\OneDrive\\Masaüstü\\CS-PROJECT-\\bilKayCs102\\src\\main\\resources\\test.jpeg").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         userPP.setIcon(iconPP);
 
 
-        nameOfTheUserLabel.setText("Emirhan Kılıç");
-        pointsOfTheUserLabel.setText("46 pts");
+        nameOfTheUserLabel.setText(currentUser.getNameSurname());
+        pointsOfTheUserLabel.setText(String.valueOf(currentUser.getBilkayPoints()));
 
 
     }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -45,6 +46,7 @@ public class mainRegisterMenu {
     private ArrayList<Category> categoryItems;
 
     private ArrayList<SubCategory> subCategoryItems;
+    public user currentUser;
 
 
     public mainRegisterMenu(JFrame myMainFrameInput) {
@@ -225,9 +227,9 @@ public class mainRegisterMenu {
 
         String username = usernameTextField.getText();
         String nameSurname = nameSurnameJTextField.getText();
-        String webmailAdress = emailJtextField.getText();
+        String webmailAddress = emailJtextField.getText();
 
-        if (webmailAdress.length() < 14) {
+        if (webmailAddress.length() < 14) {
             JOptionPane.showMessageDialog(myMainFrame, "Enter a valid webmail address.", "Webmail Confirmation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -267,12 +269,17 @@ public class mainRegisterMenu {
 
 
         ArrayList<Category> chosenCategoryItems = (ArrayList<Category>) interestsCategoryJList.getSelectedValuesList();
+        ArrayList<SubCategory> chosenSubCategoryItems = (ArrayList<SubCategory>) interestSubCategoryJlist.getSelectedValuesList();
         for (Category chosenCategoryItem : chosenCategoryItems) {
-            System.out.println(chosenCategoryItem.getCategoryID());
+            System.out.println(chosenCategoryItem.getName());
+        }
+
+        for (SubCategory subs : chosenSubCategoryItems) {
+            System.out.println(subs.getName());
         }
 
 
-        if(isEmailValid(webmailAdress))
+        if(isEmailValid(webmailAddress))
         {
             Random rand = new Random();
             long VerifyCode = rand.nextLong(100000,1000000);
@@ -281,13 +288,13 @@ public class mainRegisterMenu {
             String emailBodyTextForCode = "Your Bilkay Verification Code is: " + VerifyCode;
             String emailSubjectTextForCode = "Bilkay Verification Code";
 
-            if (sendEmails.sendEmail(webmailAdress, emailSubjectTextForCode, emailBodyTextForCode))
+            if (sendEmails.sendEmail(webmailAddress, emailSubjectTextForCode, emailBodyTextForCode))
             {
                 String code = JOptionPane.showInputDialog(myMainFrame, "Enter your 6-digit verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
                 if (!code.isEmpty()) {
                     if(Long.parseLong(code) == VerifyCode)
                     {
-                        JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified, You will be redirected to Login Page", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else {
                         JOptionPane.showMessageDialog(myMainFrame,"Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
@@ -301,12 +308,67 @@ public class mainRegisterMenu {
             return;
         }
 
+        currentUser = addUserToBilkayDBandCreateInstance(username, nameSurname, webmailAddress, password, chosenCategoryItems, chosenSubCategoryItems);
 
-        myMainFrame.setContentPane(new mainLoginMenu(myMainFrame).getMainPanelForMenu());
-        myMainFrame.revalidate();
-        myMainFrame.repaint();
+        if (currentUser != null) {
+            JOptionPane.showMessageDialog(null,"Successfully Registered", "Register", JOptionPane.INFORMATION_MESSAGE);
+            myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame,currentUser).getMainPanelForMenu());
+            myMainFrame.revalidate();
+            myMainFrame.repaint();
+        }
+
+
 
     }
+
+
+
+
+
+
+    private user addUserToBilkayDBandCreateInstance(String username, String nameSurname,
+                                                    String webmailAddress, String password,
+                                                    ArrayList<Category> chosenCategoryItems,
+                                                    ArrayList<SubCategory> chosenSubCategoryItems) {
+        user currentUser = null;
+
+        try {
+            Connection connection = DatabaseManager.getConnection();
+            Statement statement = connection.createStatement();
+
+            String insertQuery = "INSERT INTO users (username, name_surname, webmail,password,bil_Kay_points, role) VALUES (?, ?, ?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, nameSurname);
+            preparedStatement.setString(3, webmailAddress);
+            preparedStatement.setString(4, password);
+            preparedStatement.setString(5, "0");
+            preparedStatement.setString(6, "user");
+
+            if (preparedStatement.executeUpdate() == 1) {
+                currentUser = new user(nameSurname,username,password,webmailAddress,chosenCategoryItems,chosenSubCategoryItems,"user");
+            }
+            System.out.println("Registration successful!");
+
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return currentUser;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private void fillTheCategoryJList() {
@@ -317,6 +379,7 @@ public class mainRegisterMenu {
         }
         interestsCategoryJList.setModel(interestCategoryModel);
     }
+
 
     public boolean isEmailValid(String email)
     {
