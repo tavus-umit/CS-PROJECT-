@@ -40,6 +40,7 @@ public class mainRegisterMenu {
     private JScrollPane interestSubCategoryScrollPane;
     private JLabel categoriesJlabel;
     private JLabel subCategoriesJlabel;
+    private JButton backButton;
 
     private ArrayList<Category> categoryItems;
 
@@ -98,6 +99,16 @@ public class mainRegisterMenu {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 updateSubCategoryJList();
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                myMainFrame.setContentPane(new mainLoginMenu(myMainFrame).getMainPanelForMenu());
+                myMainFrame.revalidate();
+                myMainFrame.repaint();
+
             }
         });
     }
