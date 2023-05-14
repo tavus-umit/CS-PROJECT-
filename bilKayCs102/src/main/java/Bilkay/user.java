@@ -5,7 +5,6 @@ import java.util.List;
 
 public class user {
 
-    private static int userIDGenerator = 1;
     public static final String[] departmentArray = {"CTIS", "COMD","CS", "GRA", "EEE", "IE", "PHYS", "MATH", "POLS", "AMER", "TRIN", "ME", "IR", "ECON", "MAN","MBG",
             "ELIT", "LAUD", "LAW","HART","IAED","PHIL","PSYC","THEA","TURK","CHEM","MUS","HIST","FA","ARCH"};
     private int userID;
@@ -27,11 +26,10 @@ public class user {
     //TODO longblob java ????
 
 
-    public user(String nameSurname, String username, String password, String webmail,
+    public user(int userID,String nameSurname, String username, String password, String webmail,
                 ArrayList<Category> chosenCategories, ArrayList<SubCategory> chosenSubCategories,
                 String role) {
-        this.userID = userIDGenerator;
-        userIDGenerator++;
+        this.userID = userID;
         this.role = role;
         this.nameSurname = nameSurname;
         this.username = username;

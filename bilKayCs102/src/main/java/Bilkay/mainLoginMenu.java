@@ -127,9 +127,10 @@ public class mainLoginMenu {
             ResultSet resultsSetForCurrentUser = preparedStatement.executeQuery();
 
             if ( resultsSetForCurrentUser.next()) {
-                currentUser = new user(resultsSetForCurrentUser.getString("name_surname"),
-                                        resultsSetForCurrentUser.getString("username"),
-                                        resultsSetForCurrentUser.getString("password"),
+                currentUser = new user( Integer.parseInt(resultsSetForCurrentUser.getString("user_id")),
+                        resultsSetForCurrentUser.getString("name_surname"),
+                        resultsSetForCurrentUser.getString("username"),
+                        resultsSetForCurrentUser.getString("password"),
                         resultsSetForCurrentUser.getString("webmail"),
                         null,
                         null,

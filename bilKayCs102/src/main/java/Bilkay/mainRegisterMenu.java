@@ -346,9 +346,27 @@ public class mainRegisterMenu {
             preparedStatement.setString(6, "user");
 
             if (preparedStatement.executeUpdate() == 1) {
-                currentUser = new user(nameSurname,username,password,webmailAddress,chosenCategoryItems,chosenSubCategoryItems,"user");
+
+
+                String getUserID = "SELECT * FROM users WHERE username=?";
+
+                PreparedStatement idStatement = connection.prepareStatement(getUserID);
+                idStatement.setString(1, username);
+
+                ResultSet resultForUserID = idStatement.executeQuery();
+
+                int currentUserID = 0;
+                if (resultForUserID.next()) {
+                    currentUserID = Integer.parseInt(resultForUserID.getString("user_id"));
+                }
+
+                resultForUserID.close();
+                statement.close();
+                connection.close();
+
+
+                currentUser = new user(currentUserID, nameSurname, username, password, webmailAddress, chosenCategoryItems, chosenSubCategoryItems, "user");
             }
-            System.out.println("Registration successful!");
 
             statement.close();
             connection.close();
