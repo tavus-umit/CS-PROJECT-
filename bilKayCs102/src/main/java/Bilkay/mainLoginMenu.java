@@ -48,8 +48,34 @@ public class mainLoginMenu {
                 openTheRegisterMenu();
             }
         });
+        forgotPasswordButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                restartUsernameAndPassword();
+            }
+        });
     }
 
+    private void restartUsernameAndPassword() {
+        emilSenderBilkay sendEmails = new emilSenderBilkay();
+        String webmailForRESTART = JOptionPane.showInputDialog(myMainFrame, "Enter your webmail address connected to your account", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
+
+        if (webmailForRESTART.length() < 14) {
+            JOptionPane.showMessageDialog(myMainFrame, "Enter a valid webmail address", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
+
+            return;
+        }
+
+        String emailBodyTextForCode = "Your Bilkay Username and Password are: ";
+        String emailSubjectTextForCode = "Bilkay Username and Password";
+
+        if (sendEmails.sendEmail(webmailForRESTART, emailSubjectTextForCode, emailBodyTextForCode)) {
+            JOptionPane.showMessageDialog(myMainFrame, "Your credentials are sent to you webmail address", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(myMainFrame, "Error in the process, please try again later", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+    }
     private void openTheRegisterMenu() {
         myMainFrame.setContentPane(new mainRegisterMenu(myMainFrame).getMainPanelForMenu());
         myMainFrame.revalidate();
