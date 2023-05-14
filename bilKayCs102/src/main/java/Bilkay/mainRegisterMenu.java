@@ -272,11 +272,11 @@ public class mainRegisterMenu {
 
             if (sendEmails.sendEmail(webmailAdress, emailSubjectTextForCode, emailBodyTextForCode))
             {
-                String code = JOptionPane.showInputDialog(myMainFrame, "Enter the verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
+                String code = JOptionPane.showInputDialog(myMainFrame, "Enter your 6-digit verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
                 if (!code.isEmpty()) {
                     if(Long.parseLong(code) == VerifyCode)
                     {
-                        JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified, You will be redirected to Login Page", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else {
                         JOptionPane.showMessageDialog(myMainFrame,"Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
@@ -291,7 +291,7 @@ public class mainRegisterMenu {
         }
 
 
-        myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame).getMainPanelForMenu());
+        myMainFrame.setContentPane(new mainLoginMenu(myMainFrame).getMainPanelForMenu());
         myMainFrame.revalidate();
         myMainFrame.repaint();
 
