@@ -214,9 +214,9 @@ public class mainRegisterMenu {
 
         String username = usernameTextField.getText();
         String nameSurname = nameSurnameJTextField.getText();
-        String webmail = emailJtextField.getText();
+        String webmailAdress = emailJtextField.getText();
 
-        if (webmail.length() < 14) {
+        if (webmailAdress.length() < 14) {
             JOptionPane.showMessageDialog(myMainFrame, "Enter a valid webmail address.", "Webmail Confirmation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -261,23 +261,27 @@ public class mainRegisterMenu {
         }
 
 
-        if(isEmailValid(webmail))
+        if(isEmailValid(webmailAdress))
         {
             Random rand = new Random();
             long VerifyCode = rand.nextLong(100000,1000000);
-            SendingVerificationEmail se = new SendingVerificationEmail(webmail);
-            se.setProperties();
-            se.setMessage(VerifyCode);
-            if (se.sendMail())
+            emilSenderBilkay sendEmails = new emilSenderBilkay();
+
+            String emailBodyTextForCode = "Your Bilkay Verification Code is: " + VerifyCode;
+            String emailSubjectTextForCode = "Bilkay Verification Code";
+
+            if (sendEmails.sendEmail(webmailAdress, emailSubjectTextForCode, emailBodyTextForCode))
             {
-                String code = JOptionPane.showInputDialog(null, "Enter the verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
-                if(Long.parseLong(code) == VerifyCode)
-                {
-                    JOptionPane.showMessageDialog(null, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
-                }
-                else {
-                    JOptionPane.showMessageDialog(null,"Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
-                    return;
+                String code = JOptionPane.showInputDialog(myMainFrame, "Enter the verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
+                if (!code.isEmpty()) {
+                    if(Long.parseLong(code) == VerifyCode)
+                    {
+                        JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(myMainFrame,"Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
             }
         }
