@@ -1,5 +1,6 @@
 package Bilkay;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class user {
     private int grade;
     private String webmail;
     private String gender;
+
     private String department;
     private int bilkayPoints;
     private String role;

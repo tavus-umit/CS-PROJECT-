@@ -33,12 +33,18 @@ public class mainDashboardMenu {
     private JPanel emailMenuPanel;
     private JPanel gymMenuPanel;
     private JPanel settingsMenuPanel;
+    private final CardLayout currentCardLayout;
 
-    private user currentUser;
+    private final user currentUser;
 
     public mainDashboardMenu(JFrame myMainFrameInput, user currentUser) {
         this.myMainFrame = myMainFrameInput;
         this.currentUser = currentUser;
+        this.currentCardLayout = (CardLayout) rightMainDashboardPanel.getLayout();
+
+        rightMainDashboardPanel.removeAll();
+        rightMainDashboardPanel.add(new mainHomeMenu(this.myMainFrame,currentUser).getMainPanelForMenu(),"homeMenu");
+        rightMainDashboardPanel.add(new mainSettingsMenu(this.myMainFrame,currentUser).getMainPanelForMenu(),"settingsMenu");
 
 
         ImageIcon iconPP = new ImageIcon(new ImageIcon("C:\\Users\\emirh\\OneDrive\\Masaüstü\\CS-PROJECT-\\bilKayCs102\\src\\main\\resources\\test.jpeg").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
@@ -46,7 +52,7 @@ public class mainDashboardMenu {
 
 
         nameOfTheUserLabel.setText(currentUser.getNameSurname());
-        pointsOfTheUserLabel.setText(String.valueOf(currentUser.getBilkayPoints()));
+        pointsOfTheUserLabel.setText(String.valueOf(currentUser.getBilkayPoints()) + " points");
 
 
         homeButton.addActionListener(new ActionListener() {
@@ -61,8 +67,7 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
 
-                rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(homeMenuPanel);
+                currentCardLayout.show(rightMainDashboardPanel,"homeMenu");
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
 
@@ -80,10 +85,10 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
 
-                rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(mathcesMenuPanel);
+                currentCardLayout.show(rightMainDashboardPanel,"registerMenu");
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
+
             }
         });
         webButton.addActionListener(new ActionListener() {
@@ -98,10 +103,7 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
 
-                rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(eventsMenuPanel);
-                myMainFrame.revalidate();
-                myMainFrame.repaint();
+
             }
         });
         bilUberButton.addActionListener(new ActionListener() {
@@ -116,10 +118,7 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(true);
                 userPP.setSelected(false);
 
-                rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(biluberMenuPanel);
-                myMainFrame.revalidate();
-                myMainFrame.repaint();
+
             }
         });
         mailButton.addActionListener(new ActionListener() {
@@ -134,10 +133,7 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
 
-                rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(emailMenuPanel);
-                myMainFrame.revalidate();
-                myMainFrame.repaint();
+
             }
         });
         gymButton.addActionListener(new ActionListener() {
@@ -152,10 +148,7 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
 
-                rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(gymMenuPanel);
-                myMainFrame.revalidate();
-                myMainFrame.repaint();
+
             }
         });
         settingsButton.addActionListener(new ActionListener() {
@@ -170,8 +163,7 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
 
-                rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(settingsMenuPanel);
+                currentCardLayout.show(rightMainDashboardPanel,"settingsMenu");
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
             }
@@ -188,10 +180,7 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(true);
 
-                rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(profileMenuPanel);
-                myMainFrame.revalidate();
-                myMainFrame.repaint();
+
             }
         });
     }

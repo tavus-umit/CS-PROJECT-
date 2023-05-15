@@ -45,7 +45,7 @@
                     </constraints>
                     <properties>
                       <background color="-14145493"/>
-                      <font name="Times New Roman" size="14" style="0"/>
+                      <font name="Times New Roman" size="14" style="1"/>
                       <foreground color="-21"/>
                       <text value=""/>
                     </properties>
@@ -56,7 +56,7 @@
                     </constraints>
                     <properties>
                       <background color="-14145493"/>
-                      <font name="Times New Roman" size="14" style="0"/>
+                      <font name="Times New Roman" size="14" style="1"/>
                       <foreground color="-21"/>
                       <text value=""/>
                     </properties>
@@ -183,96 +183,7 @@
           <foreground color="-14145493"/>
         </properties>
         <border type="none"/>
-        <children>
-          <grid id="ca9b4" binding="homeMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <card name="homeMenu"/>
-            </constraints>
-            <properties>
-              <background color="-65526"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
-          <grid id="23fff" binding="profileMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <card name="profileMenu"/>
-            </constraints>
-            <properties>
-              <background color="-12845312"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
-          <grid id="ec730" binding="mathcesMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <card name="matchesMenu"/>
-            </constraints>
-            <properties>
-              <background color="-16749057"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
-          <grid id="8ff60" binding="eventsMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <card name="eventsMenu"/>
-            </constraints>
-            <properties>
-              <background color="-1699841"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
-          <grid id="61bbf" binding="biluberMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <card name="biluberMenu"/>
-            </constraints>
-            <properties>
-              <background color="-196864"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
-          <grid id="6f68c" binding="emailMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <card name="emailMenu"/>
-            </constraints>
-            <properties>
-              <background color="-16711695"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
-          <grid id="8f16c" binding="gymMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <card name="gymMenu"/>
-            </constraints>
-            <properties>
-              <background color="-42240"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
-          <grid id="58e36" binding="settingsMenuPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <card name="settingsMenu"/>
-            </constraints>
-            <properties>
-              <background color="-10877441"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
-        </children>
+        <children/>
       </grid>
     </children>
   </grid>
