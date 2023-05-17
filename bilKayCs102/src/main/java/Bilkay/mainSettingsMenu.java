@@ -45,6 +45,8 @@ public class mainSettingsMenu {
     private JList interestSubCategoryJlist;
     private JLabel categoriesJlabel;
     private JLabel subCategoriesJlabel;
+    private JList gradeJlist;
+    private JScrollPane gradeJScrollPane;
     private JButton ProfilePictureSubmitButton;
     private JLabel currentUsernameJlabel;
     private final JFrame myMainFrame;
@@ -56,8 +58,6 @@ public class mainSettingsMenu {
         usernameJtextField.setText(currentUser.getUsername());
         nameSurnameJtextfield.setText(currentUser.getNameSurname());
         ageJTextField.setText(String.valueOf(currentUser.getAge()));
-        gradeJtextfield.setText(String.valueOf(currentUser.getGrade()));
-        departmenJtexfield.setText(currentUser.getDepartment());
 
 
         usernameSubmitButton.addActionListener(new ActionListener() {
@@ -110,9 +110,9 @@ public class mainSettingsMenu {
         gradeSubmitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!gradeJtextfield.getText().equals(currentUser.getUsername()) && !gradeJtextfield.getText().isEmpty() && gradeJtextfield.getText().matches("[0-9]+")) {
+                if (true) {
                     try {
-                        changeGradeOnDatabase(gradeJtextfield.getText());
+                        changeGradeOnDatabase(null);
 
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
