@@ -33,18 +33,16 @@ public class mainDashboardMenu {
     private JPanel emailMenuPanel;
     private JPanel gymMenuPanel;
     private JPanel settingsMenuPanel;
-    private final CardLayout currentCardLayout;
 
     private final user currentUser;
+
+
 
     public mainDashboardMenu(JFrame myMainFrameInput, user currentUser) {
         this.myMainFrame = myMainFrameInput;
         this.currentUser = currentUser;
-        this.currentCardLayout = (CardLayout) rightMainDashboardPanel.getLayout();
 
         rightMainDashboardPanel.removeAll();
-        rightMainDashboardPanel.add(new mainHomeMenu(this.myMainFrame,currentUser).getMainPanelForMenu(),"homeMenu");
-        rightMainDashboardPanel.add(new mainSettingsMenu(this.myMainFrame,currentUser).getMainPanelForMenu(),"settingsMenu");
 
 
         ImageIcon iconPP = new ImageIcon(new ImageIcon("C:\\Users\\emirh\\OneDrive\\Masaüstü\\CS-PROJECT-\\bilKayCs102\\src\\main\\resources\\test.jpeg").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
@@ -66,8 +64,11 @@ public class mainDashboardMenu {
                 mailButton.setSelected(false);
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
+                updateInfo();
 
-                currentCardLayout.show(rightMainDashboardPanel,"homeMenu");
+                rightMainDashboardPanel.removeAll();
+                rightMainDashboardPanel.add(new mainHomeMenu(myMainFrame, currentUser).getMainPanelForMenu());
+
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
 
@@ -84,10 +85,8 @@ public class mainDashboardMenu {
                 mailButton.setSelected(false);
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
+                updateInfo();
 
-                currentCardLayout.show(rightMainDashboardPanel,"registerMenu");
-                myMainFrame.revalidate();
-                myMainFrame.repaint();
 
             }
         });
@@ -102,7 +101,7 @@ public class mainDashboardMenu {
                 mailButton.setSelected(false);
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
-
+                updateInfo();
 
             }
         });
@@ -117,7 +116,7 @@ public class mainDashboardMenu {
                 mailButton.setSelected(false);
                 bilUberButton.setSelected(true);
                 userPP.setSelected(false);
-
+                updateInfo();
 
             }
         });
@@ -132,7 +131,7 @@ public class mainDashboardMenu {
                 mailButton.setSelected(true);
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
-
+                updateInfo();
 
             }
         });
@@ -147,7 +146,7 @@ public class mainDashboardMenu {
                 mailButton.setSelected(false);
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
-
+                updateInfo();
 
             }
         });
@@ -162,10 +161,14 @@ public class mainDashboardMenu {
                 mailButton.setSelected(false);
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
+                updateInfo();
 
-                currentCardLayout.show(rightMainDashboardPanel,"settingsMenu");
+                rightMainDashboardPanel.removeAll();
+                rightMainDashboardPanel.add(new mainSettingsMenu(myMainFrame, currentUser).getMainPanelForMenu());
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
+
+
             }
         });
         userPP.addActionListener(new ActionListener() {
@@ -179,6 +182,7 @@ public class mainDashboardMenu {
                 mailButton.setSelected(false);
                 bilUberButton.setSelected(false);
                 userPP.setSelected(true);
+                updateInfo();
 
 
             }
@@ -187,6 +191,11 @@ public class mainDashboardMenu {
 
     public JPanel getMainPanelForMenu() {
         return mainPanelForMenu;
+    }
+
+    public void updateInfo() {
+        nameOfTheUserLabel.setText(currentUser.getNameSurname());
+        pointsOfTheUserLabel.setText(String.valueOf(currentUser.getBilkayPoints()) + " points");
     }
 
 

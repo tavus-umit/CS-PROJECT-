@@ -304,14 +304,14 @@ public class mainRegisterMenu {
             }
         }
         else {
-            JOptionPane.showMessageDialog(null,"Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(myMainFrame,"Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         currentUser = addUserToBilkayDBandCreateInstance(username, nameSurname, webmailAddress, password, chosenCategoryItems, chosenSubCategoryItems);
 
         if (currentUser != null) {
-            JOptionPane.showMessageDialog(null,"Successfully Registered", "Register", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(myMainFrame,"Successfully Registered", "Register", JOptionPane.INFORMATION_MESSAGE);
             myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame,currentUser).getMainPanelForMenu());
             myMainFrame.revalidate();
             myMainFrame.repaint();
@@ -320,10 +320,6 @@ public class mainRegisterMenu {
 
 
     }
-
-
-
-
 
 
     private user addUserToBilkayDBandCreateInstance(String username, String nameSurname,

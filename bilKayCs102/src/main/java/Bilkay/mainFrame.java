@@ -3,6 +3,7 @@ package Bilkay;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class mainFrame {
 
@@ -16,5 +17,6 @@ public class mainFrame {
         mainFrameOfApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrameOfApp.getContentPane().add(new mainLoginMenu(mainFrameOfApp).getMainPanelForMenu());
         mainFrameOfApp.setVisible(true);
+        mainFrameOfApp.setMinimumSize(new Dimension(600,500));
     }
 }

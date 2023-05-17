@@ -126,8 +126,8 @@ public class mainLoginMenu {
 
             ResultSet resultsSetForCurrentUser = preparedStatement.executeQuery();
 
-            if ( resultsSetForCurrentUser.next()) {
-                currentUser = new user( Integer.parseInt(resultsSetForCurrentUser.getString("user_id")),
+            if (resultsSetForCurrentUser.next()) {
+                currentUser = new user(Integer.parseInt(resultsSetForCurrentUser.getString("user_id")),
                         resultsSetForCurrentUser.getString("name_surname"),
                         resultsSetForCurrentUser.getString("username"),
                         resultsSetForCurrentUser.getString("password"),
@@ -135,6 +135,9 @@ public class mainLoginMenu {
                         null,
                         null,
                         resultsSetForCurrentUser.getString("role"));
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Username or password is invalid.", "Login Error", JOptionPane.ERROR_MESSAGE);
+                return null;
             }
 
             resultsSetForCurrentUser.close();

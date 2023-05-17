@@ -6,8 +6,8 @@
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
     <properties>
-      <background color="-14145493"/>
-      <foreground color="-21"/>
+      <background color="-21"/>
+      <foreground color="-14145493"/>
     </properties>
     <border type="none"/>
     <children>

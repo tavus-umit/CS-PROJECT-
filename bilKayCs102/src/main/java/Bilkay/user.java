@@ -41,6 +41,51 @@ public class user {
         this.chosenSubCategories = chosenSubCategories;
     }
 
+
+    public void setNameSurname(String nameSurname) {
+        this.nameSurname = nameSurname;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setBilkayPoints(int bilkayPoints) {
+        this.bilkayPoints = bilkayPoints;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setChosenCategories(ArrayList<Category> chosenCategories) {
+        this.chosenCategories = chosenCategories;
+    }
+
+    public void setChosenSubCategories(ArrayList<SubCategory> chosenSubCategories) {
+        this.chosenSubCategories = chosenSubCategories;
+    }
+
     public int getUserID() {
         return userID;
     }
