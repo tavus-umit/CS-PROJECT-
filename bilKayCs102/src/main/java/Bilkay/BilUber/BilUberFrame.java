@@ -1,8 +1,5 @@
 package Bilkay.BilUber;
 
-import Bilkay.BilUberDriverPage;
-import Bilkay.BilUberMainPage;
-
 import javax.swing.*;
 
 

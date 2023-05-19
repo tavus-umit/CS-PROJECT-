@@ -1,7 +1,4 @@
-package Bilkay;
-
-import Bilkay.BilUber.BilUber;
-import Bilkay.BilUber.BilUberFrame;
+package Bilkay.BilUber;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +25,7 @@ public class BilUberMainPage extends JPanel{
 
 
     // Constructor
-    public BilUberMainPage(user newUser)
+    public BilUberMainPage(Bilkay.user newUser)
     {
         user = newUser;
         driver = new Driver(user);

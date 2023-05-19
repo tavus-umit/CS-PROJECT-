@@ -1,4 +1,4 @@
-package Bilkay;
+package Bilkay.BilUber;
 public class Lift {
     private Driver driver;
     private Date date;

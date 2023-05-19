@@ -1,15 +1,17 @@
-package Bilkay;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+package Bilkay.BilUber;
+import Bilkay.Category;
+import Bilkay.SubCategory;
+import Bilkay.user;
 
-public class Passenger extends user{
+import java.util.ArrayList;
+
+public class Passenger extends user {
     private ArrayList<Lift> registeredLifts;
 
     // Constructor
-    public Passenger(int userID,String nameSurname, String username, String password, String webmail,
-                  ArrayList<Category> chosenCategories, ArrayList<SubCategory> chosenSubCategories,
-                  String role)
+    public Passenger(int userID, String nameSurname, String username, String password, String webmail,
+                     ArrayList<Category> chosenCategories, ArrayList<SubCategory> chosenSubCategories,
+                     String role)
     {
         super(userID,nameSurname,  username,  password,  webmail, chosenCategories,  chosenSubCategories, role);
         this.registeredLifts = new ArrayList<Lift>();

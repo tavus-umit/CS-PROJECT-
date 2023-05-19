@@ -1,6 +1,4 @@
-package Bilkay;
-
-import Bilkay.BilUber.BilUberFrame;
+package Bilkay.BilUber;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +26,7 @@ public class BilUberPassengerPage extends JPanel{
     private BilUberFrame frame;
 
     // Constructor
-    public BilUberPassengerPage(user newUser)
+    public BilUberPassengerPage(Bilkay.user newUser)
     {
         user = newUser;
         passenger = new Passenger(user);

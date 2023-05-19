@@ -1,4 +1,4 @@
-package Bilkay;
+package Bilkay.BilUber;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -34,7 +34,7 @@ public class AddLiftPage extends JFrame {
                 String timeStr = TimeField.getText();
                 String hours = timeStr.substring(0, 2);
                 String minutes = timeStr.substring(3);
-                Time time = new Time(hours, minutes);
+                Bilkay.BilUber.Time time = new Time(hours, minutes);
 
                 String from = FromField.getText();
                 String to = ToField.getText();

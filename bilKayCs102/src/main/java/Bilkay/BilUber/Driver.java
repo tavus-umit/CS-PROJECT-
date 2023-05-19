@@ -1,5 +1,7 @@
-package Bilkay;
-import Bilkay.BilUber.BilUber;
+package Bilkay.BilUber;
+import Bilkay.Category;
+import Bilkay.SubCategory;
+import Bilkay.user;
 
 import java.util.ArrayList;
 
@@ -9,7 +11,7 @@ public class Driver extends user {
     private ArrayList<Lift> myLifts;
 
     // Constructor
-    public Driver(int userID,String nameSurname, String username, String password, String webmail,
+    public Driver(int userID, String nameSurname, String username, String password, String webmail,
                   ArrayList<Category> chosenCategories, ArrayList<SubCategory> chosenSubCategories,
                   String role)
     {

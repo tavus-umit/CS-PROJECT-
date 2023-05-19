@@ -1,6 +1,6 @@
-package Bilkay;
+package Bilkay.BilUber;
 
-import Bilkay.BilUber.BilUberFrame;
+import Bilkay.user;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@ public class BilUberDriverPage extends JPanel{
     private JButton DriverButton;
     private ArrayList<Lift> myLifts;
     private DefaultListModel model;
-    private static user user;
+    private static Bilkay.user user;
     private static Driver driver;
     private static AddLiftPage addLiftPage;
     private BilUberMainPage mainPage;
