@@ -1,4 +1,7 @@
-package Bilkay;
+package Bilkay.mainDashBoardScreens;
+
+import Bilkay.Email_Keyboard_DatabaseServices.DatabaseManager;
+import Bilkay.user;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

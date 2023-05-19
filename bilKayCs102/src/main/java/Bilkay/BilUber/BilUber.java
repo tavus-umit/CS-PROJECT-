@@ -1,7 +1,7 @@
-package Bilkay;
-import javax.swing.*;
+package Bilkay.BilUber;
+import Bilkay.*;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BilUber {
     // Instance Variables

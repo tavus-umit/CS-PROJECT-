@@ -1,4 +1,4 @@
-package Bilkay;
+package Bilkay.Email_Keyboard_DatabaseServices;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

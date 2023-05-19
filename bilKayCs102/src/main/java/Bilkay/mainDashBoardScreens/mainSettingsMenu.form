@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Bilkay.mainSettingsMenu">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Bilkay.mainDashBoardScreens.mainSettingsMenu">
   <grid id="27dc6" binding="mainPanelForMenu" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
     <margin top="5" left="5" bottom="5" right="5"/>
     <constraints>
-      <xy x="20" y="20" width="1118" height="1287"/>
+      <xy x="20" y="20" width="940" height="834"/>
     </constraints>
     <properties>
       <background color="-21"/>
@@ -65,7 +65,7 @@
                       <verticalTextPosition value="3"/>
                     </properties>
                   </component>
-                  <grid id="5f353" binding="editProfileValuesJpanel" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="10">
+                  <grid id="5f353" binding="editProfileValuesJpanel" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="10">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -78,7 +78,7 @@
                     <children>
                       <component id="25ec0" class="javax.swing.JLabel" binding="changeUsernameJlabel">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -89,7 +89,7 @@
                       </component>
                       <component id="b1de9" class="javax.swing.JLabel" binding="changeNameSurnameJlabel">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -100,7 +100,7 @@
                       </component>
                       <component id="eeceb" class="javax.swing.JLabel" binding="changeAgeJLabel">
                         <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -111,7 +111,7 @@
                       </component>
                       <component id="ad1b6" class="javax.swing.JLabel" binding="changeGradeJLabel">
                         <constraints>
-                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -133,7 +133,7 @@
                       </component>
                       <component id="fa2b6" class="javax.swing.JLabel" binding="changeDepartmentJLabel">
                         <constraints>
-                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -144,7 +144,7 @@
                       </component>
                       <component id="c468a" class="javax.swing.JLabel" binding="changePasswordJlabel">
                         <constraints>
-                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -155,7 +155,7 @@
                       </component>
                       <component id="2c9c" class="javax.swing.JLabel" binding="changeProfilePicutreJlabel">
                         <constraints>
-                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -166,7 +166,7 @@
                       </component>
                       <component id="5b1d6" class="javax.swing.JTextField" binding="usernameJtextField">
                         <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -178,7 +178,7 @@
                       </component>
                       <component id="e970" class="javax.swing.JTextField" binding="nameSurnameJtextfield">
                         <constraints>
-                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -190,7 +190,7 @@
                       </component>
                       <component id="abb7c" class="javax.swing.JTextField" binding="ageJTextField">
                         <constraints>
-                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -202,7 +202,7 @@
                       </component>
                       <component id="d3bc8" class="javax.swing.JPasswordField" binding="passwordPField">
                         <constraints>
-                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="2" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -290,7 +290,7 @@
                       </component>
                       <scrollpane id="18cb3" binding="gradeJScrollPane">
                         <constraints>
-                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="2" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-21"/>
@@ -324,7 +324,7 @@
                       </scrollpane>
                       <scrollpane id="30534" binding="departmentScrollPanel">
                         <constraints>
-                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="2" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-21"/>

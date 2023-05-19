@@ -1,4 +1,4 @@
-package Bilkay;
+package Bilkay.Email_Keyboard_DatabaseServices;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
