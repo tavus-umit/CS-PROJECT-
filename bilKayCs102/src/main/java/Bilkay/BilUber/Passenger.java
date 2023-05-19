@@ -1,7 +1,7 @@
 package Bilkay.BilUber;
-import Bilkay.Category;
-import Bilkay.SubCategory;
-import Bilkay.user;
+import Bilkay.UserRelatedServices.Category;
+import Bilkay.UserRelatedServices.SubCategory;
+import Bilkay.UserRelatedServices.user;
 
 import java.util.ArrayList;
 

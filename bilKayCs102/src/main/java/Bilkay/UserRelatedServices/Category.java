@@ -1,4 +1,4 @@
-package Bilkay;
+package Bilkay.UserRelatedServices;
 
 import java.util.ArrayList;
 

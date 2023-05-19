@@ -1,6 +1,6 @@
 package Bilkay.mainDashBoardScreens;
 
-import Bilkay.user;
+import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
 

@@ -1,12 +1,12 @@
 package Bilkay.LoginAndRegister;
 
-import Bilkay.Category;
+import Bilkay.UserRelatedServices.Category;
 import Bilkay.Email_Keyboard_DatabaseServices.DatabaseManager;
 import Bilkay.Email_Keyboard_DatabaseServices.emilSenderBilkay;
 import Bilkay.Email_Keyboard_DatabaseServices.keyboardControl;
-import Bilkay.SubCategory;
+import Bilkay.UserRelatedServices.SubCategory;
 import Bilkay.mainDashBoardScreens.mainDashboardMenu;
-import Bilkay.user;
+import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;

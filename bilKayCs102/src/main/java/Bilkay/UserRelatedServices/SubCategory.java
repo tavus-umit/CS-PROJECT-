@@ -1,4 +1,4 @@
-package Bilkay;
+package Bilkay.UserRelatedServices;
 
 public class SubCategory {
     public static String[] subCategoryNamesForVisualArts = {"Painting","Drawing", "Sculpture","Ceramics",

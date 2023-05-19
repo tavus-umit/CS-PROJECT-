@@ -1,5 +1,5 @@
 package Bilkay.BilUber;
-import Bilkay.*;
+import Bilkay.UserRelatedServices.user;
 
 import java.util.ArrayList;
 

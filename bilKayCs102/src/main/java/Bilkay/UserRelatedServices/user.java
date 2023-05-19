@@ -1,8 +1,6 @@
-package Bilkay;
+package Bilkay.UserRelatedServices;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class user {
 

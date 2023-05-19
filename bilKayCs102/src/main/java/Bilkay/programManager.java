@@ -1,5 +1,5 @@
 package Bilkay;
-import javax.swing.*;
+import Bilkay.MainFrameSettings.mainFrame;
 
 public class programManager {
 
@@ -7,8 +7,5 @@ public class programManager {
         mainFrame myMainFrame = new mainFrame();
 
     }
-
-
-
 
 }

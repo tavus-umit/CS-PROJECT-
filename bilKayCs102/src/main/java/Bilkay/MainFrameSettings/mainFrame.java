@@ -1,4 +1,4 @@
-package Bilkay;
+package Bilkay.MainFrameSettings;
 
 import Bilkay.LoginAndRegister.mainLoginMenu;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
