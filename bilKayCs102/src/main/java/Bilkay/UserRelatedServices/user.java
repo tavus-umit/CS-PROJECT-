@@ -1,11 +1,13 @@
 package Bilkay.UserRelatedServices;
 
+import Bilkay.BilUber.Lift;
+
 import java.util.ArrayList;
 
 public class user {
 
-    public static final String[] departmentArray = {"CTIS", "COMD","CS", "GRA", "EEE", "IE", "PHYS", "MATH", "POLS", "AMER", "TRIN", "ME", "IR", "ECON", "MAN","MBG",
-            "ELIT", "LAUD", "LAW","HART","IAED","PHIL","PSYC","THEA","TURK","CHEM","MUS","HIST","FA","ARCH"};
+    public static final String[] departmentArray = {"CTIS", "COMD", "CS", "GRA", "EEE", "IE", "PHYS", "MATH", "POLS", "AMER", "TRIN", "ME", "IR", "ECON", "MAN", "MBG",
+            "ELIT", "LAUD", "LAW", "HART", "IAED", "PHIL", "PSYC", "THEA", "TURK", "CHEM", "MUS", "HIST", "FA", "ARCH"};
     private int userID;
     private String nameSurname;
     private String username;
@@ -22,11 +24,14 @@ public class user {
     private ArrayList<Category> chosenCategories;
 
     private ArrayList<SubCategory> chosenSubCategories;
+    public ArrayList<Lift> providedLiftsAsADriver;
+    public ArrayList<Lift> usedLiftsAsAUser;
+
 
     //TODO longblob java ????
 
 
-    public user(int userID,String nameSurname, String username, String password, String webmail,
+    public user(int userID, String nameSurname, String username, String password, String webmail,
                 ArrayList<Category> chosenCategories, ArrayList<SubCategory> chosenSubCategories,
                 String role) {
         this.userID = userID;
@@ -39,6 +44,21 @@ public class user {
         this.chosenSubCategories = chosenSubCategories;
     }
 
+    public ArrayList<Lift> getProvidedLiftsAsADriver() {
+        return providedLiftsAsADriver;
+    }
+
+    public void setProvidedLiftsAsADriver(ArrayList<Lift> providedLiftsAsADriver) {
+        this.providedLiftsAsADriver = providedLiftsAsADriver;
+    }
+
+    public ArrayList<Lift> getUsedLiftsAsAUser() {
+        return usedLiftsAsAUser;
+    }
+
+    public void setUsedLiftsAsAUser(ArrayList<Lift> usedLiftsAsAUser) {
+        this.usedLiftsAsAUser = usedLiftsAsAUser;
+    }
 
     public void setNameSurname(String nameSurname) {
         this.nameSurname = nameSurname;
@@ -135,4 +155,5 @@ public class user {
     public ArrayList<SubCategory> getChosenSubCategories() {
         return chosenSubCategories;
     }
+
 }
