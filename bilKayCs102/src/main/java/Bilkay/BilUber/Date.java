@@ -9,30 +9,18 @@ public class Date {
         this.day=day;
         this.monthNo=month;
         switch (monthNo) {
-            case 1: this.monthName = "January";
-                break;
-            case 2: this.monthName = "February";
-                break;
-            case 3: this.monthName = "March";
-                break;
-            case 4: this.monthName = "April";
-                break;
-            case 5: this.monthName = "May";
-                break;
-            case 6: this.monthName = "June";
-                break;
-            case 7: this.monthName = "July";
-                break;
-            case 8: this.monthName = "August";
-                break;
-            case 9: this.monthName = "September";
-                break;
-            case 10: this.monthName = "October";
-                break;
-            case 11: this.monthName = "November";
-                break;
-            case 12:this.monthName = "December";
-                break;
+            case 1 -> this.monthName = "January";
+            case 2 -> this.monthName = "February";
+            case 3 -> this.monthName = "March";
+            case 4 -> this.monthName = "April";
+            case 5 -> this.monthName = "May";
+            case 6 -> this.monthName = "June";
+            case 7 -> this.monthName = "July";
+            case 8 -> this.monthName = "August";
+            case 9 -> this.monthName = "September";
+            case 10 -> this.monthName = "October";
+            case 11 -> this.monthName = "November";
+            case 12 -> this.monthName = "December";
         }
         this.year=year;
     }
