@@ -29,21 +29,17 @@ public class Driver extends user {
         return myLifts;
     }
 
-    // This method creates a new journey and adds it to the journeys arraylist
-    public void journeyCreator(Date date, Time time, Route route, int fee)
+    // This method creates a new lift and adds it to the lifts arraylist
+    public void liftCreator(Date date, Time time, Route route, int fee)
     {
         Lift newLift = new Lift(this, date, time, route, fee);
-        System.out.println(newLift);
         this.myLifts.add(newLift);
-        System.out.println("New journey has been created to journey list successfully!");
-
     }
-    public void journeyUploader()
+    public void liftUploader()
     {
         for (int i = 0; i < this.myLifts.size() ; i++)
         {
             BilUber.availableLifts.add(this.myLifts.get(i));
         }
-        System.out.println("Your journey list is uploaded to available journey list successfully!");
     }
 }
