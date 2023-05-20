@@ -29,8 +29,8 @@ public class EventsAdmin extends user {
         return myEvents;
     }
 
-    // This method creates a new journey and adds it to the journeys arraylist
-    public void EventCreator(String title, Date date, Time time, String clubDorm)
+    // This method creates a new event and adds it to the events arraylist
+    public void eventCreator(String title, Date date, Time time, String clubDorm)
     {
         EventsEvent newLift = new EventsEvent(this, title, date, time, clubDorm);
         this.myEvents.add(newLift);
