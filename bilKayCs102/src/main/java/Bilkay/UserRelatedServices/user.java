@@ -27,6 +27,8 @@ public class user {
     public ArrayList<Lift> providedLiftsAsADriver;
     public ArrayList<Lift> usedLiftsAsAUser;
 
+    public String pathToPP;
+
 
     //TODO longblob java ????
 
@@ -42,6 +44,14 @@ public class user {
         this.webmail = webmail;
         this.chosenCategories = chosenCategories;
         this.chosenSubCategories = chosenSubCategories;
+    }
+
+    public String getPathToPP() {
+        return pathToPP;
+    }
+
+    public void setPathToPP(String pathToPP) {
+        this.pathToPP = pathToPP;
     }
 
     public ArrayList<Lift> getProvidedLiftsAsADriver() {

@@ -45,7 +45,7 @@ public class mainDashboardMenu {
         this.currentUser = currentUser;
 
         rightMainDashboardPanel.removeAll();
-        ImageIcon iconPP = new ImageIcon(new ImageIcon("./src/main/resources/profilePictures/test.jpeg").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+        ImageIcon iconPP = new ImageIcon(new ImageIcon("./src\\main\\resources\\profilePictures\\" +currentUser.getUsername() +".jpeg").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         userPP.setIcon(iconPP);
 
 
@@ -196,6 +196,8 @@ public class mainDashboardMenu {
     public void updateInfo() {
         nameOfTheUserLabel.setText(currentUser.getNameSurname());
         pointsOfTheUserLabel.setText(String.valueOf(currentUser.getBilkayPoints()) + " points");
+        ImageIcon iconPP = new ImageIcon(new ImageIcon(currentUser.getPathToPP()).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+        userPP.setIcon(iconPP);
     }
 
 

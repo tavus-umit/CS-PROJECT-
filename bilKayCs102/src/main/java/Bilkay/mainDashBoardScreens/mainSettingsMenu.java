@@ -5,14 +5,16 @@ import Bilkay.Email_Keyboard_DatabaseServices.emilSenderBilkay;
 import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -20,7 +22,8 @@ import java.util.Random;
 
 public class mainSettingsMenu {
     private final user currentUser;
-    private  JPanel mainPanelForMenu;
+    private final JFrame myMainFrame;
+    private JPanel mainPanelForMenu;
     private JScrollPane mainJScrollPane;
     private JPanel mainJPanelForScroll;
     private JLabel logoJpanel;
@@ -66,7 +69,6 @@ public class mainSettingsMenu {
     private JButton chooseFileForPPButton;
     private JButton ProfilePictureSubmitButton;
     private JLabel currentUsernameJlabel;
-    private final JFrame myMainFrame;
     private File profilePictureFile;
 
     public mainSettingsMenu(JFrame myMainFrame, user currentUser) {
@@ -77,8 +79,8 @@ public class mainSettingsMenu {
         nameSurnameJtextfield.setText(currentUser.getNameSurname());
         ageJTextField.setText(String.valueOf(currentUser.getAge()));
         gradeJlist.setSelectedValue(currentUser.getGrade(), true);
-        departmentJlist.setSelectedValue(currentUser.getDepartment(),true);
-        genderJlist.setSelectedValue(currentUser.getGender(),true);
+        departmentJlist.setSelectedValue(currentUser.getDepartment(), true);
+        genderJlist.setSelectedValue(currentUser.getGender(), true);
 
 
         usernameSubmitButton.addActionListener(new ActionListener() {
@@ -154,7 +156,7 @@ public class mainSettingsMenu {
                         throw new RuntimeException(ex);
                     }
 
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(myMainFrame, "Use a valid new Department!", "Department Change", JOptionPane.INFORMATION_MESSAGE);
 
                 }
@@ -170,7 +172,7 @@ public class mainSettingsMenu {
                         throw new RuntimeException(ex);
                     }
 
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(myMainFrame, "Use a valid new Gender!", "Age Gender", JOptionPane.INFORMATION_MESSAGE);
 
                 }
@@ -188,47 +190,39 @@ public class mainSettingsMenu {
                 String passwordNew = SettingsPasswordBuilder.toString();
 
 
-
                 if (!passwordNew.isEmpty() && !passwordNew.equals(currentUser.getGender())) {
                     try {
 
                         emilSenderBilkay sendEmails = new emilSenderBilkay();
 
-                        if(emilSenderBilkay.isEmailValid(currentUser.getWebmail()))
-                        {
+                        if (emilSenderBilkay.isEmailValid(currentUser.getWebmail())) {
                             Random rand = new Random();
-                            long VerifyCode = rand.nextLong(100000,1000000);
+                            long VerifyCode = rand.nextLong(100000, 1000000);
 
                             String emailBodyTextForCode = "Your Bilkay Verification Code For Password Change is: " + VerifyCode;
                             String emailSubjectTextForCode = "Bilkay Verification Code For Password Change";
 
-                            if (sendEmails.sendEmail(currentUser.getWebmail(), emailSubjectTextForCode, emailBodyTextForCode))
-                            {
+                            if (sendEmails.sendEmail(currentUser.getWebmail(), emailSubjectTextForCode, emailBodyTextForCode)) {
                                 String code = JOptionPane.showInputDialog(myMainFrame, "Enter your 6-digit verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
                                 if (!code.isEmpty()) {
-                                    if(Long.parseLong(code) == VerifyCode)
-                                    {
+                                    if (Long.parseLong(code) == VerifyCode) {
                                         JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
                                         changePasswordOnDatabase(passwordNew);
 
-                                    }
-                                    else {
-                                        JOptionPane.showMessageDialog(myMainFrame,"Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
-                                        return;
+                                    } else {
+                                        JOptionPane.showMessageDialog(myMainFrame, "Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
                                     }
                                 }
                             }
-                        }
-                        else {
-                            JOptionPane.showMessageDialog(myMainFrame,"Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
-                            return;
+                        } else {
+                            JOptionPane.showMessageDialog(myMainFrame, "Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
                         }
 
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
 
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(myMainFrame, "Use a valid new password!", "Password Change", JOptionPane.INFORMATION_MESSAGE);
 
                 }
@@ -242,14 +236,13 @@ public class mainSettingsMenu {
                 if (chooseProfilePicture.showOpenDialog(myMainFrame) == JFileChooser.APPROVE_OPTION) {
                     profilePictureFile = new File(chooseProfilePicture.getSelectedFile().getAbsolutePath());
                     if (profilePictureFile.getName().endsWith(".png") || profilePictureFile.getName().endsWith(".jpeg") || profilePictureFile.getName().endsWith(".jpg")) {
-                        chooseFileForPPButton.setForeground(new Color(255,255,235));
-                        chooseFileForPPButton.setBackground(new Color(40,40,43));
+                        chooseFileForPPButton.setForeground(new Color(255, 255, 235));
+                        chooseFileForPPButton.setBackground(new Color(40, 40, 43));
                         chooseFileForPPButton.setText("Image has been chosen");
 
                     } else {
                         JOptionPane.showMessageDialog(myMainFrame, "Use a valid Image File!", "Profile Picture Change", JOptionPane.INFORMATION_MESSAGE);
                         profilePictureFile = null;
-                        return;
 
                     }
                 }
@@ -259,30 +252,49 @@ public class mainSettingsMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (profilePictureFile != null) {
+
+                    try {
+                        changePictureOnDatabase(profilePictureFile);
+                    } catch (SQLException | IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+
+                } else {
+                    JOptionPane.showMessageDialog(myMainFrame, "Choose a valid Image File!", "Profile Picture Change", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+
             }
         });
 
     }
+
     private void changePictureOnDatabase(File pictureFile) throws SQLException, IOException {
         if (pictureFile != null) {
 
-            FileInputStream profilePictureStream = new FileInputStream(pictureFile);
+
+            Path profilePicturesFolderPath = Path.of("./src\\main\\resources\\profilePictures",currentUser.getUsername() +".jpeg");
+            Path localProfilePictureDirectory = Paths.get(pictureFile.getAbsolutePath());
+            Files.copy(localProfilePictureDirectory, profilePicturesFolderPath,StandardCopyOption.REPLACE_EXISTING);
+
+            String relativePathToNewPP = "./src\\main\\resources\\profilePictures\\" + currentUser.getUsername() +".jpeg";
+
 
             Connection connection = DatabaseManager.getConnection();
-            String changePictureSql = "UPDATE users SET profile_picture = ? WHERE user_id = ?";
+            String changePictureSql = "UPDATE users SET profile_picture_path = ? WHERE user_id = ?";
 
             try {
                 PreparedStatement statement = connection.prepareStatement(changePictureSql);
-                statement.setBlob(1, profilePictureStream,pictureFile.length());
+                statement.setString(1,relativePathToNewPP );
                 statement.setInt(2, currentUser.getUserID());
 
                 int rowsUpdated = statement.executeUpdate();
-                profilePictureStream.close();
+
                 if (rowsUpdated > 0) {
 
-
-
-
+                    currentUser.setPathToPP(relativePathToNewPP);
                     JOptionPane.showMessageDialog(myMainFrame, "Successfully Updated Profile Picture", "Grade Profile Picture", JOptionPane.INFORMATION_MESSAGE);
                     myMainFrame.revalidate();
                     myMainFrame.repaint();
@@ -290,12 +302,14 @@ public class mainSettingsMenu {
                 } else {
                     JOptionPane.showMessageDialog(myMainFrame, "Error Updating Profile Picture", "Grade Profile Picture", JOptionPane.INFORMATION_MESSAGE);
                 }
-            } catch (SQLException e) {
+            } catch (
+                    SQLException e) {
                 e.printStackTrace();
             }
+
+
         } else {
             JOptionPane.showMessageDialog(myMainFrame, "Choose a valid Image File!", "Profile Picture Change", JOptionPane.INFORMATION_MESSAGE);
-            return;
 
         }
 

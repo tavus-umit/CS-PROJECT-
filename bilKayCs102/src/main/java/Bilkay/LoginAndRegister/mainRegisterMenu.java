@@ -101,7 +101,11 @@ public class mainRegisterMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                registerTheUser();
+                try {
+                    registerTheUser();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
 
             }
         });
@@ -231,11 +235,26 @@ public class mainRegisterMenu {
         }
     }
 
-    private void registerTheUser()  {
+    private void registerTheUser() throws SQLException {
 
         String username = usernameTextField.getText();
         String nameSurname = nameSurnameJTextField.getText();
         String webmailAddress = emailJtextField.getText();
+
+        String checkUsernames = "SELECT COUNT(*) FROM users WHERE username = ?";
+
+        Connection connection = DatabaseManager.getConnection();
+        PreparedStatement checkUsernameStatement = connection.prepareStatement(checkUsernames);
+
+        checkUsernameStatement.setString(1, username);
+        ResultSet resultSet = checkUsernameStatement.executeQuery();
+        resultSet.next();
+
+        if (resultSet.getInt(1) > 0) {
+            JOptionPane.showMessageDialog(myMainFrame, "Username Already Exists, Try Another Username.", "Username Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
 
         if (webmailAddress.length() < 14) {
             JOptionPane.showMessageDialog(myMainFrame, "Enter a valid webmail address.", "Webmail Confirmation Error", JOptionPane.ERROR_MESSAGE);
