@@ -13,7 +13,7 @@ public class user {
     private String username;
     private String password;
     private int age;
-    private int grade;
+    private String grade;
     private String webmail;
     private String gender;
 
@@ -76,7 +76,7 @@ public class user {
         this.age = age;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(String grade) {
         this.grade = grade;
     }
 
@@ -124,7 +124,7 @@ public class user {
         return age;
     }
 
-    public int getGrade() {
+    public String getGrade() {
         return grade;
     }
 

@@ -59,13 +59,13 @@
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <icon value="user64.png"/>
+                      <icon value="iconsForApp/user64.png"/>
                       <text value=""/>
                       <verticalAlignment value="3"/>
                       <verticalTextPosition value="3"/>
                     </properties>
                   </component>
-                  <grid id="5f353" binding="editProfileValuesJpanel" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="10">
+                  <grid id="5f353" binding="editProfileValuesJpanel" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="10">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -144,7 +144,7 @@
                       </component>
                       <component id="c468a" class="javax.swing.JLabel" binding="changePasswordJlabel">
                         <constraints>
-                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -155,7 +155,7 @@
                       </component>
                       <component id="2c9c" class="javax.swing.JLabel" binding="changeProfilePicutreJlabel">
                         <constraints>
-                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
@@ -202,7 +202,7 @@
                       </component>
                       <component id="d3bc8" class="javax.swing.JPasswordField" binding="passwordPField">
                         <constraints>
-                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="2" use-parent-layout="false">
+                          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="2" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -268,7 +268,7 @@
                       </component>
                       <component id="5c818" class="javax.swing.JButton" binding="passwordSubmitButton">
                         <constraints>
-                          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-21"/>
@@ -279,7 +279,7 @@
                       </component>
                       <component id="dd995" class="javax.swing.JButton" binding="profilePictureSumbitButton">
                         <constraints>
-                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-21"/>
@@ -304,7 +304,7 @@
                               <background color="-21"/>
                               <font name="Times New Roman" size="16" style="1"/>
                               <foreground color="-14145493"/>
-                              <layoutOrientation value="2"/>
+                              <layoutOrientation value="0"/>
                               <model>
                                 <item value="PREP"/>
                                 <item value="1"/>
@@ -317,7 +317,7 @@
                               <selectionBackground color="-14145493"/>
                               <selectionForeground color="-21"/>
                               <selectionMode value="0"/>
-                              <visibleRowCount value="1"/>
+                              <visibleRowCount value="3"/>
                             </properties>
                           </component>
                         </children>
@@ -378,6 +378,70 @@
                           </component>
                         </children>
                       </scrollpane>
+                      <component id="7a0d4" class="javax.swing.JLabel" binding="changeGenderJlist">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-14145493"/>
+                          <font name="Times New Roman" size="20" style="1"/>
+                          <foreground color="-21"/>
+                          <text value="Change Gender"/>
+                        </properties>
+                      </component>
+                      <scrollpane id="23a4c" binding="genderScrollPane">
+                        <constraints>
+                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="2" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-21"/>
+                          <foreground color="-14145493"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="97ccb" class="javax.swing.JList" binding="genderJlist">
+                            <constraints/>
+                            <properties>
+                              <background color="-21"/>
+                              <font name="Times New Roman" size="16" style="1"/>
+                              <foreground color="-14145493"/>
+                              <layoutOrientation value="0"/>
+                              <model>
+                                <item value="Male"/>
+                                <item value="Female"/>
+                                <item value="Non-Binary"/>
+                                <item value="Dont Want To Share"/>
+                              </model>
+                              <selectionBackground color="-14145493"/>
+                              <selectionForeground color="-21"/>
+                              <selectionMode value="0"/>
+                              <visibleRowCount value="2"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </scrollpane>
+                      <component id="510cb" class="javax.swing.JButton" binding="genderSumbitButton">
+                        <constraints>
+                          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-21"/>
+                          <font name="Times New Roman" size="18" style="1"/>
+                          <foreground color="-14145493"/>
+                          <text value="Submit"/>
+                        </properties>
+                      </component>
+                      <component id="4fcad" class="javax.swing.JButton" binding="chooseFileForPPButton">
+                        <constraints>
+                          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-21"/>
+                          <font name="Times New Roman" size="18" style="1"/>
+                          <foreground color="-14145493"/>
+                          <text value="Choose File"/>
+                        </properties>
+                      </component>
                     </children>
                   </grid>
                   <component id="76f7e" class="javax.swing.JSeparator">
@@ -514,7 +578,7 @@
         <properties>
           <background color="-21"/>
           <foreground color="-14145493"/>
-          <icon value="finalLogo.png"/>
+          <icon value="iconsForApp/finalLogo.png"/>
           <text value=""/>
         </properties>
       </component>

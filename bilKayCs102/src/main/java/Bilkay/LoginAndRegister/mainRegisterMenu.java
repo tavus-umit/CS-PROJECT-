@@ -387,12 +387,6 @@ public class mainRegisterMenu {
 
 
 
-
-
-
-
-
-
     private void fillTheCategoryJList() {
 
         DefaultListModel<Category> interestCategoryModel = new DefaultListModel<>();

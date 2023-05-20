@@ -45,9 +45,7 @@ public class mainDashboardMenu {
         this.currentUser = currentUser;
 
         rightMainDashboardPanel.removeAll();
-
-
-        ImageIcon iconPP = new ImageIcon(new ImageIcon("C:\\Users\\emirh\\OneDrive\\Masaüstü\\CS-PROJECT-\\bilKayCs102\\src\\main\\resources\\test.jpeg").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+        ImageIcon iconPP = new ImageIcon(new ImageIcon("./src/main/resources/profilePictures/test.jpeg").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         userPP.setIcon(iconPP);
 
 

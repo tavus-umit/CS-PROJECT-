@@ -99,7 +99,7 @@
                     <properties>
                       <background color="-14145493"/>
                       <foreground color="-14145493"/>
-                      <icon value="homeIcon.png"/>
+                      <icon value="iconsForApp/homeIcon.png"/>
                       <selected value="true"/>
                       <text value=""/>
                     </properties>
@@ -111,7 +111,7 @@
                     <properties>
                       <background color="-14145493"/>
                       <foreground color="-14145493"/>
-                      <icon value="settingsIcon.png"/>
+                      <icon value="iconsForApp/settingsIcon.png"/>
                       <text value=""/>
                     </properties>
                   </component>
@@ -122,7 +122,7 @@
                     <properties>
                       <background color="-14145493"/>
                       <foreground color="-14145493"/>
-                      <icon value="gymIcon.png"/>
+                      <icon value="iconsForApp/gymIcon.png"/>
                       <text value=""/>
                     </properties>
                   </component>
@@ -133,7 +133,7 @@
                     <properties>
                       <background color="-14145493"/>
                       <foreground color="-14145493"/>
-                      <icon value="webIcon.png"/>
+                      <icon value="iconsForApp/webIcon.png"/>
                       <text value=""/>
                     </properties>
                   </component>
@@ -144,7 +144,7 @@
                     <properties>
                       <background color="-14145493"/>
                       <foreground color="-14145493"/>
-                      <icon value="peopleIcon.png"/>
+                      <icon value="iconsForApp/peopleIcon.png"/>
                       <text value=""/>
                     </properties>
                   </component>
@@ -155,7 +155,7 @@
                     <properties>
                       <background color="-14145493"/>
                       <foreground color="-14145493"/>
-                      <icon value="messagesIcon.png"/>
+                      <icon value="iconsForApp/messagesIcon.png"/>
                       <text value=""/>
                     </properties>
                   </component>
@@ -166,7 +166,7 @@
                     <properties>
                       <background color="-14145493"/>
                       <foreground color="-14145493"/>
-                      <icon value="carIcon.png"/>
+                      <icon value="iconsForApp/carIcon.png"/>
                       <text value=""/>
                     </properties>
                   </component>

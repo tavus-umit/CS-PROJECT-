@@ -37,5 +37,14 @@ public class emilSenderBilkay {
         } catch (MessagingException e) {
             return false;
         }
+
+
+    }
+
+    public static boolean isEmailValid(String email)
+    {
+        String domainAddress = email.substring(email.length()-14);
+        return domainAddress.equals("bilkent.edu.tr");
+
     }
 }

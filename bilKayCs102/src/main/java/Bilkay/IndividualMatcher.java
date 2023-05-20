@@ -1,5 +1,9 @@
 package Bilkay;
 
+import Bilkay.UserRelatedServices.Category;
+import Bilkay.UserRelatedServices.SubCategory;
+import Bilkay.UserRelatedServices.user;
+
 public class IndividualMatcher {
 
     int matchScore;

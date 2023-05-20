@@ -54,7 +54,7 @@
                 <properties>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <icon value="unlockPassword.png"/>
+                  <icon value="iconsForApp/unlockPassword.png"/>
                   <labelFor value="dd49e"/>
                   <text value=""/>
                 </properties>
@@ -105,7 +105,7 @@
                 <properties>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <icon value="userIconLogo.png"/>
+                  <icon value="iconsForApp/userIconLogo.png"/>
                   <labelFor value="e76c1"/>
                   <opaque value="false"/>
                   <text value=""/>
@@ -132,7 +132,7 @@
                   <foreground color="-21"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <icon value="reset-password.png"/>
+                  <icon value="iconsForApp/reset-password.png"/>
                   <labelFor value="88d34"/>
                   <text value=""/>
                 </properties>
@@ -146,7 +146,7 @@
                   <foreground color="-21"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <icon value="messagesIcon.png"/>
+                  <icon value="iconsForApp/messagesIcon.png"/>
                   <labelFor value="8c94"/>
                   <text value=""/>
                 </properties>
@@ -171,7 +171,7 @@
                 <properties>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <icon value="nameSuernameIcon.png"/>
+                  <icon value="iconsForApp/nameSuernameIcon.png"/>
                   <labelFor value="57473"/>
                   <opaque value="false"/>
                   <text value=""/>
@@ -300,7 +300,7 @@
                 <properties>
                   <background color="-14145493"/>
                   <foreground color="-21"/>
-                  <icon value="backIcon.png"/>
+                  <icon value="iconsForApp/backIcon.png"/>
                   <text value=""/>
                 </properties>
               </component>
@@ -335,7 +335,7 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <icon value="finalLogo.png"/>
+                  <icon value="iconsForApp/finalLogo.png"/>
                   <text value=""/>
                 </properties>
               </component>
