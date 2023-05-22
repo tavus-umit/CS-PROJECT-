@@ -18,22 +18,16 @@ public class DatabaseManager {
     }
 
     public static void main(String[] args) throws SQLException {
+
+
+        String deleteCat = "DELETE from bilkaydb.user_interestscategory_relation WHERE bilkaydb.user_interestscategory_relation.user_id = ?";
+
         Connection connection = DatabaseManager.getConnection();
-        Statement statement = connection.createStatement();
+        PreparedStatement deleteCatPStatement = connection.prepareStatement(deleteCat);
+        deleteCatPStatement.setString(1, "1");
 
-        String getSubCatID = "SELECT * FROM bilkaydb.interestsubcategory WHERE bilkaydb.interestsubcategory.interestSubCategory_name=?";
-
-        PreparedStatement idStatement = connection.prepareStatement(getSubCatID);
-        idStatement.setString(1, "DIY");
-
-        ResultSet resultForID = idStatement.executeQuery();
-
-        if (resultForID.next()) {
-            System.out.println(resultForID.getString("interestSubCategory_id"));
-        }
-        idStatement.close();
-        statement.close();
-        connection.close();
+        int rowsAffected = deleteCatPStatement.executeUpdate();
+        System.out.println("Rows affected: " + rowsAffected);
 
     }
 }

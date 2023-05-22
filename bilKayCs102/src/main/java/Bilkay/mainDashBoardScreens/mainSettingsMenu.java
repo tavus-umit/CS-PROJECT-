@@ -26,6 +26,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static Bilkay.UserRelatedServices.userInterestRelations.*;
+
 public class mainSettingsMenu {
     private final keyboardControl keyboardController;
     private final user currentUser;
@@ -294,16 +296,68 @@ public class mainSettingsMenu {
         interestsCategoryJList.addListSelectionListener(e -> updateSubCategoryJList());
 
 
-        sumbitInterests.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        sumbitInterests.addActionListener(e -> {
 
-                //todo remove all the old connections ???? and add new ones
+            try {
+                removeAllTheCatRelationsOfTheUser();
+                removeAllTheSubCatRelationsOfTheUser();
+
+                if (!interestsCategoryJList.getSelectedValuesList().isEmpty()) {
+
+                    ArrayList<Category> chosenCategoryItems = (ArrayList<Category>) interestsCategoryJList.getSelectedValuesList();
+                    for (Category chosenCategoryItem : chosenCategoryItems) {
+                        int idOfCatDB = findCategoryIDFromDB(chosenCategoryItem.getName());
+                        if (idOfCatDB != -1) {
+                            storeUserCategories(currentUser.getUserID(), idOfCatDB);
+                        }
+
+                    }
+                }
+
+                if (!interestSubCategoryJlist.getSelectedValuesList().isEmpty()) {
+
+                    ArrayList<SubCategory> chosenSubCategoryItems = (ArrayList<SubCategory>) interestSubCategoryJlist.getSelectedValuesList();
+                    for (SubCategory chosenSubCategoryItem : chosenSubCategoryItems) {
+                        int idOfSubCatDB = findSubCategoryIDFromDB(chosenSubCategoryItem.getName());
+                        if (idOfSubCatDB != -1) {
+                            storeUserSubCategories(currentUser.getUserID(),idOfSubCatDB);
+                        }
+                    }
+                }
 
 
 
+                JOptionPane.showMessageDialog(myMainFrame, "Successfully Updated Interests", "Change Interests", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
             }
+
         });
+    }
+
+    private void removeAllTheSubCatRelationsOfTheUser() throws SQLException {
+
+        String deleteSubCat = "DELETE from user_interestsubcategory_relation WHERE user_id = ?";
+
+        Connection connection = DatabaseManager.getConnection();
+        PreparedStatement deleteSubCatPStatement = connection.prepareStatement(deleteSubCat);
+        deleteSubCatPStatement.setInt(1, currentUser.getUserID());
+
+        deleteSubCatPStatement.executeUpdate();
+
+    }
+
+    private void removeAllTheCatRelationsOfTheUser() throws SQLException {
+
+        String deleteCat = "DELETE from bilkaydb.user_interestscategory_relation WHERE bilkaydb.user_interestscategory_relation.user_id = ?";
+
+        Connection connection = DatabaseManager.getConnection();
+        PreparedStatement deleteCatPStatement = connection.prepareStatement(deleteCat);
+        deleteCatPStatement.setInt(1, currentUser.getUserID());
+
+        deleteCatPStatement.executeUpdate();
+
     }
 
     private void chooseTheUserChosenSubCatSettingsJList(JList<Category> interestsCategoryJList, JList<SubCategory> interestSubCategoryJlist) {
@@ -362,12 +416,12 @@ public class mainSettingsMenu {
                 if (rowsUpdated > 0) {
 
                     currentUser.setPathToPP(relativePathToNewPP);
-                    JOptionPane.showMessageDialog(myMainFrame, "Successfully Updated Profile Picture", "Grade Profile Picture", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(myMainFrame, "Successfully Updated Profile Picture", "Profile Picture", JOptionPane.INFORMATION_MESSAGE);
                     myMainFrame.revalidate();
                     myMainFrame.repaint();
 
                 } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Error Updating Profile Picture", "Grade Profile Picture", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(myMainFrame, "Error Updating Profile Picture", "Profile Picture", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -576,6 +630,7 @@ public class mainSettingsMenu {
         }
         interestsCategoryJList.setModel(interestCategoryModel);
     }
+
 
     public JPanel getMainPanelForMenu() {
         return mainPanelForMenu;
