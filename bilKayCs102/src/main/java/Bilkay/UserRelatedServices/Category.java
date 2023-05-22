@@ -36,6 +36,10 @@ public class Category {
         return categoryID;
     }
 
+    public static void resetCategoryIDs() {
+        categoryIDGenerator = 1;
+    }
+
     @Override
     public String toString() {
         return name;

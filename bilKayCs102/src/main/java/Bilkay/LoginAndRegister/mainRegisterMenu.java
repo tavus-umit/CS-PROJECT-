@@ -22,7 +22,9 @@ public class mainRegisterMenu {
     private final JFrame myMainFrame;
 
     private final keyboardControl keyboardController;
-
+    private final ArrayList<Category> categoryItems;
+    private final ArrayList<SubCategory> subCategoryItems;
+    public user currentUser;
     private JPanel mainPanelForMenu;
     private JPanel rightPanel;
     private JPanel rightCenter;
@@ -50,11 +52,6 @@ public class mainRegisterMenu {
     private JLabel categoriesJlabel;
     private JLabel subCategoriesJlabel;
     private JButton backButton;
-
-    private ArrayList<Category> categoryItems;
-
-    private ArrayList<SubCategory> subCategoryItems;
-    public user currentUser;
 
 
     public mainRegisterMenu(JFrame myMainFrameInput) {
@@ -127,9 +124,7 @@ public class mainRegisterMenu {
         });
     }
 
-
-
-    private void updateSubCategoryJList() {
+    public static void updateSubCategory(JList<Category> interestsCategoryJList, JList<SubCategory> interestSubCategoryJlist) {
         DefaultListModel<SubCategory> interestSubCategoryModel = new DefaultListModel<>();
 
         if (interestsCategoryJList.getSelectedValuesList().isEmpty()) {
@@ -156,18 +151,18 @@ public class mainRegisterMenu {
             for (SubCategory chosenSubCategoryItem : chosenSubCategoryItems) {
                 int indexOfSub = interestSubCategoryModel.indexOf(chosenSubCategoryItem);
                 if (indexOfSub >= 0) {
-                    interestSubCategoryJlist.addSelectionInterval(indexOfSub,indexOfSub);
+                    interestSubCategoryJlist.addSelectionInterval(indexOfSub, indexOfSub);
                 }
             }
             chosenCategoryItems.clear();
         }
-
     }
 
-    private void createCategoryAndSubCategories() {
+    public static void createCategoryAndSubCategories(ArrayList<Category> categoryItems, ArrayList<SubCategory> subCategoryItems) {
         for (int i = 0; i < Category.categoryNames.length; i++) {
             categoryItems.add(new Category(Category.categoryNames[i]));
         }
+        Category.resetCategoryIDs();
 
         for (Category categoryItem : categoryItems) {
             switch (categoryItem.getName()) {
@@ -233,6 +228,16 @@ public class mainRegisterMenu {
                 }
             }
         }
+        SubCategory.resetSubCatID();
+    }
+
+    private void updateSubCategoryJList() {
+        updateSubCategory(interestsCategoryJList, interestSubCategoryJlist);
+
+    }
+
+    private void createCategoryAndSubCategories() {
+        createCategoryAndSubCategories(categoryItems, subCategoryItems);
     }
 
     private void registerTheUser() throws SQLException {
@@ -254,6 +259,8 @@ public class mainRegisterMenu {
             JOptionPane.showMessageDialog(myMainFrame, "Username Already Exists, Try Another Username.", "Username Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        connection.close();
+        resultSet.close();
 
 
         if (webmailAddress.length() < 14) {
@@ -276,12 +283,10 @@ public class mainRegisterMenu {
         String confirmedPassword = confirmPasswordBuilder.toString();
 
 
-        if (usernameTextField.getText().isEmpty() || nameSurnameJTextField.getText().isEmpty() || emailJtextField.getText().isEmpty() ||
-                password.isEmpty() || confirmedPassword.isEmpty()) {
+        if (usernameTextField.getText().isEmpty() || nameSurnameJTextField.getText().isEmpty() || emailJtextField.getText().isEmpty() || password.isEmpty() || confirmedPassword.isEmpty()) {
             JOptionPane.showMessageDialog(myMainFrame, "Your credentials are empty, please fill all of it.", "Credentials Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
 
 
         if (!password.equals(confirmedPassword)) {
@@ -289,7 +294,7 @@ public class mainRegisterMenu {
             return;
         }
 
-        if (interestsCategoryJList.getSelectedValuesList().isEmpty() || interestSubCategoryJlist.getSelectedValuesList().isEmpty() ) {
+        if (interestsCategoryJList.getSelectedValuesList().isEmpty() || interestSubCategoryJlist.getSelectedValuesList().isEmpty()) {
             JOptionPane.showMessageDialog(myMainFrame, "Your interests category or subcategory list is empty, please choose one or more.", "Interests Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -297,62 +302,47 @@ public class mainRegisterMenu {
 
         ArrayList<Category> chosenCategoryItems = (ArrayList<Category>) interestsCategoryJList.getSelectedValuesList();
         ArrayList<SubCategory> chosenSubCategoryItems = (ArrayList<SubCategory>) interestSubCategoryJlist.getSelectedValuesList();
-        for (Category chosenCategoryItem : chosenCategoryItems) {
-            System.out.println(chosenCategoryItem.getName());
-        }
-
-        for (SubCategory subs : chosenSubCategoryItems) {
-            System.out.println(subs.getName());
-        }
 
 
-        if(isEmailValid(webmailAddress))
-        {
+
+        if (isEmailValid(webmailAddress)) {
             Random rand = new Random();
-            long VerifyCode = rand.nextLong(100000,1000000);
+            long VerifyCode = rand.nextLong(100000, 1000000);
             emilSenderBilkay sendEmails = new emilSenderBilkay();
 
             String emailBodyTextForCode = "Your Bilkay Verification Code is: " + VerifyCode;
             String emailSubjectTextForCode = "Bilkay Verification Code";
 
-            if (sendEmails.sendEmail(webmailAddress, emailSubjectTextForCode, emailBodyTextForCode))
-            {
+            if (sendEmails.sendEmail(webmailAddress, emailSubjectTextForCode, emailBodyTextForCode)) {
                 String code = JOptionPane.showInputDialog(myMainFrame, "Enter your 6-digit verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
                 if (!code.isEmpty()) {
-                    if(Long.parseLong(code) == VerifyCode)
-                    {
+                    if (Long.parseLong(code) == VerifyCode) {
                         JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(myMainFrame,"Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(myMainFrame, "Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                 }
             }
-        }
-        else {
-            JOptionPane.showMessageDialog(myMainFrame,"Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(myMainFrame, "Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         currentUser = addUserToBilkayDBandCreateInstance(username, nameSurname, webmailAddress, password, chosenCategoryItems, chosenSubCategoryItems);
 
         if (currentUser != null) {
-            JOptionPane.showMessageDialog(myMainFrame,"Successfully Registered", "Register", JOptionPane.INFORMATION_MESSAGE);
-            myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame,currentUser).getMainPanelForMenu());
+            JOptionPane.showMessageDialog(myMainFrame, "Successfully Registered", "Register", JOptionPane.INFORMATION_MESSAGE);
+            myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame, currentUser).getMainPanelForMenu());
             myMainFrame.revalidate();
             myMainFrame.repaint();
         }
 
 
-
     }
 
 
-    private user addUserToBilkayDBandCreateInstance(String username, String nameSurname,
-                                                    String webmailAddress, String password,
-                                                    ArrayList<Category> chosenCategoryItems,
-                                                    ArrayList<SubCategory> chosenSubCategoryItems) {
+    private user addUserToBilkayDBandCreateInstance(String username, String nameSurname, String webmailAddress, String password, ArrayList<Category> chosenCategoryItems, ArrayList<SubCategory> chosenSubCategoryItems) {
         user currentUser = null;
 
         try {
@@ -382,15 +372,30 @@ public class mainRegisterMenu {
                 if (resultForUserID.next()) {
                     currentUserID = Integer.parseInt(resultForUserID.getString("user_id"));
                 }
-
+                idStatement.close();
                 resultForUserID.close();
                 statement.close();
                 connection.close();
 
 
+                for (Category chosenCategoryItem : chosenCategoryItems) {
+                    int idOfCatDB = findCategoryIDFromDB(chosenCategoryItem.getName());
+                    if (idOfCatDB != -1) {
+                        storeUserCategories(currentUserID, idOfCatDB);
+                    }
+
+                }
+                for (SubCategory chosenSubCategoryItem : chosenSubCategoryItems) {
+                    int idOfSubCatDB = findSubCategoryIDFromDB(chosenSubCategoryItem.getName());
+                    if (idOfSubCatDB != -1) {
+                        storeUserSubCategories(currentUserID,idOfSubCatDB);
+                    }
+                }
+
+
                 currentUser = new user(currentUserID, nameSurname, username, password, webmailAddress, chosenCategoryItems, chosenSubCategoryItems, "user");
             }
-
+            preparedStatement.close();
             statement.close();
             connection.close();
         } catch (SQLException e) {
@@ -399,11 +404,115 @@ public class mainRegisterMenu {
         return currentUser;
     }
 
+    public int findCategoryIDFromDB(String categoryName) throws SQLException {
+
+        Connection connection = DatabaseManager.getConnection();
+        Statement statement = connection.createStatement();
+
+        String getCatID = "SELECT * FROM bilkaydb.interestscategory WHERE bilkaydb.interestscategory.interestCategory_name=?";
+
+        PreparedStatement idStatement = connection.prepareStatement(getCatID);
+        idStatement.setString(1, categoryName);
+
+        ResultSet resultForID = idStatement.executeQuery();
+
+        if (resultForID.next()) {
+            return Integer.parseInt(resultForID.getString("interestCategory_id"));
+        }
+        idStatement.close();
+        statement.close();
+        connection.close();
+        return -1;
+    }
+
+    public int findSubCategoryIDFromDB(String subCategoryName) throws SQLException {
+
+        Connection connection = DatabaseManager.getConnection();
+        Statement statement = connection.createStatement();
+
+        String getSubCatID = "SELECT * FROM bilkaydb.interestsubcategory WHERE bilkaydb.interestsubcategory.interestSubCategory_name=?";
+
+        PreparedStatement idStatement = connection.prepareStatement(getSubCatID);
+        idStatement.setString(1, subCategoryName);
+
+        ResultSet resultForID = idStatement.executeQuery();
+
+        if (resultForID.next()) {
+            return Integer.parseInt(resultForID.getString("interestSubCategory_id"));
+        }
+        idStatement.close();
+        statement.close();
+        connection.close();
+        return -1;
+    }
 
 
+    public void storeUserSubCategories(int userId, int subCategoryId) throws SQLException {
 
 
+        String checkSubCatRelation = "SELECT COUNT(*) FROM user_interestsubcategory_relation WHERE user_id = ? AND interestSubCategory_id = ?";
 
+        Connection connection = DatabaseManager.getConnection();
+        PreparedStatement checkOccurrence = connection.prepareStatement(checkSubCatRelation);
+
+        checkOccurrence.setInt(1, userId);
+        checkOccurrence.setInt(2, subCategoryId);
+        ResultSet resultSet = checkOccurrence.executeQuery();
+
+        resultSet.next();
+
+        if (!(resultSet.getInt(1) > 0)) {
+
+            String insert_subcategory_relationship = "INSERT INTO user_interestsubcategory_relation (user_id, interestSubCategory_id) VALUES (?, ?)";
+
+
+            PreparedStatement preparedStatement = connection.prepareStatement(insert_subcategory_relationship);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, subCategoryId);
+
+            if (preparedStatement.executeUpdate() == 1) {
+                System.out.println("done");
+            }
+
+        }
+        connection.close();
+        resultSet.close();
+
+    }
+
+
+    public void storeUserCategories(int userId, int categoryId) throws SQLException {
+
+
+        String checkCatRelation = "SELECT COUNT(*) FROM user_interestscategory_relation WHERE user_id = ? AND interestCategory_id = ?";
+
+        Connection connection = DatabaseManager.getConnection();
+        PreparedStatement checkOccurrence = connection.prepareStatement(checkCatRelation);
+
+        checkOccurrence.setInt(1, userId);
+        checkOccurrence.setInt(2, categoryId);
+        ResultSet resultSet = checkOccurrence.executeQuery();
+
+        resultSet.next();
+
+        if (!(resultSet.getInt(1) > 0)) {
+
+            String insert_category_relationship = "INSERT INTO user_interestscategory_relation (user_id, interestCategory_id) VALUES (?, ?)";
+
+
+            PreparedStatement preparedStatement = connection.prepareStatement(insert_category_relationship);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, categoryId);
+
+            if (preparedStatement.executeUpdate() == 1) {
+                System.out.println("done");
+            }
+
+        }
+        connection.close();
+        resultSet.close();
+
+    }
 
 
     private void fillTheCategoryJList() {
@@ -416,12 +525,12 @@ public class mainRegisterMenu {
     }
 
 
-    public boolean isEmailValid(String email)
-    {
-        String domainAddress = email.substring(email.length()-14);
+    public boolean isEmailValid(String email) {
+        String domainAddress = email.substring(email.length() - 14);
         return domainAddress.equals("bilkent.edu.tr");
 
     }
+
     public JPanel getMainPanelForMenu() {
         return mainPanelForMenu;
     }

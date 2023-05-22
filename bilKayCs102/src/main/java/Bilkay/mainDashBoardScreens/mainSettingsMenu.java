@@ -2,14 +2,19 @@ package Bilkay.mainDashBoardScreens;
 
 import Bilkay.Email_Keyboard_DatabaseServices.DatabaseManager;
 import Bilkay.Email_Keyboard_DatabaseServices.emilSenderBilkay;
+import Bilkay.Email_Keyboard_DatabaseServices.keyboardControl;
+import Bilkay.LoginAndRegister.mainRegisterMenu;
+import Bilkay.UserRelatedServices.Category;
+import Bilkay.UserRelatedServices.SubCategory;
 import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,11 +23,15 @@ import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class mainSettingsMenu {
+    private final keyboardControl keyboardController;
     private final user currentUser;
     private final JFrame myMainFrame;
+    private final ArrayList<Category> categoryItems;
+    private final ArrayList<SubCategory> subCategoryItems;
     private JPanel mainPanelForMenu;
     private JScrollPane mainJScrollPane;
     private JPanel mainJPanelForScroll;
@@ -53,9 +62,9 @@ public class mainSettingsMenu {
     private JPanel editInterestMainPanel;
     private JPanel interstJpanel;
     private JScrollPane interestCategoryScrollPane;
-    private JList interestsCategoryJList;
+    private JList<Category> interestsCategoryJList;
     private JScrollPane interestSubCategoryScrollPane;
-    private JList interestSubCategoryJlist;
+    private JList<SubCategory> interestSubCategoryJlist;
     private JLabel categoriesJlabel;
     private JLabel subCategoriesJlabel;
     private JList gradeJlist;
@@ -67,13 +76,25 @@ public class mainSettingsMenu {
     private JList genderJlist;
     private JButton genderSumbitButton;
     private JButton chooseFileForPPButton;
+    private JButton sumbitInterests;
     private JButton ProfilePictureSubmitButton;
     private JLabel currentUsernameJlabel;
     private File profilePictureFile;
 
     public mainSettingsMenu(JFrame myMainFrame, user currentUser) {
+
         this.currentUser = currentUser;
         this.myMainFrame = myMainFrame;
+
+        this.keyboardController = new keyboardControl();
+        this.categoryItems = new ArrayList<Category>();
+        this.subCategoryItems = new ArrayList<SubCategory>();
+        createCategoryAndSubCategories();
+        fillTheCategoryJList();
+        chooseTheUserChosenCatSettingsJList(interestsCategoryJList, interestSubCategoryJlist);
+        updateSubCategoryJList();
+        chooseTheUserChosenSubCatSettingsJList(interestsCategoryJList, interestSubCategoryJlist);
+
 
         usernameJtextField.setText(currentUser.getUsername());
         nameSurnameJtextfield.setText(currentUser.getNameSurname());
@@ -83,203 +104,249 @@ public class mainSettingsMenu {
         genderJlist.setSelectedValue(currentUser.getGender(), true);
 
 
-        usernameSubmitButton.addActionListener(new ActionListener() {
+        interestsCategoryJList.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!usernameJtextField.getText().equals(currentUser.getUsername()) && !usernameJtextField.getText().isEmpty()) {
-                    try {
-                        changeUsernameOnDatabase(usernameJtextField.getText());
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Use a valid username!", "Username Change", JOptionPane.INFORMATION_MESSAGE);
-
-                }
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                keyboardController.holdCTRL();
             }
         });
-        nameSurnameSubmitButton.addActionListener(new ActionListener() {
+        interestsCategoryJList.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!nameSurnameJtextfield.getText().equals(currentUser.getNameSurname()) && !nameSurnameJtextfield.getText().isEmpty()) {
-                    try {
-                        changeNameSurnameOnDatabase(nameSurnameJtextfield.getText());
-
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Use a valid Name/Surname!", "Name/Surname Change", JOptionPane.INFORMATION_MESSAGE);
-
-                }
+            public void mouseExited(MouseEvent e) {
+                keyboardController.releaseCTRL();
             }
         });
-        ageSubmitButton.addActionListener(new ActionListener() {
+
+        interestSubCategoryJlist.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!ageJTextField.getText().equals(String.valueOf(currentUser.getAge())) && !ageJTextField.getText().isEmpty() && ageJTextField.getText().matches("[0-9]+")) {
-                    try {
-                        changeAgeOnDatabase(Integer.parseInt(ageJTextField.getText()));
-
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Use a valid Grade!", "Grade Change", JOptionPane.INFORMATION_MESSAGE);
-
-                }
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                keyboardController.holdCTRL();
             }
         });
-        gradeSubmitButton.addActionListener(new ActionListener() {
+        interestSubCategoryJlist.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!gradeJlist.getSelectedValue().toString().isEmpty() && !gradeJlist.getSelectedValue().toString().equals(currentUser.getGrade())) {
-                    try {
-                        changeGradeOnDatabase(gradeJlist.getSelectedValue().toString());
-
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Use a valid Age!", "Age Change", JOptionPane.INFORMATION_MESSAGE);
-
-                }
+            public void mouseExited(MouseEvent e) {
+                keyboardController.releaseCTRL();
             }
         });
-        departmentSubmitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!departmentJlist.getSelectedValue().toString().isEmpty() && !departmentJlist.getSelectedValue().toString().equals(currentUser.getDepartment())) {
-                    try {
-                        changeDepartmentOnDatabase(departmentJlist.getSelectedValue().toString());
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
 
-                } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Use a valid new Department!", "Department Change", JOptionPane.INFORMATION_MESSAGE);
 
+        usernameSubmitButton.addActionListener(e -> {
+            if (!usernameJtextField.getText().equals(currentUser.getUsername()) && !usernameJtextField.getText().isEmpty()) {
+                try {
+                    changeUsernameOnDatabase(usernameJtextField.getText());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
                 }
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Use a valid username!", "Username Change", JOptionPane.INFORMATION_MESSAGE);
+
             }
         });
-        genderSumbitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!genderJlist.getSelectedValue().toString().isEmpty() && !genderJlist.getSelectedValue().toString().equals(currentUser.getGender())) {
-                    try {
-                        changeGenderOnDatabase(genderJlist.getSelectedValue().toString());
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
+        nameSurnameSubmitButton.addActionListener(e -> {
+            if (!nameSurnameJtextfield.getText().equals(currentUser.getNameSurname()) && !nameSurnameJtextfield.getText().isEmpty()) {
+                try {
+                    changeNameSurnameOnDatabase(nameSurnameJtextfield.getText());
 
-                } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Use a valid new Gender!", "Age Gender", JOptionPane.INFORMATION_MESSAGE);
-
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
                 }
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Use a valid Name/Surname!", "Name/Surname Change", JOptionPane.INFORMATION_MESSAGE);
+
             }
         });
-        passwordSubmitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        ageSubmitButton.addActionListener(e -> {
+            if (!ageJTextField.getText().equals(String.valueOf(currentUser.getAge())) && !ageJTextField.getText().isEmpty() && ageJTextField.getText().matches("[0-9]+")) {
+                try {
+                    changeAgeOnDatabase(Integer.parseInt(ageJTextField.getText()));
 
-                char[] passwordArray = passwordPField.getPassword();
-                StringBuilder SettingsPasswordBuilder = new StringBuilder();
-                for (char c : passwordArray) {
-                    SettingsPasswordBuilder.append(c);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
                 }
-                String passwordNew = SettingsPasswordBuilder.toString();
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Use a valid Grade!", "Grade Change", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        });
+        gradeSubmitButton.addActionListener(e -> {
+            if (!gradeJlist.getSelectedValue().toString().isEmpty() && !gradeJlist.getSelectedValue().toString().equals(currentUser.getGrade())) {
+                try {
+                    changeGradeOnDatabase(gradeJlist.getSelectedValue().toString());
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Use a valid Age!", "Age Change", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        });
+        departmentSubmitButton.addActionListener(e -> {
+            if (!departmentJlist.getSelectedValue().toString().isEmpty() && !departmentJlist.getSelectedValue().toString().equals(currentUser.getDepartment())) {
+                try {
+                    changeDepartmentOnDatabase(departmentJlist.getSelectedValue().toString());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Use a valid new Department!", "Department Change", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        });
+        genderSumbitButton.addActionListener(e -> {
+            if (!genderJlist.getSelectedValue().toString().isEmpty() && !genderJlist.getSelectedValue().toString().equals(currentUser.getGender())) {
+                try {
+                    changeGenderOnDatabase(genderJlist.getSelectedValue().toString());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Use a valid new Gender!", "Age Gender", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        });
+        passwordSubmitButton.addActionListener(e -> {
+
+            char[] passwordArray = passwordPField.getPassword();
+            StringBuilder SettingsPasswordBuilder = new StringBuilder();
+            for (char c : passwordArray) {
+                SettingsPasswordBuilder.append(c);
+            }
+            String passwordNew = SettingsPasswordBuilder.toString();
 
 
-                if (!passwordNew.isEmpty() && !passwordNew.equals(currentUser.getGender())) {
-                    try {
+            if (!passwordNew.isEmpty() && !passwordNew.equals(currentUser.getGender())) {
+                try {
 
-                        emilSenderBilkay sendEmails = new emilSenderBilkay();
+                    emilSenderBilkay sendEmails = new emilSenderBilkay();
 
-                        if (emilSenderBilkay.isEmailValid(currentUser.getWebmail())) {
-                            Random rand = new Random();
-                            long VerifyCode = rand.nextLong(100000, 1000000);
+                    if (emilSenderBilkay.isEmailValid(currentUser.getWebmail())) {
+                        Random rand = new Random();
+                        long VerifyCode = rand.nextLong(100000, 1000000);
 
-                            String emailBodyTextForCode = "Your Bilkay Verification Code For Password Change is: " + VerifyCode;
-                            String emailSubjectTextForCode = "Bilkay Verification Code For Password Change";
+                        String emailBodyTextForCode = "Your Bilkay Verification Code For Password Change is: " + VerifyCode;
+                        String emailSubjectTextForCode = "Bilkay Verification Code For Password Change";
 
-                            if (sendEmails.sendEmail(currentUser.getWebmail(), emailSubjectTextForCode, emailBodyTextForCode)) {
-                                String code = JOptionPane.showInputDialog(myMainFrame, "Enter your 6-digit verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
-                                if (!code.isEmpty()) {
-                                    if (Long.parseLong(code) == VerifyCode) {
-                                        JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
-                                        changePasswordOnDatabase(passwordNew);
+                        if (sendEmails.sendEmail(currentUser.getWebmail(), emailSubjectTextForCode, emailBodyTextForCode)) {
+                            String code = JOptionPane.showInputDialog(myMainFrame, "Enter your 6-digit verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
+                            if (!code.isEmpty()) {
+                                if (Long.parseLong(code) == VerifyCode) {
+                                    JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
+                                    changePasswordOnDatabase(passwordNew);
 
-                                    } else {
-                                        JOptionPane.showMessageDialog(myMainFrame, "Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
-                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(myMainFrame, "Wrong Verification Code", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
                                 }
                             }
-                        } else {
-                            JOptionPane.showMessageDialog(myMainFrame, "Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
                         }
-
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Use a valid new password!", "Password Change", JOptionPane.INFORMATION_MESSAGE);
-
-                }
-            }
-        });
-        chooseFileForPPButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser chooseProfilePicture = new JFileChooser();
-
-                if (chooseProfilePicture.showOpenDialog(myMainFrame) == JFileChooser.APPROVE_OPTION) {
-                    profilePictureFile = new File(chooseProfilePicture.getSelectedFile().getAbsolutePath());
-                    if (profilePictureFile.getName().endsWith(".png") || profilePictureFile.getName().endsWith(".jpeg") || profilePictureFile.getName().endsWith(".jpg")) {
-                        chooseFileForPPButton.setForeground(new Color(255, 255, 235));
-                        chooseFileForPPButton.setBackground(new Color(40, 40, 43));
-                        chooseFileForPPButton.setText("Image has been chosen");
-
                     } else {
-                        JOptionPane.showMessageDialog(myMainFrame, "Use a valid Image File!", "Profile Picture Change", JOptionPane.INFORMATION_MESSAGE);
-                        profilePictureFile = null;
-
+                        JOptionPane.showMessageDialog(myMainFrame, "Please use your Bilkent Webmail", "Webmail Validation Error", JOptionPane.ERROR_MESSAGE);
                     }
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Use a valid new password!", "Password Change", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        });
+        chooseFileForPPButton.addActionListener(e -> {
+            JFileChooser chooseProfilePicture = new JFileChooser();
+
+            if (chooseProfilePicture.showOpenDialog(myMainFrame) == JFileChooser.APPROVE_OPTION) {
+                profilePictureFile = new File(chooseProfilePicture.getSelectedFile().getAbsolutePath());
+                if (profilePictureFile.getName().endsWith(".png") || profilePictureFile.getName().endsWith(".jpeg") || profilePictureFile.getName().endsWith(".jpg")) {
+                    chooseFileForPPButton.setForeground(new Color(255, 255, 235));
+                    chooseFileForPPButton.setBackground(new Color(40, 40, 43));
+                    chooseFileForPPButton.setText("Image has been chosen");
+
+                } else {
+                    JOptionPane.showMessageDialog(myMainFrame, "Use a valid Image File!", "Profile Picture Change", JOptionPane.INFORMATION_MESSAGE);
+                    profilePictureFile = null;
+
                 }
             }
         });
-        profilePictureSumbitButton.addActionListener(new ActionListener() {
+        profilePictureSumbitButton.addActionListener(e -> {
+
+            if (profilePictureFile != null) {
+
+                try {
+                    changePictureOnDatabase(profilePictureFile);
+                } catch (SQLException | IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
+            } else {
+                JOptionPane.showMessageDialog(myMainFrame, "Choose a valid Image File!", "Profile Picture Change", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        });
+        interestsCategoryJList.addListSelectionListener(e -> updateSubCategoryJList());
+
+
+        sumbitInterests.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (profilePictureFile != null) {
-
-                    try {
-                        changePictureOnDatabase(profilePictureFile);
-                    } catch (SQLException | IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+                //todo remove all the old connections ???? and add new ones
 
 
-                } else {
-                    JOptionPane.showMessageDialog(myMainFrame, "Choose a valid Image File!", "Profile Picture Change", JOptionPane.INFORMATION_MESSAGE);
-
-                }
 
             }
         });
+    }
+
+    private void chooseTheUserChosenSubCatSettingsJList(JList<Category> interestsCategoryJList, JList<SubCategory> interestSubCategoryJlist) {
+
+        int[] indexesOfChosenSubObjects = new int[currentUser.getChosenSubCategories().size()];
+        for (SubCategory chosenSubCategory : currentUser.getChosenSubCategories()) {
+            for (int i = 0, k = 0; i < interestSubCategoryJlist.getModel().getSize(); i++) {
+                if (interestSubCategoryJlist.getModel().getElementAt(i).getName().equals(chosenSubCategory.getName())) {
+                    indexesOfChosenSubObjects[k] = i;
+                    k++;
+                }
+            }
+        }
+        interestSubCategoryJlist.setSelectedIndices(indexesOfChosenSubObjects);
 
     }
+
+    private void chooseTheUserChosenCatSettingsJList(JList<Category> interestsCategoryJList, JList<SubCategory> interestSubCategoryJlist) {
+
+
+        int[] indexesOfChosenObjects = new int[currentUser.getChosenCategories().size()];
+        for (Category chosenCategory : currentUser.getChosenCategories()) {
+            for (int i = 0, k = 0; i < interestsCategoryJList.getModel().getSize(); i++) {
+                if (interestsCategoryJList.getModel().getElementAt(i).getName().equals(chosenCategory.getName())) {
+                    indexesOfChosenObjects[k] = i;
+                    k++;
+                }
+            }
+        }
+        interestsCategoryJList.setSelectedIndices(indexesOfChosenObjects);
+
+    }
+
 
     private void changePictureOnDatabase(File pictureFile) throws SQLException, IOException {
         if (pictureFile != null) {
 
 
-            Path profilePicturesFolderPath = Path.of("./src\\main\\resources\\profilePictures",currentUser.getUsername() +".jpeg");
+            Path profilePicturesFolderPath = Path.of("./src\\main\\resources\\profilePictures", currentUser.getUsername() + ".jpeg");
             Path localProfilePictureDirectory = Paths.get(pictureFile.getAbsolutePath());
-            Files.copy(localProfilePictureDirectory, profilePicturesFolderPath,StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(localProfilePictureDirectory, profilePicturesFolderPath, StandardCopyOption.REPLACE_EXISTING);
 
-            String relativePathToNewPP = "./src\\main\\resources\\profilePictures\\" + currentUser.getUsername() +".jpeg";
+            String relativePathToNewPP = "./src\\main\\resources\\profilePictures\\" + currentUser.getUsername() + ".jpeg";
 
 
             Connection connection = DatabaseManager.getConnection();
@@ -287,7 +354,7 @@ public class mainSettingsMenu {
 
             try {
                 PreparedStatement statement = connection.prepareStatement(changePictureSql);
-                statement.setString(1,relativePathToNewPP );
+                statement.setString(1, relativePathToNewPP);
                 statement.setInt(2, currentUser.getUserID());
 
                 int rowsUpdated = statement.executeUpdate();
@@ -302,8 +369,7 @@ public class mainSettingsMenu {
                 } else {
                     JOptionPane.showMessageDialog(myMainFrame, "Error Updating Profile Picture", "Grade Profile Picture", JOptionPane.INFORMATION_MESSAGE);
                 }
-            } catch (
-                    SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
 
@@ -491,6 +557,24 @@ public class mainSettingsMenu {
             e.printStackTrace();
         }
 
+    }
+
+    private void createCategoryAndSubCategories() {
+        mainRegisterMenu.createCategoryAndSubCategories(categoryItems, subCategoryItems);
+    }
+
+    private void updateSubCategoryJList() {
+        mainRegisterMenu.updateSubCategory(interestsCategoryJList, interestSubCategoryJlist);
+
+    }
+
+    private void fillTheCategoryJList() {
+
+        DefaultListModel<Category> interestCategoryModel = new DefaultListModel<>();
+        for (Category items : categoryItems) {
+            interestCategoryModel.addElement(items);
+        }
+        interestsCategoryJList.setModel(interestCategoryModel);
     }
 
     public JPanel getMainPanelForMenu() {

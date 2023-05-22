@@ -17,27 +17,23 @@ public class DatabaseManager {
         return connection;
     }
 
-    public static void main(String[] args) {
-        try {
-            Connection connection = DatabaseManager.getConnection();
-            Statement statement = connection.createStatement();
+    public static void main(String[] args) throws SQLException {
+        Connection connection = DatabaseManager.getConnection();
+        Statement statement = connection.createStatement();
 
-            // Execute the query to retrieve interests
-            String query = "SELECT interestCategory_name FROM bilkaydb.interestscategory";
-            ResultSet resultSet = statement.executeQuery(query);
+        String getSubCatID = "SELECT * FROM bilkaydb.interestsubcategory WHERE bilkaydb.interestsubcategory.interestSubCategory_name=?";
 
-            // Process the result set and print interests
-            while (resultSet.next()) {
-                String interest = resultSet.getString("interestCategory_name");
-                System.out.println(interest);
-            }
+        PreparedStatement idStatement = connection.prepareStatement(getSubCatID);
+        idStatement.setString(1, "DIY");
 
-            // Close the resources
-            resultSet.close();
-            statement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        ResultSet resultForID = idStatement.executeQuery();
+
+        if (resultForID.next()) {
+            System.out.println(resultForID.getString("interestSubCategory_id"));
         }
+        idStatement.close();
+        statement.close();
+        connection.close();
+
     }
 }

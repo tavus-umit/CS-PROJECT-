@@ -49,8 +49,6 @@ public class SubCategory {
             "Health and Wellness", "Cookbooks", "Religion and Spirituality"};
 
 
-
-
     private static int subCategoryIDGenerator = 1;
     private int subCategoryID;
     private String name;
@@ -63,6 +61,12 @@ public class SubCategory {
         category.addSubcategory(this);
     }
 
+    public SubCategory(String name) {
+        this.subCategoryID = subCategoryIDGenerator;
+        subCategoryIDGenerator++;
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -73,6 +77,10 @@ public class SubCategory {
 
     public int getSubCategoryID() {
         return subCategoryID;
+    }
+
+    public static void resetSubCatID() {
+        subCategoryIDGenerator = 1;
     }
 
     @Override

@@ -2,17 +2,19 @@ package Bilkay.LoginAndRegister;
 
 import Bilkay.Email_Keyboard_DatabaseServices.DatabaseManager;
 import Bilkay.Email_Keyboard_DatabaseServices.emilSenderBilkay;
-import Bilkay.mainDashBoardScreens.mainDashboardMenu;
+import Bilkay.UserRelatedServices.Category;
+import Bilkay.UserRelatedServices.SubCategory;
 import Bilkay.UserRelatedServices.user;
+import Bilkay.mainDashBoardScreens.mainDashboardMenu;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class mainLoginMenu {
 
     private final JFrame myMainFrame;
+    public user currentUser;
     private JPanel mainPanelForMenu;
     private JPanel leftPanel;
     private JPanel rightPanel;
@@ -29,36 +31,19 @@ public class mainLoginMenu {
     private JLabel userIcon;
     private JLabel passwordLabel;
 
-    public user currentUser;
-
 
     public mainLoginMenu(JFrame myMainFrameInput) {
 
         this.myMainFrame = myMainFrameInput;
 
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loginTheUser();
-
-            }
-        });
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                openTheRegisterMenu();
-            }
-        });
-        forgotPasswordButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                restartUsernameAndPassword();
-            }
-        });
+        loginButton.addActionListener(e -> loginTheUser());
+        registerButton.addActionListener(e -> openTheRegisterMenu());
+        forgotPasswordButton.addActionListener(e -> restartUsernameAndPassword());
     }
 
     private void restartUsernameAndPassword() {
         emilSenderBilkay sendEmails = new emilSenderBilkay();
+
 
         String webmailForRESTART = JOptionPane.showInputDialog(myMainFrame, "Enter your webmail address connected to your account", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
 
@@ -75,9 +60,9 @@ public class mainLoginMenu {
             JOptionPane.showMessageDialog(myMainFrame, "Your credentials are sent to you webmail address", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(myMainFrame, "Error in the process, please try again later", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
-            return;
         }
     }
+
     private void openTheRegisterMenu() {
         myMainFrame.setContentPane(new mainRegisterMenu(myMainFrame).getMainPanelForMenu());
         myMainFrame.revalidate();
@@ -95,8 +80,7 @@ public class mainLoginMenu {
         }
 
         String password = passwordBuilder.toString();
-        System.out.println(password);
-        System.out.println(username);
+
 
         if (username.isEmpty() || password.isEmpty()) {
 
@@ -108,7 +92,10 @@ public class mainLoginMenu {
         currentUser = getTheAccountFromTheDB(username, password);
 
         if (currentUser != null) {
-            myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame,currentUser).getMainPanelForMenu());
+            currentUser.setChosenCategories(getChosenCategories());
+            currentUser.setChosenSubCategories(getChosenSubCategories());
+
+            myMainFrame.setContentPane(new mainDashboardMenu(myMainFrame, currentUser).getMainPanelForMenu());
             myMainFrame.revalidate();
             myMainFrame.repaint();
         }
@@ -132,19 +119,30 @@ public class mainLoginMenu {
             ResultSet resultsSetForCurrentUser = preparedStatement.executeQuery();
 
             if (resultsSetForCurrentUser.next()) {
-                currentUser = new user(Integer.parseInt(resultsSetForCurrentUser.getString("user_id")),
-                        resultsSetForCurrentUser.getString("name_surname"),
-                        resultsSetForCurrentUser.getString("username"),
-                        resultsSetForCurrentUser.getString("password"),
-                        resultsSetForCurrentUser.getString("webmail"),
-                        null,
-                        null,
-                        resultsSetForCurrentUser.getString("role"));
+                currentUser = new user(Integer.parseInt(resultsSetForCurrentUser.getString("user_id")), resultsSetForCurrentUser.getString("name_surname"), resultsSetForCurrentUser.getString("username"), resultsSetForCurrentUser.getString("password"), resultsSetForCurrentUser.getString("webmail"), null, null, resultsSetForCurrentUser.getString("role"));
+                if (!resultsSetForCurrentUser.getString("profile_picture_path").isEmpty()) {
+                    currentUser.setPathToPP(resultsSetForCurrentUser.getString("profile_picture_path"));
+                }
+                if (!resultsSetForCurrentUser.getString("age").isEmpty()) {
+                    currentUser.setAge(Integer.parseInt(resultsSetForCurrentUser.getString("age")));
+                }
+                if (!resultsSetForCurrentUser.getString("grade").isEmpty()) {
+                    currentUser.setGrade(resultsSetForCurrentUser.getString("grade"));
+                }
+                if (!resultsSetForCurrentUser.getString("department").isEmpty()) {
+                    currentUser.setDepartment(resultsSetForCurrentUser.getString("department"));
+                }
+                if (!resultsSetForCurrentUser.getString("gender").isEmpty()) {
+                    currentUser.setGender(resultsSetForCurrentUser.getString("gender"));
+                }
+
+
             } else {
                 JOptionPane.showMessageDialog(myMainFrame, "Username or password is invalid.", "Login Error", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
 
+            preparedStatement.close();
             resultsSetForCurrentUser.close();
             statement.close();
             connection.close();
@@ -154,6 +152,73 @@ public class mainLoginMenu {
         return currentUser;
     }
 
+    private ArrayList<SubCategory> getChosenSubCategories() {
+
+        ArrayList<SubCategory> chosenSubCategories = new ArrayList<SubCategory>();
+
+        try {
+            Connection connection = DatabaseManager.getConnection();
+            Statement statement = connection.createStatement();
+
+            String queryForSubCategoryID = "SELECT interestSubCategory_name FROM interestsubcategory WHERE interestSubCategory_id IN (select interestSubCategory_id From user_interestsubcategory_relation Where user_id = ? )";
+
+            PreparedStatement preparedStatementForSubCatID = connection.prepareStatement(queryForSubCategoryID);
+            preparedStatementForSubCatID.setInt(1, currentUser.getUserID());
+
+            ResultSet resultsSetForSubCatIDS = preparedStatementForSubCatID.executeQuery();
+
+            while (resultsSetForSubCatIDS.next()) {
+                String value = resultsSetForSubCatIDS.getString("interestSubCategory_name");
+                chosenSubCategories.add(new SubCategory(value));
+            }
+
+            SubCategory.resetSubCatID();
+
+
+            preparedStatementForSubCatID.close();
+            resultsSetForSubCatIDS.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return chosenSubCategories;
+    }
+
+    private ArrayList<Category> getChosenCategories() {
+
+        ArrayList<Category> chosenCategories = new ArrayList<Category>();
+
+        try {
+            Connection connection = DatabaseManager.getConnection();
+            Statement statement = connection.createStatement();
+
+            String queryForCategoryID = "SELECT interestCategory_name FROM interestscategory WHERE interestCategory_id IN (select interestCategory_id From user_interestscategory_relation Where user_id = ? )";
+
+            PreparedStatement preparedStatementForCatID = connection.prepareStatement(queryForCategoryID);
+            preparedStatementForCatID.setInt(1, currentUser.getUserID());
+
+            ResultSet resultsSetForCatIDS = preparedStatementForCatID.executeQuery();
+
+            while (resultsSetForCatIDS.next()) {
+                String value = resultsSetForCatIDS.getString("interestCategory_name");
+                chosenCategories.add(new Category(value));
+            }
+
+            Category.resetCategoryIDs();
+
+
+            preparedStatementForCatID.close();
+            resultsSetForCatIDS.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return chosenCategories;
+    }
 
 
     public JPanel getMainPanelForMenu() {
