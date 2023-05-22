@@ -1,4 +1,5 @@
 package Bilkay.Events;
+
 public class Date {
     public int day;
     public int monthNo;
@@ -6,38 +7,50 @@ public class Date {
     public String monthName;
 
     public Date(int day, int month, int year) {
-        this.day=day;
-        this.monthNo=month;
+        this.day = day;
+        this.monthNo = month;
         switch (monthNo) {
-            case 1: this.monthName = "January";
+            case 1:
+                this.monthName = "January";
                 break;
-            case 2: this.monthName = "February";
+            case 2:
+                this.monthName = "February";
                 break;
-            case 3: this.monthName = "March";
+            case 3:
+                this.monthName = "March";
                 break;
-            case 4: this.monthName = "April";
+            case 4:
+                this.monthName = "April";
                 break;
-            case 5: this.monthName = "May";
+            case 5:
+                this.monthName = "May";
                 break;
-            case 6: this.monthName = "June";
+            case 6:
+                this.monthName = "June";
                 break;
-            case 7: this.monthName = "July";
+            case 7:
+                this.monthName = "July";
                 break;
-            case 8: this.monthName = "August";
+            case 8:
+                this.monthName = "August";
                 break;
-            case 9: this.monthName = "September";
+            case 9:
+                this.monthName = "September";
                 break;
-            case 10: this.monthName = "October";
+            case 10:
+                this.monthName = "October";
                 break;
-            case 11: this.monthName = "November";
+            case 11:
+                this.monthName = "November";
                 break;
-            case 12:this.monthName = "December";
+            case 12:
+                this.monthName = "December";
                 break;
         }
-        this.year=year;
+        this.year = year;
     }
-    public String toString()
-    {
+
+    public String toString() {
         return this.day + "/" + this.monthName + "/" + this.year;
     }
 }

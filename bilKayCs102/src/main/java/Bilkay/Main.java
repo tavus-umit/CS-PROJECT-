@@ -1,9 +1,11 @@
 package Bilkay;
 
-import java.util.ArrayList;
 import Bilkay.UserRelatedServices.Category;
 import Bilkay.UserRelatedServices.SubCategory;
 import Bilkay.UserRelatedServices.user;
+
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -187,12 +189,15 @@ public class Main {
         chosenCategs1.add(Science);
         chosenCategs1.add(BoardGames);
         //user1 subcategs
-        chosenSubcategs1.add(pols);  chosenSubcategs1.add(socio);  //socialsciences
+        chosenSubcategs1.add(pols);
+        chosenSubcategs1.add(socio);  //socialsciences
         chosenSubcategs1.add(supSmashBros);
-        chosenSubcategs1.add(singing); chosenSubcategs1.add(theatre); //performArts
+        chosenSubcategs1.add(singing);
+        chosenSubcategs1.add(theatre); //performArts
         chosenSubcategs1.add(ceramics); //visual
         chosenSubcategs1.add(chess); //boardgames
-        chosenSubcategs1.add(medicine); chosenSubcategs1.add(zoology); //science
+        chosenSubcategs1.add(medicine);
+        chosenSubcategs1.add(zoology); //science
 
         ArrayList<Category> chosenCategs2 = new ArrayList<>(5);
         ArrayList<SubCategory> chosenSubcategs2 = new ArrayList<>();
@@ -205,9 +210,12 @@ public class Main {
         chosenCategs2.add(BoardGames);
 
         //user2 subcats
-        chosenSubcategs2.add(frisbee);  chosenSubcategs2.add(figureSkating); chosenSubcategs2.add(badminton);   //physports
+        chosenSubcategs2.add(frisbee);
+        chosenSubcategs2.add(figureSkating);
+        chosenSubcategs2.add(badminton);   //physports
         chosenSubcategs2.add(streetFighter);   //visualArts
-        chosenSubcategs2.add(maths); chosenSubcategs2.add(phys); //science
+        chosenSubcategs2.add(maths);
+        chosenSubcategs2.add(phys); //science
         chosenSubcategs2.add(chess); //boardgames
 
         ArrayList<Category> chosenCategs3 = new ArrayList<>();
@@ -216,21 +224,23 @@ public class Main {
         chosenCategs3.add(visualArt);
         chosenCategs3.add(performArts);
         //user3 subcategs
-        chosenSubcategs3.add(painting); chosenSubcategs3.add(photoshop); chosenSubcategs3.add(printmaking); //visual arts
+        chosenSubcategs3.add(painting);
+        chosenSubcategs3.add(photoshop);
+        chosenSubcategs3.add(printmaking); //visual arts
         chosenSubcategs3.add(illusion); //perform
 
 
-        user user1 = new user(22203561,"name surname1", "username1" , "12345",
+        user user1 = new user(22203561, "name surname1", "username1", "12345",
                 "name1.surname@ug.bilkent.edu.tr", chosenCategs1, chosenSubcategs1, "ROLE?");
 
-        user user2 = new user(22203562,"name surname2", "username2" , "123456",
+        user user2 = new user(22203562, "name surname2", "username2", "123456",
                 "name2.surname@ug.bilkent.edu.tr", chosenCategs2, chosenSubcategs2, "ROLE??");
 
-        user user3 = new user(22203563,"name surname3", "username3" , "1234567",
+        user user3 = new user(22203563, "name surname3", "username3", "1234567",
                 "name3.surname@ug.bilkent.edu.tr", chosenCategs3, chosenSubcategs3, "ROLE???");
 
         user[] other = {user2, user3};
-        System.out.println(Matcher.createNomineeList(user1,other));
+        System.out.println(Matcher.createNomineeList(user1, other));
 
 
     }

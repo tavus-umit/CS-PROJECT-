@@ -13,11 +13,11 @@ public class mainFrame {
 
         FlatMacDarkLaf.setup();
         JFrame mainFrameOfApp = new JFrame("BilKay");
-        mainFrameOfApp.setSize(1240,768);
+        mainFrameOfApp.setSize(1240, 768);
         mainFrameOfApp.setLocationRelativeTo(null);
         mainFrameOfApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrameOfApp.getContentPane().add(new mainLoginMenu(mainFrameOfApp).getMainPanelForMenu());
         mainFrameOfApp.setVisible(true);
-        mainFrameOfApp.setMinimumSize(new Dimension(600,500));
+        mainFrameOfApp.setMinimumSize(new Dimension(600, 500));
     }
 }

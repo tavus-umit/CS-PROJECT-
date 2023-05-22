@@ -1,4 +1,5 @@
 package Bilkay.BilUber;
+
 import Bilkay.UserRelatedServices.Category;
 import Bilkay.UserRelatedServices.SubCategory;
 import Bilkay.UserRelatedServices.user;
@@ -11,14 +12,13 @@ public class Passenger extends user {
     // Constructor
     public Passenger(int userID, String nameSurname, String username, String password, String webmail,
                      ArrayList<Category> chosenCategories, ArrayList<SubCategory> chosenSubCategories,
-                     String role)
-    {
-        super(userID,nameSurname,  username,  password,  webmail, chosenCategories,  chosenSubCategories, role);
+                     String role) {
+        super(userID, nameSurname, username, password, webmail, chosenCategories, chosenSubCategories, role);
         this.registeredLifts = new ArrayList<Lift>();
     }
-    public Passenger(user user)
-    {
-        super(user.getUserID(),user.getNameSurname(),  user.getUsername(),  user.getPassword(),  user.getWebmail(), user.getChosenCategories(),  user.getChosenSubCategories(), user.getRole());
+
+    public Passenger(user user) {
+        super(user.getUserID(), user.getNameSurname(), user.getUsername(), user.getPassword(), user.getWebmail(), user.getChosenCategories(), user.getChosenSubCategories(), user.getRole());
         this.registeredLifts = new ArrayList<Lift>();
     }
 
@@ -30,8 +30,7 @@ public class Passenger extends user {
         this.registeredLifts = registeredLifts;
     }
 
-    public void registerAJourney()
-    {
+    public void registerAJourney() {
 
 
     }

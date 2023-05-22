@@ -10,8 +10,6 @@ import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -320,11 +318,10 @@ public class mainSettingsMenu {
                     for (SubCategory chosenSubCategoryItem : chosenSubCategoryItems) {
                         int idOfSubCatDB = findSubCategoryIDFromDB(chosenSubCategoryItem.getName());
                         if (idOfSubCatDB != -1) {
-                            storeUserSubCategories(currentUser.getUserID(),idOfSubCatDB);
+                            storeUserSubCategories(currentUser.getUserID(), idOfSubCatDB);
                         }
                     }
                 }
-
 
 
                 JOptionPane.showMessageDialog(myMainFrame, "Successfully Updated Interests", "Change Interests", JOptionPane.INFORMATION_MESSAGE);

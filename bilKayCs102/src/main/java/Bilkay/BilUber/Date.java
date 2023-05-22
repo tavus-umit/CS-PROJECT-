@@ -1,4 +1,5 @@
 package Bilkay.BilUber;
+
 public class Date {
     public int day;
     public int monthNo;
@@ -6,8 +7,8 @@ public class Date {
     public String monthName;
 
     public Date(int day, int month, int year) {
-        this.day=day;
-        this.monthNo=month;
+        this.day = day;
+        this.monthNo = month;
         switch (monthNo) {
             case 1 -> this.monthName = "January";
             case 2 -> this.monthName = "February";
@@ -22,10 +23,10 @@ public class Date {
             case 11 -> this.monthName = "November";
             case 12 -> this.monthName = "December";
         }
-        this.year=year;
+        this.year = year;
     }
-    public String toString()
-    {
+
+    public String toString() {
         return this.day + "/" + this.monthName + "/" + this.year;
     }
 }

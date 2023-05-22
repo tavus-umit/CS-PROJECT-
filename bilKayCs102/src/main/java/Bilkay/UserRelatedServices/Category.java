@@ -8,9 +8,9 @@ public class Category {
             "Board and Card Games", "Music", "Science", "Social Sciences",
             "Cinema", "Outdoor Activities", "Community Services", "Writing", "Reading"};
     public static int categoryIDGenerator = 1;
-    private int categoryID;
-    private String name;
-    private ArrayList<SubCategory> subcategories;
+    private final int categoryID;
+    private final String name;
+    private final ArrayList<SubCategory> subcategories;
 
     public Category(String name) {
         this.categoryID = categoryIDGenerator;
@@ -18,6 +18,10 @@ public class Category {
         this.name = name;
         this.subcategories = new ArrayList<>();
 
+    }
+
+    public static void resetCategoryIDs() {
+        categoryIDGenerator = 1;
     }
 
     public void addSubcategory(SubCategory subcategory) {
@@ -34,10 +38,6 @@ public class Category {
 
     public int getCategoryID() {
         return categoryID;
-    }
-
-    public static void resetCategoryIDs() {
-        categoryIDGenerator = 1;
     }
 
     @Override

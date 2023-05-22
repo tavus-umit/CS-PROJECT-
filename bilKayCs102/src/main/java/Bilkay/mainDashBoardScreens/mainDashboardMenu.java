@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class mainDashboardMenu {
 
     private final JFrame myMainFrame;
+    private final user currentUser;
     private JPanel mainPanelForMenu;
     private JPanel leftSideMenuBackgroundPanel;
     private JPanel rightMainDashboardPanel;
@@ -36,9 +37,6 @@ public class mainDashboardMenu {
     private JPanel gymMenuPanel;
     private JPanel settingsMenuPanel;
 
-    private final user currentUser;
-
-
 
     public mainDashboardMenu(JFrame myMainFrameInput, user currentUser) {
         this.myMainFrame = myMainFrameInput;
@@ -48,7 +46,7 @@ public class mainDashboardMenu {
         ImageIcon iconPP = new ImageIcon(new ImageIcon(currentUser.getPathToPP()).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         userPP.setIcon(iconPP);
         nameOfTheUserLabel.setText(currentUser.getNameSurname());
-        pointsOfTheUserLabel.setText(String.valueOf(currentUser.getBilkayPoints()) + " points");
+        pointsOfTheUserLabel.setText(currentUser.getBilkayPoints() + " points");
 
 
         homeButton.addActionListener(new ActionListener() {
@@ -193,7 +191,7 @@ public class mainDashboardMenu {
 
     public void updateInfo() {
         nameOfTheUserLabel.setText(currentUser.getNameSurname());
-        pointsOfTheUserLabel.setText(String.valueOf(currentUser.getBilkayPoints()) + " points");
+        pointsOfTheUserLabel.setText(currentUser.getBilkayPoints() + " points");
         ImageIcon iconPP = new ImageIcon(new ImageIcon(currentUser.getPathToPP()).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         userPP.setIcon(iconPP);
     }

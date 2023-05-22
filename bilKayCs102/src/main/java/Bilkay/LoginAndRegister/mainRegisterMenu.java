@@ -309,7 +309,6 @@ public class mainRegisterMenu {
         ArrayList<SubCategory> chosenSubCategoryItems = (ArrayList<SubCategory>) interestSubCategoryJlist.getSelectedValuesList();
 
 
-
         if (isEmailValid(webmailAddress)) {
             Random rand = new Random();
             long VerifyCode = rand.nextLong(100000, 1000000);
@@ -393,7 +392,7 @@ public class mainRegisterMenu {
                 for (SubCategory chosenSubCategoryItem : chosenSubCategoryItems) {
                     int idOfSubCatDB = findSubCategoryIDFromDB(chosenSubCategoryItem.getName());
                     if (idOfSubCatDB != -1) {
-                        storeUserSubCategories(currentUserID,idOfSubCatDB);
+                        storeUserSubCategories(currentUserID, idOfSubCatDB);
                     }
                 }
 

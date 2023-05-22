@@ -21,7 +21,7 @@ public class keyboardControl {
         this.robot.keyPress(KeyEvent.VK_CONTROL);
     }
 
-    public  void releaseCTRL() {
+    public void releaseCTRL() {
         this.robot.keyRelease(KeyEvent.VK_CONTROL);
 
     }
