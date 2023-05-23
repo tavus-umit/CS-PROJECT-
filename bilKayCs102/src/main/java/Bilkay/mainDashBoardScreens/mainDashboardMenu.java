@@ -115,6 +115,12 @@ public class mainDashboardMenu {
                 userPP.setSelected(false);
                 updateInfo();
 
+                rightMainDashboardPanel.removeAll();
+                rightMainDashboardPanel.add(new mainBilUberMenu(myMainFrame, currentUser).getMainPanelForMenu());
+
+                myMainFrame.revalidate();
+                myMainFrame.repaint();
+
             }
         });
         mailButton.addActionListener(new ActionListener() {
@@ -129,6 +135,12 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
                 updateInfo();
+
+                rightMainDashboardPanel.removeAll();
+                rightMainDashboardPanel.add(new mainMailMenu(myMainFrame, currentUser).getMainPanelForMenu());
+
+                myMainFrame.revalidate();
+                myMainFrame.repaint();
 
             }
         });

@@ -1,13 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Bilkay.mainDashBoardScreens.mainMailMenu">
-  <grid id="27dc6" row-count="1" column-count="1" layout-manager="GridLayoutManager">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="mainPanelForMenu" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+    <margin top="5" left="5" bottom="5" right="5"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
-      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+      <xy x="20" y="20" width="910" height="792"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-21"/>
+      <foreground color="-21"/>
+    </properties>
     <border type="none"/>
-    <children/>
+    <children>
+      <component id="29f95" class="javax.swing.JLabel" binding="logoJPanel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="50" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-21"/>
+          <foreground color="-14145493"/>
+          <icon value="iconsForApp/finalLogo.png"/>
+          <labelFor value="e88c5"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <scrollpane id="e88c5" binding="mainJScrollPane">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14145493"/>
+          <foreground color="-21"/>
+          <verticalScrollBarPolicy value="20"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="67672" binding="mainJPanelForScroll" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="25">
+            <margin top="20" left="100" bottom="20" right="100"/>
+            <constraints/>
+            <properties>
+              <background color="-21"/>
+              <foreground color="-14145493"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="79541" binding="InboxProgramPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-14145493"/>
+                  <foreground color="-21"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="d2ea0" binding="northJpanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="5" left="5" bottom="5" right="5"/>
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-21"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="bd728" class="javax.swing.JLabel" binding="userIconJLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <icon value="iconsForApp/inbox.png"/>
+                          <text value=""/>
+                          <verticalAlignment value="3"/>
+                          <verticalTextPosition value="3"/>
+                        </properties>
+                      </component>
+                      <component id="a07da" class="javax.swing.JLabel" binding="inboxJLabel">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-14145493"/>
+                          <font name="Times New Roman" size="26" style="3"/>
+                          <foreground color="-21"/>
+                          <text value="Inbox"/>
+                          <verticalAlignment value="3"/>
+                          <verticalTextPosition value="3"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="7add9" binding="centerJpanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <background color="-14145493"/>
+                      <foreground color="-21"/>
+                      <preferredSize width="25" height="100"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <scrollpane id="56085">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <grid id="c860f" binding="messageJpanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints/>
+                            <properties>
+                              <background color="-14145493"/>
+                              <foreground color="-21"/>
+                            </properties>
+                            <border type="none"/>
+                            <children/>
+                          </grid>
+                        </children>
+                      </scrollpane>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </scrollpane>
+    </children>
   </grid>
 </form>
