@@ -238,7 +238,6 @@ public class mainSettingsMenu {
                             String code = JOptionPane.showInputDialog(myMainFrame, "Enter your 6-digit verification code", "Verification Code", JOptionPane.INFORMATION_MESSAGE);
                             if (!code.isEmpty()) {
                                 if (Long.parseLong(code) == VerifyCode) {
-                                    JOptionPane.showMessageDialog(myMainFrame, "Your webmail is successfully verified", "Webmail Verification", JOptionPane.INFORMATION_MESSAGE);
                                     changePasswordOnDatabase(passwordNew);
 
                                 } else {

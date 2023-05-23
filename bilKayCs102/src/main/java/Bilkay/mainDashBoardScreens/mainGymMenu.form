@@ -426,6 +426,7 @@
                         </constraints>
                         <properties>
                           <background color="-21"/>
+                          <font name="Times New Roman" size="20" style="3"/>
                           <foreground color="-14145493"/>
                           <text value="New Program"/>
                         </properties>
