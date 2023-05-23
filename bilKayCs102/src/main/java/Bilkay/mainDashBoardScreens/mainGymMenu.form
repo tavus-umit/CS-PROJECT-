@@ -92,337 +92,337 @@
                     <children>
                       <component id="3144b" class="javax.swing.JLabel" binding="day1Jlabel">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="24" style="1"/>
+                          <font name="Times New Roman" size="22" style="1"/>
                           <foreground color="-21"/>
                           <text value="Day 1"/>
                         </properties>
                       </component>
                       <component id="265d7" class="javax.swing.JLabel" binding="day3Jlabel">
                         <constraints>
-                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="24" style="1"/>
+                          <font name="Times New Roman" size="22" style="1"/>
                           <foreground color="-21"/>
                           <text value="Day 3"/>
                         </properties>
                       </component>
                       <component id="39cd8" class="javax.swing.JLabel" binding="day2Jlabel">
                         <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="24" style="1"/>
+                          <font name="Times New Roman" size="22" style="1"/>
                           <foreground color="-21"/>
                           <text value="Day 2"/>
                         </properties>
                       </component>
                       <component id="ba47a" class="javax.swing.JLabel" binding="day4JLabel">
                         <constraints>
-                          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="24" style="1"/>
+                          <font name="Times New Roman" size="22" style="1"/>
                           <foreground color="-21"/>
                           <text value="Day 4"/>
                         </properties>
                       </component>
                       <component id="1287" class="javax.swing.JLabel" binding="day5Jlabel">
                         <constraints>
-                          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="24" style="1"/>
+                          <font name="Times New Roman" size="22" style="1"/>
                           <foreground color="-21"/>
                           <text value="Day 5"/>
                         </properties>
                       </component>
                       <component id="3ecc" class="javax.swing.JLabel" binding="d1e1">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="fb56a" class="javax.swing.JLabel" binding="d1e2">
                         <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="16bd4" class="javax.swing.JLabel" binding="d1e3">
                         <constraints>
-                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="9f803" class="javax.swing.JLabel" binding="d1e4">
                         <constraints>
-                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="b2727" class="javax.swing.JLabel" binding="d1e5">
                         <constraints>
-                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="185e3" class="javax.swing.JLabel" binding="d2e1">
                         <constraints>
-                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="fd63a" class="javax.swing.JLabel" binding="d2e2">
                         <constraints>
-                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="6682b" class="javax.swing.JLabel" binding="d2e3">
                         <constraints>
-                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="d5" class="javax.swing.JLabel" binding="d2e4">
                         <constraints>
-                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="a4277" class="javax.swing.JLabel" binding="d2e5">
                         <constraints>
-                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="2308e" class="javax.swing.JLabel" binding="d3e1">
                         <constraints>
-                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="7f7f" class="javax.swing.JLabel" binding="d3e2">
                         <constraints>
-                          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="315c9" class="javax.swing.JLabel" binding="d3e3">
                         <constraints>
-                          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="42706" class="javax.swing.JLabel" binding="d3e4">
                         <constraints>
-                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="1a531" class="javax.swing.JLabel" binding="d3e5">
                         <constraints>
-                          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="cd0e7" class="javax.swing.JLabel" binding="d4e1">
                         <constraints>
-                          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="eb3db" class="javax.swing.JLabel" binding="d4e2">
                         <constraints>
-                          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="451b6" class="javax.swing.JLabel" binding="d4e3">
                         <constraints>
-                          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="5b1ba" class="javax.swing.JLabel" binding="d4e4">
                         <constraints>
-                          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="24a10" class="javax.swing.JLabel" binding="d4e5">
                         <constraints>
-                          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="34d7" class="javax.swing.JLabel" binding="d5e1">
                         <constraints>
-                          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="7e86" class="javax.swing.JLabel" binding="d5e2">
                         <constraints>
-                          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="6cf07" class="javax.swing.JLabel" binding="d5e3">
                         <constraints>
-                          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="540c2" class="javax.swing.JLabel" binding="d5e4">
                         <constraints>
-                          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="11f64" class="javax.swing.JLabel" binding="d5e5">
                         <constraints>
-                          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="5fbf2" class="javax.swing.JButton" binding="newProgramButton" default-binding="true">
                         <constraints>
-                          <grid row="9" column="1" row-span="2" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="9" column="1" row-span="2" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-21"/>
@@ -432,7 +432,7 @@
                       </component>
                       <component id="cb635" class="javax.swing.JSeparator">
                         <constraints>
-                          <grid row="11" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="11" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-21"/>
@@ -441,7 +441,7 @@
                       </component>
                       <component id="118cd" class="javax.swing.JSeparator">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-21"/>
@@ -450,7 +450,7 @@
                       </component>
                       <component id="3de66" class="javax.swing.JSeparator">
                         <constraints>
-                          <grid row="8" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="8" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="6" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-21"/>
@@ -459,55 +459,55 @@
                       </component>
                       <component id="94279" class="javax.swing.JLabel" binding="d1e6">
                         <constraints>
-                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="a3471" class="javax.swing.JLabel" binding="d2e6">
                         <constraints>
-                          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="ba342" class="javax.swing.JLabel" binding="d3e6">
                         <constraints>
-                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="92797" class="javax.swing.JLabel" binding="d4e6">
                         <constraints>
-                          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>
                       </component>
                       <component id="f699f" class="javax.swing.JLabel" binding="d5e6">
                         <constraints>
-                          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14145493"/>
-                          <font name="Times New Roman" size="18" style="3"/>
+                          <font name="Times New Roman" size="16" style="3"/>
                           <foreground color="-21"/>
                           <text value="Label"/>
                         </properties>

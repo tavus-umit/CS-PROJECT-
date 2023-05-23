@@ -126,12 +126,18 @@ public class mainGymMenu {
 
         ResultSet resultsSetForExerciseNames = preparedStatementForExercises.executeQuery();
 
+        ArrayList<String> allExercises = new ArrayList<String>();
+
         while (resultsSetForExerciseNames.next()) {
             String value = resultsSetForExerciseNames.getString("exercise_name");
-            System.out.println(value);
+            allExercises.add(value);
         }
 
-
+        firstProgram = new ArrayList<>(allExercises.subList(0, 6));
+        secondProgram = new ArrayList<>(allExercises.subList(6, 12)) ;
+        thirdProgram = new ArrayList<>(allExercises.subList(12, 18))  ;
+        fourthProgram = new ArrayList<> (allExercises.subList(18, 24)) ;
+        fifthProgram = new ArrayList<>(allExercises.subList(24, 30)) ;
 
         preparedStatementForExercises.close();
         resultsSetForExerciseNames.close();
