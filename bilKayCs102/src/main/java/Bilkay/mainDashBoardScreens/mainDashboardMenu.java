@@ -197,6 +197,11 @@ public class mainDashboardMenu {
         return mainPanelForMenu;
     }
 
+    public void refreshPageForGym() {
+        rightMainDashboardPanel.removeAll();
+        rightMainDashboardPanel.add(new mainGymMenu(myMainFrame, currentUser).getMainPanelForMenu());
+    }
+
     public void updateInfo() {
         nameOfTheUserLabel.setText(currentUser.getNameSurname());
         pointsOfTheUserLabel.setText(currentUser.getBilkayPoints() + " points");

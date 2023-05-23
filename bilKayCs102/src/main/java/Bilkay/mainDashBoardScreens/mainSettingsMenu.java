@@ -94,6 +94,8 @@ public class mainSettingsMenu {
         chooseTheUserChosenCatSettingsJList(interestsCategoryJList, interestSubCategoryJlist);
         updateSubCategoryJList();
         chooseTheUserChosenSubCatSettingsJList(interestsCategoryJList, interestSubCategoryJlist);
+        mainPanelForMenu.revalidate();
+        mainPanelForMenu.repaint();
 
 
         usernameJtextField.setText(currentUser.getUsername());
@@ -310,6 +312,7 @@ public class mainSettingsMenu {
                         }
 
                     }
+                    currentUser.setChosenCategories(chosenCategoryItems);
                 }
 
                 if (!interestSubCategoryJlist.getSelectedValuesList().isEmpty()) {
@@ -321,6 +324,7 @@ public class mainSettingsMenu {
                             storeUserSubCategories(currentUser.getUserID(), idOfSubCatDB);
                         }
                     }
+                    currentUser.setChosenSubCategories(chosenSubCategoryItems);
                 }
 
 
@@ -342,6 +346,8 @@ public class mainSettingsMenu {
         deleteSubCatPStatement.setInt(1, currentUser.getUserID());
 
         deleteSubCatPStatement.executeUpdate();
+        connection.close();
+        deleteSubCatPStatement.close();
 
     }
 
@@ -354,16 +360,21 @@ public class mainSettingsMenu {
         deleteCatPStatement.setInt(1, currentUser.getUserID());
 
         deleteCatPStatement.executeUpdate();
+        connection.close();
+        deleteCatPStatement.close();
 
     }
 
     private void chooseTheUserChosenSubCatSettingsJList(JList<Category> interestsCategoryJList, JList<SubCategory> interestSubCategoryJlist) {
 
+
         int[] indexesOfChosenSubObjects = new int[currentUser.getChosenSubCategories().size()];
+        int k = 0;
         for (SubCategory chosenSubCategory : currentUser.getChosenSubCategories()) {
-            for (int i = 0, k = 0; i < interestSubCategoryJlist.getModel().getSize(); i++) {
+            for (int i = 0; i < interestSubCategoryJlist.getModel().getSize(); i++) {
                 if (interestSubCategoryJlist.getModel().getElementAt(i).getName().equals(chosenSubCategory.getName())) {
                     indexesOfChosenSubObjects[k] = i;
+
                     k++;
                 }
             }
@@ -374,10 +385,10 @@ public class mainSettingsMenu {
 
     private void chooseTheUserChosenCatSettingsJList(JList<Category> interestsCategoryJList, JList<SubCategory> interestSubCategoryJlist) {
 
-
         int[] indexesOfChosenObjects = new int[currentUser.getChosenCategories().size()];
+        int k = 0;
         for (Category chosenCategory : currentUser.getChosenCategories()) {
-            for (int i = 0, k = 0; i < interestsCategoryJList.getModel().getSize(); i++) {
+            for (int i = 0; i < interestsCategoryJList.getModel().getSize(); i++) {
                 if (interestsCategoryJList.getModel().getElementAt(i).getName().equals(chosenCategory.getName())) {
                     indexesOfChosenObjects[k] = i;
                     k++;
