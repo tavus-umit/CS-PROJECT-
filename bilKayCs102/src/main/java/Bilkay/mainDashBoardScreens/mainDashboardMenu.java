@@ -43,6 +43,7 @@ public class mainDashboardMenu {
         this.currentUser = currentUser;
 
         rightMainDashboardPanel.removeAll();
+        rightMainDashboardPanel.add(new mainHomeMenu(myMainFrame, currentUser).getMainPanelForMenu());
         ImageIcon iconPP = new ImageIcon(new ImageIcon(currentUser.getPathToPP()).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         userPP.setIcon(iconPP);
         nameOfTheUserLabel.setText(currentUser.getNameSurname());
@@ -143,6 +144,13 @@ public class mainDashboardMenu {
                 bilUberButton.setSelected(false);
                 userPP.setSelected(false);
                 updateInfo();
+
+                rightMainDashboardPanel.removeAll();
+                rightMainDashboardPanel.add(new mainGymMenu(myMainFrame, currentUser).getMainPanelForMenu());
+
+                myMainFrame.revalidate();
+                myMainFrame.repaint();
+
 
             }
         });

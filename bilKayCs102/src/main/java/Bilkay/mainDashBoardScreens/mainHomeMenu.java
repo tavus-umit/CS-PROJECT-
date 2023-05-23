@@ -9,6 +9,7 @@ public class mainHomeMenu {
     private final user currentUser;
     private final JFrame myMainFrame;
     private JPanel mainPanelForMenu;
+    private JLabel logoJPanel;
     private JScrollPane mainJScrollPane;
     private JPanel mainJPanelForScroll;
 
