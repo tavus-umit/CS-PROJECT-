@@ -6,6 +6,7 @@ import Bilkay.UserRelatedServices.user;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class mainMailMenu {
     private final user currentUser;
@@ -73,20 +74,25 @@ public class mainMailMenu {
     private void sendMessageToUser(int idMessageOfConvo) throws SQLException {
 
         String toUsername = sendUsernameJText.getText();
-        int toUserID = getToUserIDFromUsername("toUsername");
+        int toUserID = getToUserIDFromUsername(toUsername);
         int fromUserId = currentUser.getUserID();
         String messageContent = messageTextArea.getText();
+
+        SimpleDateFormat dateAndHourWithoutMilliseconds = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timeStampOfTheMessage = dateAndHourWithoutMilliseconds.format(new Timestamp(System.currentTimeMillis()));
 
 
         Connection connection = DatabaseManager.getConnection();
         Statement statement = connection.createStatement();
 
 
-        String insertQuery = "INSERT INTO messages_in_convo (conversation_id,sender_id,sender_id) VALUES (?, ?,?)";
+        String insertQuery = "INSERT INTO messages_in_convo (conversation_id,sender_id,reciever_id,content_of_message,timestamp) VALUES (?, ?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
         preparedStatement.setInt(1, idMessageOfConvo);
         preparedStatement.setInt(2, fromUserId);
-        preparedStatement.setInt(2, toUserID);
+        preparedStatement.setInt(3, toUserID);
+        preparedStatement.setString(4, messageContent);
+        preparedStatement.setString(5, timeStampOfTheMessage);
 
 
         if (preparedStatement.executeUpdate() == 1) {
@@ -136,7 +142,7 @@ public class mainMailMenu {
             Statement statement = connection.createStatement();
 
             String toUsername = sendUsernameJText.getText();
-            int toUserID = getToUserIDFromUsername("toUsername");
+            int toUserID = getToUserIDFromUsername(toUsername);
 
             String insertQuery = "INSERT INTO conversations (user1_id,user2_id) VALUES (?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
