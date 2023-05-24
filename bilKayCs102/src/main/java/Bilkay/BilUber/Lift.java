@@ -6,6 +6,9 @@ public class Lift {
     private Time time;
     private Route route;
     private int fee;
+    private int passengerNum;
+    private static int classID = 1;
+    private int liftID;
 
     // Constructor
     public Lift(Driver driver, Date date, Time time, Route route, int fee) {
@@ -14,6 +17,9 @@ public class Lift {
         this.time = time;
         this.route = route;
         this.fee = fee;
+        this.passengerNum = 0;
+        this.liftID = classID;
+        classID++;
     }
 
     // Getters
@@ -38,6 +44,17 @@ public class Lift {
         return this.time;
     }
 
+    public int getPassengerNum() {
+        return passengerNum;
+    }
+
+    public static int getClassID() {
+        return classID;
+    }
+
+    public int getLiftID() {
+        return liftID;
+    }
     // Setters
 
     public void setTime(Time time) {
@@ -60,9 +77,20 @@ public class Lift {
         this.fee = fee;
     }
 
+    public void setPassengerNum(int passengerNum) {
+        this.passengerNum = passengerNum;
+    }
+
+    public static void setClassID(int ID) {
+        Lift.classID = ID;
+    }
+
+    public void setLiftID(int liftID) {
+        this.liftID = liftID;
+    }
 
     // toString method
     public String toString() {
-        return this.driver.getNameSurname() + " | " + this.route + " | " + this.date + " | " + this.time + " |";
+        return this.liftID + " | "+ this.driver.getNameSurname() + " | " + this.route + " | " + this.date + " | " + this.time + " | " + this.fee + "₺" + " | " + "Passenger Number: " + this.passengerNum;
     }
 }

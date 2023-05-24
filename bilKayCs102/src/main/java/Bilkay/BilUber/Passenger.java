@@ -30,8 +30,33 @@ public class Passenger extends user {
         this.registeredLifts = registeredLifts;
     }
 
-    public void registerAJourney() {
+    public void showAvailableLifts()
+    {
+        String lifts = "";
+        for (int i = 0 ; i < BilUber.availableLifts.size(); i++)
+        {
+            lifts = lifts + BilUber.availableLifts.get(i) + '\n';
+        }
+        System.out.println("Available Lifts: ");
+        System.out.print(lifts);
 
+    }
+    public void showRegisteredLifts()
+    {
+        String lifts = "";
+        for (int i = 0 ; i < this.registeredLifts.size(); i++)
+        {
+            lifts = lifts + this.registeredLifts.get(i) + '\n';
+        }
+        System.out.println("Registered Lifts: ");
+        System.out.print(lifts);
+
+    }
+    public void registerAJourney(int ID) {
+
+        Lift registeredLift = BilUber.availableLifts.get(ID-1);
+        registeredLift.setPassengerNum(registeredLift.getPassengerNum()+1);
+        this.registeredLifts.add(registeredLift);
 
     }
 }
