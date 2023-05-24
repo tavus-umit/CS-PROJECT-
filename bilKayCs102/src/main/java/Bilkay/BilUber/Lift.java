@@ -63,6 +63,6 @@ public class Lift {
 
     // toString method
     public String toString() {
-        return this.driver.getNameSurname() + " | " + this.route + " | " + this.date + " | " + this.time + " | " + this.fee + "₺";
+        return this.driver.getNameSurname() + " | " + this.route + " | " + this.date + " | " + this.time + " |";
     }
 }

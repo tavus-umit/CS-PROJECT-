@@ -63,8 +63,16 @@ public class mainMailMenu {
                         sendMessageToUser(idOfTheConvo);
 
                     }
+                    messageJpanel.removeAll();
 
-                    System.out.println("done");
+                    try {
+                        displayTheCurrentInbox();
+                    } catch (SQLException d) {
+                        throw new RuntimeException(d);
+                    }
+
+                    messageJpanel.revalidate();
+                    messageJpanel.repaint();
 
                 }
             } catch (SQLException ex) {
@@ -282,17 +290,14 @@ public class mainMailMenu {
         messageLabel.setFont(font);
 
 
-        // Add a separator after each message
         JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
         separator.setPreferredSize(new Dimension(messageJpanel.getWidth(), 5));
         separator.setBackground(new Color(40, 40, 43));
         separator.setForeground(new Color(255, 255, 235));
 
-        // Add the message label and separator to the messagePanel
         messageJpanel.add(messageLabel);
         messageJpanel.add(separator);
 
-        // Refresh the layout and scroll to the bottom
         messageJpanel.revalidate();
         messageJpanel.repaint();
     }
