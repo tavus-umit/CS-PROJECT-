@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class mainMailMenu {
     private final user currentUser;
@@ -33,10 +34,12 @@ public class mainMailMenu {
     public mainMailMenu(JFrame myMainFrame, user currentUser) {
         this.currentUser = currentUser;
         this.myMainFrame = myMainFrame;
-
         messageJpanel.setLayout(new BoxLayout(messageJpanel, BoxLayout.Y_AXIS));
-        for (int i = 0; i < 5; i++) {
-            displayMessage("Kilic", "Naberrr", "12-10-2023");
+
+        try {
+            displayTheCurrentInbox();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
 
@@ -69,6 +72,63 @@ public class mainMailMenu {
             }
 
         });
+    }
+
+    private void displayTheCurrentInbox() throws SQLException {
+
+        String checkTheCurrentMessages = "SELECT * FROM messages_in_convo WHERE reciever_id = ? ORDER BY timestamp DESC";
+
+        Connection connection = DatabaseManager.getConnection();
+        PreparedStatement preparedStatementForExercises = connection.prepareStatement(checkTheCurrentMessages);
+        preparedStatementForExercises.setInt(1, currentUser.getUserID());
+
+        ResultSet resultsSetForExerciseNames = preparedStatementForExercises.executeQuery();
+
+
+        while (resultsSetForExerciseNames.next()) {
+            String messageBody = resultsSetForExerciseNames.getString("content_of_message");
+            String fromUserID = resultsSetForExerciseNames.getString("sender_id");
+            String timeStampOfTheMessage = resultsSetForExerciseNames.getString("timestamp");
+            String senderUserName = findSenderUserName(fromUserID);
+
+            if (senderUserName != null) {
+                displayMessage(senderUserName,messageBody,timeStampOfTheMessage);
+            }
+
+            
+        }
+
+        preparedStatementForExercises.close();
+        resultsSetForExerciseNames.close();
+        connection.close();
+
+    }
+
+    private String findSenderUserName(String fromUserID) throws SQLException {
+        String senderUsernameFound = null;
+
+        Connection connection = DatabaseManager.getConnection();
+
+        String queryForExercisesFromProgram = "SELECT username from users where user_id= ?";
+
+        PreparedStatement preparedStatementForExercises = connection.prepareStatement(queryForExercisesFromProgram);
+
+        preparedStatementForExercises.setString(1, fromUserID);
+
+        ResultSet resultsSetForExerciseNames = preparedStatementForExercises.executeQuery();
+
+
+
+        while (resultsSetForExerciseNames.next()) {
+            senderUsernameFound = resultsSetForExerciseNames.getString("username");
+            return senderUsernameFound;
+        }
+
+        preparedStatementForExercises.close();
+        resultsSetForExerciseNames.close();
+        connection.close();
+        return senderUsernameFound;
+
     }
 
     private void sendMessageToUser(int idMessageOfConvo) throws SQLException {
