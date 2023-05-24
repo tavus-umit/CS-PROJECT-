@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class mainGymMenu {
@@ -134,10 +133,10 @@ public class mainGymMenu {
         }
 
         firstProgram = new ArrayList<>(allExercises.subList(0, 6));
-        secondProgram = new ArrayList<>(allExercises.subList(6, 12)) ;
-        thirdProgram = new ArrayList<>(allExercises.subList(12, 18))  ;
-        fourthProgram = new ArrayList<> (allExercises.subList(18, 24)) ;
-        fifthProgram = new ArrayList<>(allExercises.subList(24, 30)) ;
+        secondProgram = new ArrayList<>(allExercises.subList(6, 12));
+        thirdProgram = new ArrayList<>(allExercises.subList(12, 18));
+        fourthProgram = new ArrayList<>(allExercises.subList(18, 24));
+        fifthProgram = new ArrayList<>(allExercises.subList(24, 30));
 
         preparedStatementForExercises.close();
         resultsSetForExerciseNames.close();
@@ -288,23 +287,23 @@ public class mainGymMenu {
             } while (flag);
 
 
-                String queryForExercisesFromProgram = "SELECT exercise_name FROM exercises WHERE program_id = ?";
+            String queryForExercisesFromProgram = "SELECT exercise_name FROM exercises WHERE program_id = ?";
 
-                PreparedStatement preparedStatementForExercises = connection.prepareStatement(queryForExercisesFromProgram);
+            PreparedStatement preparedStatementForExercises = connection.prepareStatement(queryForExercisesFromProgram);
 
-                preparedStatementForExercises.setInt(1, randomProgramId);
+            preparedStatementForExercises.setInt(1, randomProgramId);
 
-                ResultSet resultsSetForExerciseNames = preparedStatementForExercises.executeQuery();
+            ResultSet resultsSetForExerciseNames = preparedStatementForExercises.executeQuery();
 
-                while (resultsSetForExerciseNames.next()) {
-                    String value = resultsSetForExerciseNames.getString("exercise_name");
-                    exercises.add(value);
-                }
+            while (resultsSetForExerciseNames.next()) {
+                String value = resultsSetForExerciseNames.getString("exercise_name");
+                exercises.add(value);
+            }
 
 
-                preparedStatementForExercises.close();
-                resultsSetForExerciseNames.close();
-                connection.close();
+            preparedStatementForExercises.close();
+            resultsSetForExerciseNames.close();
+            connection.close();
 
 
         } catch (SQLException e) {

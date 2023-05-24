@@ -8,16 +8,16 @@ public class user {
 
     public static final String[] departmentArray = {"CTIS", "COMD", "CS", "GRA", "EEE", "IE", "PHYS", "MATH", "POLS", "AMER", "TRIN", "ME", "IR", "ECON", "MAN", "MBG",
             "ELIT", "LAUD", "LAW", "HART", "IAED", "PHIL", "PSYC", "THEA", "TURK", "CHEM", "MUS", "HIST", "FA", "ARCH"};
+    private final int userID;
+    private final String webmail;
     public ArrayList<Lift> providedLiftsAsADriver;
     public ArrayList<Lift> usedLiftsAsAUser;
     public String pathToPP;
-    private final int userID;
     private String nameSurname;
     private String username;
     private String password;
     private int age;
     private String grade;
-    private final String webmail;
     private String gender;
     private String department;
     private int bilkayPoints;

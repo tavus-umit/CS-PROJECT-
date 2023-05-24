@@ -5,8 +5,6 @@ import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class mainMailMenu {
@@ -41,37 +39,34 @@ public class mainMailMenu {
         }
 
 
-        sumbitInterests.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        sumbitInterests.addActionListener(e -> {
 
-                try {
-                    if (checkTheNewUsername()) {
+            try {
+                if (checkTheNewUsername()) {
 
-                        String toName = sendUsernameJText.getText();
-                        String messageContent = messageTextArea.getText();
+                    String toName = sendUsernameJText.getText();
+                    String messageContent = messageTextArea.getText();
 
-                        int idOfTheConvo = checkExistingConvoAmongUsers();
+                    int idOfTheConvo = checkExistingConvoAmongUsers();
 
-                        if (idOfTheConvo > 0) {
+                    if (idOfTheConvo > 0) {
 
-                            sendMessageToUser(idOfTheConvo);
+                        sendMessageToUser(idOfTheConvo);
 
-                        } else {
-                            createNewConvo();
-                            idOfTheConvo = checkExistingConvoAmongUsers();
-                            sendMessageToUser(idOfTheConvo);
-
-                        }
-
-                        System.out.println("done");
+                    } else {
+                        createNewConvo();
+                        idOfTheConvo = checkExistingConvoAmongUsers();
+                        sendMessageToUser(idOfTheConvo);
 
                     }
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
 
+                    System.out.println("done");
+
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
             }
+
         });
     }
 
@@ -97,6 +92,8 @@ public class mainMailMenu {
         if (preparedStatement.executeUpdate() == 1) {
 
             JOptionPane.showMessageDialog(myMainFrame, "Message Has Been Sent", "Send Message", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(myMainFrame, "A Problem Occurred While Sending The Message, Please Try Again Later!", "Send Message", JOptionPane.ERROR_MESSAGE);
         }
         preparedStatement.close();
         statement.close();
@@ -124,7 +121,6 @@ public class mainMailMenu {
         while (resultsSetForExerciseNames.next()) {
             value = resultsSetForExerciseNames.getInt("conversation_id");
             return value;
-
         }
 
 
@@ -208,7 +204,7 @@ public class mainMailMenu {
     public void displayMessage(String senderName, String message, String timeStamp) {
 
 
-        String formattedMessage = String.format("<html><pre>From: %-15s              Date/Time: %-20s\n\n%s</pre></html>", senderName, timeStamp, message);
+        String formattedMessage = String.format("<html><pre>From: %-15s                    Date/Time: %-20s\n\n%s</pre></html>", senderName, timeStamp, message);
 
 
         JLabel messageLabel = new JLabel(formattedMessage);
