@@ -11,12 +11,13 @@ import Bilkay.mainDashBoardScreens.mainDashboardMenu;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
+import java.awt.*;
+import java.awt.event.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 import static Bilkay.UserRelatedServices.userInterestRelations.*;
@@ -61,6 +62,11 @@ public class mainRegisterMenu {
 
     public mainRegisterMenu(JFrame myMainFrameInput) {
 
+        usernameTextField.setText("Username");
+        usernameTextField.setForeground(Color.lightGray);
+
+        nameSurnameJTextField.setText("Name Surname");
+        nameSurnameJTextField.setForeground(Color.lightGray);
 
         this.categoryItems = new ArrayList<Category>();
         this.subCategoryItems = new ArrayList<SubCategory>();
@@ -125,6 +131,41 @@ public class mainRegisterMenu {
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
 
+            }
+        });
+        usernameTextField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                usernameTextField.setText("");
+                usernameTextField.setForeground(new Color(40, 40, 43));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+
+                if (usernameTextField.getText().isEmpty()) {
+                    usernameTextField.setText("Username");
+                    usernameTextField.setForeground(Color.lightGray);
+                }
+            }
+        });
+        nameSurnameJTextField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                nameSurnameJTextField.setText("");
+                nameSurnameJTextField.setForeground(new Color(40, 40, 43));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                if (nameSurnameJTextField.getText().isEmpty()) {
+                    nameSurnameJTextField.setText("Name Surname");
+                    nameSurnameJTextField.setForeground(Color.lightGray);
+                }
             }
         });
     }

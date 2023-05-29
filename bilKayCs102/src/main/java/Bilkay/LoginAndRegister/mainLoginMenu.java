@@ -8,8 +8,12 @@ import Bilkay.UserRelatedServices.user;
 import Bilkay.mainDashBoardScreens.mainDashboardMenu;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class mainLoginMenu {
 
@@ -120,20 +124,23 @@ public class mainLoginMenu {
 
             if (resultsSetForCurrentUser.next()) {
                 currentUser = new user(Integer.parseInt(resultsSetForCurrentUser.getString("user_id")), resultsSetForCurrentUser.getString("name_surname"), resultsSetForCurrentUser.getString("username"), resultsSetForCurrentUser.getString("password"), resultsSetForCurrentUser.getString("webmail"), null, null, resultsSetForCurrentUser.getString("role"));
-                if (!resultsSetForCurrentUser.getString("profile_picture_path").isEmpty()) {
+                if (resultsSetForCurrentUser.getString("profile_picture_path") != null) {
                     currentUser.setPathToPP(resultsSetForCurrentUser.getString("profile_picture_path"));
                 }
-                if (!resultsSetForCurrentUser.getString("age").isEmpty()) {
+                if (resultsSetForCurrentUser.getString("age") != null) {
                     currentUser.setAge(Integer.parseInt(resultsSetForCurrentUser.getString("age")));
                 }
-                if (!resultsSetForCurrentUser.getString("grade").isEmpty()) {
+                if (resultsSetForCurrentUser.getString("grade") != null) {
                     currentUser.setGrade(resultsSetForCurrentUser.getString("grade"));
                 }
-                if (!resultsSetForCurrentUser.getString("department").isEmpty()) {
+                if (resultsSetForCurrentUser.getString("department") != null) {
                     currentUser.setDepartment(resultsSetForCurrentUser.getString("department"));
                 }
-                if (!resultsSetForCurrentUser.getString("gender").isEmpty()) {
+                if (resultsSetForCurrentUser.getString("gender") != null) {
                     currentUser.setGender(resultsSetForCurrentUser.getString("gender"));
+                }
+                if (resultsSetForCurrentUser.getString("bil_Kay_points") != null) {
+                    currentUser.setBilkayPoints(resultsSetForCurrentUser.getInt("bil_Kay_points"));
                 }
 
 

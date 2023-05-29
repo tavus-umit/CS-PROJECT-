@@ -31,6 +31,6 @@ public class Route {
 
     // toString method
     public String toString() {
-        return this.from + "-->" + this.to;
+        return "From '"+ this.from + "' to '" + this.to + "' ";
     }
 }

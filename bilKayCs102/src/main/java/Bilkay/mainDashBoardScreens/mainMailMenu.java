@@ -4,10 +4,15 @@ import Bilkay.Email_Keyboard_DatabaseServices.DatabaseManager;
 import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class mainMailMenu {
     private final user currentUser;
@@ -43,10 +48,31 @@ public class mainMailMenu {
         }
 
 
+        SwingWorker<Void, Void> updateInbox = new SwingWorker<Void, Void>() {
+            @SuppressWarnings({"BusyWait", "InfiniteLoopStatement"})
+            @Override
+            protected Void doInBackground() throws Exception {
+                while (true) {
+                    displayTheCurrentInbox();
+                    Thread.sleep(10000);
+                }
+            }
+        };
+
+        updateInbox.execute();
+
+
         sumbitInterests.addActionListener(e -> {
 
             try {
                 if (checkTheNewUsername()) {
+
+                    if (sendUsernameJText.getText().isEmpty() || messageTextArea.getText().isEmpty()) {
+
+                        JOptionPane.showMessageDialog(myMainFrame, "Please Enter Valid Username and Message", "Send Message", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
 
                     String toName = sendUsernameJText.getText();
                     String messageContent = messageTextArea.getText();
@@ -92,6 +118,7 @@ public class mainMailMenu {
 
         ResultSet resultsSetForExerciseNames = preparedStatementForExercises.executeQuery();
 
+        messageJpanel.removeAll();
 
         while (resultsSetForExerciseNames.next()) {
             String messageBody = resultsSetForExerciseNames.getString("content_of_message");
@@ -100,10 +127,10 @@ public class mainMailMenu {
             String senderUserName = findSenderUserName(fromUserID);
 
             if (senderUserName != null) {
-                displayMessage(senderUserName,messageBody,timeStampOfTheMessage);
+                displayMessage(senderUserName, messageBody, timeStampOfTheMessage);
             }
 
-            
+
         }
 
         preparedStatementForExercises.close();
@@ -124,7 +151,6 @@ public class mainMailMenu {
         preparedStatementForExercises.setString(1, fromUserID);
 
         ResultSet resultsSetForExerciseNames = preparedStatementForExercises.executeQuery();
-
 
 
         while (resultsSetForExerciseNames.next()) {
@@ -306,4 +332,5 @@ public class mainMailMenu {
     public JPanel getMainPanelForMenu() {
         return mainPanelForMenu;
     }
+
 }

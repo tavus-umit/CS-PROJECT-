@@ -9,6 +9,8 @@ import Bilkay.UserRelatedServices.SubCategory;
 import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,6 +24,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 import static Bilkay.UserRelatedServices.userInterestRelations.*;

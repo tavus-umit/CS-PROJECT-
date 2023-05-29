@@ -30,14 +30,5 @@ public class Driver extends user {
     }
 
     // This method creates a new lift and adds it to the lifts arraylist
-    public void liftCreator(Date date, Time time, Route route, int fee) {
-        Lift newLift = new Lift(this, date, time, route, fee);
-        this.myLifts.add(newLift);
-    }
 
-    public void liftUploader() {
-        for (int i = 0; i < this.myLifts.size(); i++) {
-            BilUber.availableLifts.add(this.myLifts.get(i));
-        }
-    }
 }

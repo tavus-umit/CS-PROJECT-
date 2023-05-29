@@ -1,11 +1,21 @@
 package Bilkay.mainDashBoardScreens;
 
+import Bilkay.Email_Keyboard_DatabaseServices.DatabaseManager;
 import Bilkay.UserRelatedServices.user;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Locale;
+
+import static Bilkay.mainDashBoardScreens.mainBilUberMenu.getPictureFromUserIDMain;
 
 public class mainDashboardMenu {
 
@@ -43,12 +53,19 @@ public class mainDashboardMenu {
         this.currentUser = currentUser;
 
         rightMainDashboardPanel.removeAll();
-        rightMainDashboardPanel.add(new mainHomeMenu(myMainFrame, currentUser).getMainPanelForMenu());
-        ImageIcon iconPP = new ImageIcon(new ImageIcon(currentUser.getPathToPP()).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
-        userPP.setIcon(iconPP);
-        nameOfTheUserLabel.setText(currentUser.getNameSurname());
-        pointsOfTheUserLabel.setText(currentUser.getBilkayPoints() + " points");
+        updateInfo();
 
+        SwingWorker<Void, Void> updateUITask = new SwingWorker<Void, Void>() {
+            @SuppressWarnings({"BusyWait", "InfiniteLoopStatement"})
+            @Override
+            protected Void doInBackground() throws Exception {
+                while (true) {
+                    updateInfo();
+                    Thread.sleep(60000);
+                }
+            }
+        };
+        updateUITask.execute();
 
         homeButton.addActionListener(new ActionListener() {
             @Override
@@ -205,6 +222,11 @@ public class mainDashboardMenu {
         });
     }
 
+    private String getPictureFromUserID(int inputID) throws SQLException {
+
+        return getPictureFromUserIDMain(inputID);
+    }
+
     public JPanel getMainPanelForMenu() {
         return mainPanelForMenu;
     }
@@ -215,10 +237,19 @@ public class mainDashboardMenu {
     }
 
     public void updateInfo() {
+        rightMainDashboardPanel.add(new mainHomeMenu(myMainFrame, currentUser).getMainPanelForMenu());
+        ImageIcon iconPP = null;
+        try {
+            iconPP = new ImageIcon(new ImageIcon(getPictureFromUserID(currentUser.getUserID())).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        userPP.setIcon(iconPP);
+        userPP.setHorizontalAlignment(SwingConstants.CENTER);
+        userPP.setVerticalAlignment(SwingConstants.CENTER);
         nameOfTheUserLabel.setText(currentUser.getNameSurname());
         pointsOfTheUserLabel.setText(currentUser.getBilkayPoints() + " points");
-        ImageIcon iconPP = new ImageIcon(new ImageIcon(currentUser.getPathToPP()).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
-        userPP.setIcon(iconPP);
+
     }
 
 

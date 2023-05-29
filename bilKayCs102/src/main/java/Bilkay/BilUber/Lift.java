@@ -1,96 +1,84 @@
 package Bilkay.BilUber;
 
+import Bilkay.UserRelatedServices.user;
+
 public class Lift {
-    private Driver driver;
-    private Date date;
-    private Time time;
+    private int driverID;
+    private String driverNameSurname;
+    private String timeDate;
     private Route route;
-    private int fee;
-    private int passengerNum;
-    private static int classID = 1;
-    private int liftID;
+    private int availableSeat;
+    private int idOfTheLift;
+
 
     // Constructor
-    public Lift(Driver driver, Date date, Time time, Route route, int fee) {
-        this.driver = driver;
-        this.date = date;
-        this.time = time;
+    public Lift(int idOfTheLift, String driverNameUsername, int driverID, String timeDate, Route route, int availableSeat) {
+        this.idOfTheLift = idOfTheLift;
+        this.driverNameSurname = driverNameUsername;
+        this.driverID = driverID;
+        this.timeDate = timeDate;
         this.route = route;
-        this.fee = fee;
-        this.passengerNum = 0;
-        this.liftID = classID;
-        classID++;
+        this.availableSeat = availableSeat;
     }
 
-    // Getters
-
-    public Driver getDriver() {
-        return driver;
+    public Lift(String driverNameUsername, int driverID, String timeDate, Route route, int availableSeat) {
+        this.driverNameSurname = driverNameUsername;
+        this.driverID = driverID;
+        this.timeDate = timeDate;
+        this.route = route;
+        this.availableSeat = availableSeat;
     }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
+    public int getIdOfTheLift() {
+        return idOfTheLift;
     }
 
-    public Date getDate() {
-        return this.date;
+    public void setIdOfTheLift(int idOfTheLift) {
+        this.idOfTheLift = idOfTheLift;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public String getDriverNameSurname() {
+        return driverNameSurname;
     }
 
-    public Time getTime() {
-        return this.time;
+    public void setDriverNameSurname(String driverNameSurname) {
+        this.driverNameSurname = driverNameSurname;
     }
 
-    public int getPassengerNum() {
-        return passengerNum;
+    public int getDriverID() {
+        return driverID;
     }
 
-    public static int getClassID() {
-        return classID;
+    public void setDriverID(int driverID) {
+        this.driverID = driverID;
     }
 
-    public int getLiftID() {
-        return liftID;
+    public String getTimeDate() {
+        return timeDate;
     }
-    // Setters
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setTimeDate(String timeDate) {
+        this.timeDate = timeDate;
     }
 
     public Route getRoute() {
-        return this.route;
+        return route;
     }
 
     public void setRoute(Route route) {
         this.route = route;
     }
 
-    public int getFee() {
-        return this.fee;
+    public int getAvailableSeat() {
+        return availableSeat;
     }
 
-    public void setFee(int fee) {
-        this.fee = fee;
-    }
-
-    public void setPassengerNum(int passengerNum) {
-        this.passengerNum = passengerNum;
-    }
-
-    public static void setClassID(int ID) {
-        Lift.classID = ID;
-    }
-
-    public void setLiftID(int liftID) {
-        this.liftID = liftID;
+    public void setAvailableSeat(int availableSeat) {
+        this.availableSeat = availableSeat;
     }
 
     // toString method
     public String toString() {
-        return this.liftID + " | "+ this.driver.getNameSurname() + " | " + this.route + " | " + this.date + " | " + this.time + " | " + this.fee + "₺" + " | " + "Passenger Number: " + this.passengerNum;
+        return this.getDriverNameSurname() + " | " + this.route + " | At: " + this.timeDate + " | "  + " Available Seats: " + this.availableSeat;
     }
 }
