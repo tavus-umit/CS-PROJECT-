@@ -1,19 +1,13 @@
 package Bilkay.mainDashBoardScreens;
 
-import Bilkay.Email_Keyboard_DatabaseServices.DatabaseManager;
 import Bilkay.UserRelatedServices.user;
+import Bilkay.UserRelatedServices.userProfileDialog;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Locale;
 
 import static Bilkay.mainDashBoardScreens.mainBilUberMenu.getPictureFromUserIDMain;
 
@@ -207,14 +201,9 @@ public class mainDashboardMenu {
         userPP.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                homeButton.setSelected(false);
-                settingsButton.setSelected(false);
-                gymButton.setSelected(false);
-                webButton.setSelected(false);
-                peopleButton.setSelected(false);
-                mailButton.setSelected(false);
-                bilUberButton.setSelected(false);
-                userPP.setSelected(true);
+
+                userProfileDialog test = new userProfileDialog(myMainFrame,currentUser);
+
                 updateInfo();
 
 

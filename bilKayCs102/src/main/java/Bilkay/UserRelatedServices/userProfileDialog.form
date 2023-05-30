@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Bilkay.UserRelatedServices.userProfileDialog">
+  <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="10">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="48" y="54" width="436" height="297"/>
+    </constraints>
+    <properties>
+      <background color="-21"/>
+      <foreground color="-14145493"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="e3588" binding="contentJpanel" layout-manager="BorderLayout" hgap="10" vgap="10">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-21"/>
+          <foreground color="-14145493"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="24b5a" binding="topJpanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="5" vgap="5">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints border-constraint="North"/>
+            <properties>
+              <background color="-21"/>
+              <foreground color="-14145493"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="db9f2" class="javax.swing.JLabel" binding="userPPJlabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-21"/>
+                  <foreground color="-14145493"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="da6b6" class="javax.swing.JLabel" binding="NameSurnameJLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-21"/>
+                  <font name="Times New Roman" size="22" style="3"/>
+                  <foreground color="-14145493"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="65a50" class="javax.swing.JSeparator">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-14145493"/>
+                  <foreground color="-14145493"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="58863" binding="bottomJpanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints border-constraint="Center"/>
+            <properties>
+              <background color="-21"/>
+              <foreground color="-14145493"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="f3345" class="javax.swing.JLabel" binding="ageJlabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-21"/>
+                  <font name="Times New Roman" size="18" style="1"/>
+                  <foreground color="-14145493"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="29446" class="javax.swing.JLabel" binding="genderJLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-21"/>
+                  <font name="Times New Roman" size="18" style="1"/>
+                  <foreground color="-14145493"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="3d668" class="javax.swing.JLabel" binding="departmentJlabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-21"/>
+                  <font name="Times New Roman" size="18" style="1"/>
+                  <foreground color="-14145493"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="62d66" class="javax.swing.JLabel" binding="yearJlabel">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-21"/>
+                  <font name="Times New Roman" size="18" style="1"/>
+                  <foreground color="-14145493"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <grid id="13ce0" binding="interstJpanel" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-21"/>
+                  <foreground color="-14145493"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <scrollpane id="d66bb" binding="interestCategoryScrollPane">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-21"/>
+                      <foreground color="-14145493"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="6ec0" class="javax.swing.JList" binding="interestsCategoryJList">
+                        <constraints/>
+                        <properties>
+                          <background color="-21"/>
+                          <enabled value="false"/>
+                          <font name="Times New Roman" size="18" style="1"/>
+                          <foreground color="-14145493"/>
+                          <selectionBackground color="-14145493"/>
+                          <selectionForeground color="-21"/>
+                          <visibleRowCount value="5"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                  <hspacer id="8b17d">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <scrollpane id="9d8ed" binding="interestSubCategoryScrollPane">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="a8820" class="javax.swing.JList" binding="interestSubCategoryJlist">
+                        <constraints/>
+                        <properties>
+                          <background color="-21"/>
+                          <enabled value="false"/>
+                          <font name="Times New Roman" size="18" style="1"/>
+                          <foreground color="-14145493"/>
+                          <selectionBackground color="-14145493"/>
+                          <selectionForeground color="-21"/>
+                          <visibleRowCount value="5"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                  <component id="6bbe4" class="javax.swing.JLabel" binding="categoriesJlabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-21"/>
+                      <font name="Times New Roman" size="18" style="3"/>
+                      <foreground color="-14145493"/>
+                      <labelFor value="d5f63"/>
+                      <text value="Categories"/>
+                    </properties>
+                  </component>
+                  <component id="2fcfc" class="javax.swing.JLabel" binding="subCategoriesJlabel">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-21"/>
+                      <font name="Times New Roman" size="18" style="3"/>
+                      <foreground color="-14145493"/>
+                      <labelFor value="704e0"/>
+                      <text value="Subcategories"/>
+                    </properties>
+                  </component>
+                  <component id="ddadb" class="javax.swing.JLabel" binding="interestJLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-21"/>
+                      <font name="Times New Roman" size="18" style="3"/>
+                      <foreground color="-14145493"/>
+                      <text value="Interests"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <component id="7a103" class="javax.swing.JSeparator">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-14145493"/>
+                  <foreground color="-14145493"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
