@@ -111,6 +111,12 @@ public class mainDashboardMenu {
                 userPP.setSelected(false);
                 updateInfo();
 
+                rightMainDashboardPanel.removeAll();
+                rightMainDashboardPanel.add(new mainEventsMenu(myMainFrame, currentUser).getMainPanelForMenu());
+
+                myMainFrame.revalidate();
+                myMainFrame.repaint();
+
             }
         });
         bilUberButton.addActionListener(new ActionListener() {

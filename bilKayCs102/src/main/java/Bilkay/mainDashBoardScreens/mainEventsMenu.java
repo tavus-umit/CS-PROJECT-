@@ -11,7 +11,7 @@ public class mainEventsMenu {
     private final JFrame myMainFrame;
     private JPanel mainPanelForMenu;
 
-    public mainEventsMenu(user currentUser, JFrame myMainFrame) {
+    public mainEventsMenu( JFrame myMainFrame, user currentUser) {
         this.currentUser = currentUser;
         this.myMainFrame = myMainFrame;
     }
