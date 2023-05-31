@@ -36,7 +36,23 @@ public class mainMailMenu {
     private JTextArea messageTextArea;
     private JLabel chooseUserJLabel;
 
-    public mainMailMenu(JFrame myMainFrame, user currentUser) {
+    private JPanel rightMainDashboardPanel;
+    private String userName;
+
+
+
+
+    public mainMailMenu(JFrame myMainFrame, user currentUser, JPanel rightMainDashboardPanel, String userName) {
+
+        this(myMainFrame, currentUser, rightMainDashboardPanel);
+        JScrollBar scrollPaneBar = mainJScrollPane.getVerticalScrollBar();
+        this.userName = userName;
+        sendUsernameJText.setText(userName);
+        scrollPaneBar.setValue( scrollPaneBar.getMaximum() );
+    }
+
+    public mainMailMenu(JFrame myMainFrame, user currentUser, JPanel rightMainDashboardPanel) {
+        this.rightMainDashboardPanel = rightMainDashboardPanel;
         this.currentUser = currentUser;
         this.myMainFrame = myMainFrame;
         messageJpanel.setLayout(new BoxLayout(messageJpanel, BoxLayout.Y_AXIS));

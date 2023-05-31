@@ -4,6 +4,7 @@ import Bilkay.BilUber.Lift;
 import Bilkay.BilUber.Route;
 import Bilkay.Email_Keyboard_DatabaseServices.DatabaseManager;
 import Bilkay.UserRelatedServices.user;
+import Bilkay.UserRelatedServices.userProfileDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,8 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import static Bilkay.UserRelatedServices.userDbPull.*;
+import static Bilkay.UserRelatedServices.userDbPull.getChosenSubCategoriesFromUserID;
 import static Bilkay.UserRelatedServices.userPointProcess.decreaseUserPoints;
 import static Bilkay.UserRelatedServices.userPointProcess.increaseUserPoints;
 
@@ -59,14 +62,14 @@ public class mainBilUberMenu {
     private JScrollPane scrollPaneForMessages;
     private JPanel currentLiftsJpanel;
     private boolean FirstTimeForDateTime;
+    private JPanel rightMainDashboardPanel;
 
 
-    //Todo Tüm liftleri dbden çek, idye göre offered mı yoksa genel mi ona göre ekle
-    //Todo takip edilenleri çekip yükle
 
-    public mainBilUberMenu(JFrame myMainFrame, user currentUser) {
+    public mainBilUberMenu(JFrame myMainFrame, user currentUser, JPanel rightMainDashboardPanel) {
         this.currentUser = currentUser;
         this.myMainFrame = myMainFrame;
+        this.rightMainDashboardPanel = rightMainDashboardPanel;
         curretsLiftsGivenJpanel.setLayout(new BoxLayout(curretsLiftsGivenJpanel, BoxLayout.Y_AXIS));
         liftsAcceptedViewJPanel.setLayout(new BoxLayout(liftsAcceptedViewJPanel, BoxLayout.Y_AXIS));
         currentLiftsJpanel.setLayout(new BoxLayout(currentLiftsJpanel, BoxLayout.Y_AXIS));
@@ -413,7 +416,7 @@ public class mainBilUberMenu {
         individualLiftRow.setBackground(new Color(40, 40, 43));
         JLabel liftInfoLabel = new JLabel(chosenLift.toString());
         Box boxForUserNameAndPP = Box.createHorizontalBox();
-        JLabel JLabelForDriverPP = new JLabel();
+        JButton JLabelForDriverPP = new JButton();
         ImageIcon iconPP = new ImageIcon(new ImageIcon(getPictureFromUserID(chosenLift.getDriverID())).getImage().getScaledInstance(48, 48, Image.SCALE_SMOOTH));
         JLabelForDriverPP.setIcon(iconPP);
         boxForUserNameAndPP.add(JLabelForDriverPP);
@@ -427,6 +430,10 @@ public class mainBilUberMenu {
         individualLiftRow.revalidate();
         boxForUserNameAndPP.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
 
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(0,2));
+
+
         JButton cancelTheFollow = new JButton();
         cancelTheFollow.setFont(buttonFont);
         cancelTheFollow.setForeground(new Color(255, 255, 235));
@@ -435,6 +442,19 @@ public class mainBilUberMenu {
         cancelTheFollow.setVerticalAlignment(SwingConstants.CENTER);
         cancelTheFollow.setHorizontalAlignment(SwingConstants.CENTER);
 
+        JButton sendMessage = new JButton();
+        sendMessage.setFont(buttonFont);
+        sendMessage.setForeground(new Color(255, 255, 235));
+        sendMessage.setBackground(new Color(40, 40, 43));
+        sendMessage.setIcon(new ImageIcon("./src\\main\\resources\\iconsForApp\\messagesIcon.png"));
+        sendMessage.setVerticalAlignment(SwingConstants.CENTER);
+        sendMessage.setHorizontalAlignment(SwingConstants.CENTER);
+
+        buttonPanel.add(sendMessage);
+        buttonPanel.add(cancelTheFollow);
+
+        individualLiftRow.revalidate();
+
 
         JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
         separator.setPreferredSize(new Dimension(jpanelToUse.getWidth(), 5));
@@ -442,11 +462,82 @@ public class mainBilUberMenu {
         separator.setForeground(new Color(255, 255, 235));
 
         individualLiftRow.add(boxForUserNameAndPP, BorderLayout.CENTER);
-        individualLiftRow.add(cancelTheFollow, BorderLayout.EAST);
+        individualLiftRow.add(buttonPanel, BorderLayout.EAST);
         individualLiftRow.add(separator, BorderLayout.SOUTH);
         individualLiftRow.setForeground(new Color(255, 255, 235));
         individualLiftRow.setBackground(new Color(40, 40, 43));
         individualLiftRow.revalidate();
+
+        String userNameOfTheCreator = idToUserNameDB(chosenLift.getDriverID());
+
+        user creatorOBJ = getUserObjFromUserID(chosenLift.getDriverID());
+        assert creatorOBJ != null;
+        creatorOBJ.setChosenCategories(getChosenCategoriesFromUserID(chosenLift.getDriverID()));
+
+        creatorOBJ.setChosenSubCategories(getChosenSubCategoriesFromUserID(chosenLift.getDriverID()));
+
+        JLabelForDriverPP.addActionListener(e -> {
+
+
+            SwingWorker<Void, Void> showPP = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+
+                    userProfileDialog test = new userProfileDialog(myMainFrame,creatorOBJ);
+
+
+                    myMainFrame.revalidate();
+                    myMainFrame.repaint();
+
+
+                    return null;
+                };
+
+                @Override
+                protected void done() {
+                    jpanelToUse.revalidate();
+                    jpanelToUse.repaint();
+                }
+            };
+
+
+            showPP.execute();
+
+
+        });
+
+
+
+
+        sendMessage.addActionListener(e -> {
+
+
+            SwingWorker<Void, Void> sendMessageBackground = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+
+                    rightMainDashboardPanel.removeAll();
+                    rightMainDashboardPanel.add(new mainMailMenu(myMainFrame, currentUser,rightMainDashboardPanel,userNameOfTheCreator).getMainPanelForMenu());
+
+                    myMainFrame.revalidate();
+                    myMainFrame.repaint();
+
+
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    jpanelToUse.revalidate();
+                    jpanelToUse.repaint();
+                }
+            };
+
+
+            sendMessageBackground.execute();
+
+
+        });
 
 
         cancelTheFollow.addActionListener(e -> {

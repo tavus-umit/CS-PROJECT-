@@ -75,7 +75,7 @@ public class mainDashboardMenu {
                 updateInfo();
 
                 rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(new mainHomeMenu(myMainFrame, currentUser).getMainPanelForMenu());
+                rightMainDashboardPanel.add(new mainHomeMenu(myMainFrame, currentUser,rightMainDashboardPanel).getMainPanelForMenu());
 
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
@@ -96,6 +96,13 @@ public class mainDashboardMenu {
                 updateInfo();
 
 
+                rightMainDashboardPanel.removeAll();
+                rightMainDashboardPanel.add(new mainMatchesMenu(myMainFrame, currentUser, rightMainDashboardPanel).getMainPanelForMenu());
+
+                myMainFrame.revalidate();
+                myMainFrame.repaint();
+
+
             }
         });
         webButton.addActionListener(new ActionListener() {
@@ -112,7 +119,7 @@ public class mainDashboardMenu {
                 updateInfo();
 
                 rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(new mainEventsMenu(myMainFrame, currentUser).getMainPanelForMenu());
+                rightMainDashboardPanel.add(new mainEventsMenu(myMainFrame, currentUser, rightMainDashboardPanel).getMainPanelForMenu());
 
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
@@ -133,7 +140,7 @@ public class mainDashboardMenu {
                 updateInfo();
 
                 rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(new mainBilUberMenu(myMainFrame, currentUser).getMainPanelForMenu());
+                rightMainDashboardPanel.add(new mainBilUberMenu(myMainFrame, currentUser,rightMainDashboardPanel).getMainPanelForMenu());
 
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
@@ -154,7 +161,7 @@ public class mainDashboardMenu {
                 updateInfo();
 
                 rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(new mainMailMenu(myMainFrame, currentUser).getMainPanelForMenu());
+                rightMainDashboardPanel.add(new mainMailMenu(myMainFrame, currentUser,rightMainDashboardPanel).getMainPanelForMenu());
 
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
@@ -175,7 +182,7 @@ public class mainDashboardMenu {
                 updateInfo();
 
                 rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(new mainGymMenu(myMainFrame, currentUser).getMainPanelForMenu());
+                rightMainDashboardPanel.add(new mainGymMenu(myMainFrame, currentUser,rightMainDashboardPanel).getMainPanelForMenu());
 
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
@@ -197,7 +204,7 @@ public class mainDashboardMenu {
                 updateInfo();
 
                 rightMainDashboardPanel.removeAll();
-                rightMainDashboardPanel.add(new mainSettingsMenu(myMainFrame, currentUser).getMainPanelForMenu());
+                rightMainDashboardPanel.add(new mainSettingsMenu(myMainFrame, currentUser,rightMainDashboardPanel).getMainPanelForMenu());
                 myMainFrame.revalidate();
                 myMainFrame.repaint();
 
@@ -217,6 +224,7 @@ public class mainDashboardMenu {
         });
     }
 
+
     private String getPictureFromUserID(int inputID) throws SQLException {
 
         return getPictureFromUserIDMain(inputID);
@@ -228,11 +236,11 @@ public class mainDashboardMenu {
 
     public void refreshPageForGym() {
         rightMainDashboardPanel.removeAll();
-        rightMainDashboardPanel.add(new mainGymMenu(myMainFrame, currentUser).getMainPanelForMenu());
+        rightMainDashboardPanel.add(new mainGymMenu(myMainFrame, currentUser,rightMainDashboardPanel).getMainPanelForMenu());
     }
 
     public void updateInfo() {
-        rightMainDashboardPanel.add(new mainHomeMenu(myMainFrame, currentUser).getMainPanelForMenu());
+        rightMainDashboardPanel.add(new mainHomeMenu(myMainFrame, currentUser,rightMainDashboardPanel).getMainPanelForMenu());
         ImageIcon iconPP = null;
         try {
             iconPP = new ImageIcon(new ImageIcon(getPictureFromUserID(currentUser.getUserID())).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));

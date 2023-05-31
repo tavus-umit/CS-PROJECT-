@@ -74,9 +74,11 @@ public class mainGymMenu {
     private JLabel d3e6;
     private JLabel d4e6;
     private JLabel d5e6;
+    private JPanel rightMainDashboardPanel;
 
 
-    public mainGymMenu(JFrame myMainFrame, user currentUser) {
+    public mainGymMenu(JFrame myMainFrame, user currentUser, JPanel rightMainDashboardPanel) {
+        this.rightMainDashboardPanel = rightMainDashboardPanel;
         this.currentUser = currentUser;
         this.myMainFrame = myMainFrame;
 
@@ -135,13 +137,18 @@ public class mainGymMenu {
         while (resultsSetForExerciseNames.next()) {
             String value = resultsSetForExerciseNames.getString("exercise_name");
             allExercises.add(value);
+
         }
 
-        firstProgram = new ArrayList<>(allExercises.subList(0, 6));
-        secondProgram = new ArrayList<>(allExercises.subList(6, 12));
-        thirdProgram = new ArrayList<>(allExercises.subList(12, 18));
-        fourthProgram = new ArrayList<>(allExercises.subList(18, 24));
-        fifthProgram = new ArrayList<>(allExercises.subList(24, 30));
+        if (!allExercises.isEmpty()) {
+
+            firstProgram = new ArrayList<>(allExercises.subList(0, 6));
+            secondProgram = new ArrayList<>(allExercises.subList(6, 12));
+            thirdProgram = new ArrayList<>(allExercises.subList(12, 18));
+            fourthProgram = new ArrayList<>(allExercises.subList(18, 24));
+            fifthProgram = new ArrayList<>(allExercises.subList(24, 30));
+        }
+
 
         preparedStatementForExercises.close();
         resultsSetForExerciseNames.close();

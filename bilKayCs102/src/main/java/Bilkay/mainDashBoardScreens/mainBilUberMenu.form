@@ -103,7 +103,7 @@
                           <background color="-14145493"/>
                           <font name="Times New Roman" size="26" style="1"/>
                           <foreground color="-21"/>
-                          <text value="Currently Available Lifts"/>
+                          <text value="Available Lifts"/>
                         </properties>
                       </component>
                       <component id="2478e" class="javax.swing.JSeparator">
@@ -176,7 +176,7 @@
                           <background color="-14145493"/>
                           <font name="Times New Roman" size="28" style="3"/>
                           <foreground color="-21"/>
-                          <text value="Lifts That You Plan To Take"/>
+                          <text value="Booked Lifts"/>
                           <verticalAlignment value="3"/>
                           <verticalTextPosition value="3"/>
                         </properties>
@@ -434,7 +434,7 @@
                           <background color="-14145493"/>
                           <font name="Times New Roman" size="28" style="3"/>
                           <foreground color="-21"/>
-                          <text value="Current Lifts That You Offer"/>
+                          <text value="My Offered Lifts"/>
                           <verticalAlignment value="3"/>
                           <verticalTextPosition value="3"/>
                         </properties>

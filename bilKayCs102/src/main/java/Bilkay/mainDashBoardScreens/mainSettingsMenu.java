@@ -83,9 +83,10 @@ public class mainSettingsMenu {
     private JButton ProfilePictureSubmitButton;
     private JLabel currentUsernameJlabel;
     private File profilePictureFile;
+    private JPanel rightMainDashboardPanel;
 
-    public mainSettingsMenu(JFrame myMainFrame, user currentUser) {
-
+    public mainSettingsMenu(JFrame myMainFrame, user currentUser, JPanel rightMainDashboardPanel) {
+        this.rightMainDashboardPanel = rightMainDashboardPanel;
         this.currentUser = currentUser;
         this.myMainFrame = myMainFrame;
 

@@ -127,4 +127,34 @@ public class userDbPull {
 
         return chosenCategories;
     }
+
+
+    public static String idToUserNameDB(int UserID) {
+
+        String userName = null;
+
+        try {
+            Connection connection = DatabaseManager.getConnection();
+            Statement statement = connection.createStatement();
+
+            String queryForSubCategoryID = "SELECT username FROM users WHERE user_id =?";
+
+            PreparedStatement preparedStatementForSubCatID = connection.prepareStatement(queryForSubCategoryID);
+            preparedStatementForSubCatID.setInt(1, UserID);
+
+            ResultSet resultsSetForSubCatIDS = preparedStatementForSubCatID.executeQuery();
+
+            while (resultsSetForSubCatIDS.next()) {
+                userName = resultsSetForSubCatIDS.getString("username");
+            }
+            preparedStatementForSubCatID.close();
+            resultsSetForSubCatIDS.close();
+            statement.close();
+            return userName;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
