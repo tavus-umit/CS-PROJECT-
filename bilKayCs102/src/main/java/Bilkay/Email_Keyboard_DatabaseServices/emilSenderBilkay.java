@@ -6,8 +6,8 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class emilSenderBilkay {
-    private final String mailFrom = "bilkayadmn@gmail.com";
-    private final String appPasswordForGmailSMTP = "ehhzjlyjwtdsehol";
+    private final String mailFrom = "deletedForPrivacyMatters";
+    private final String appPasswordForGmailSMTP = "deletedForPrivacyMatters";
 
     public emilSenderBilkay() {
     }

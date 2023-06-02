@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DatabaseManager {
-    private static final String DB_URL = "jdbc:mysql://bilkaydatabase.mysql.database.azure.com:3306/bilkaydb";
+    private static final String DB_URL = "deletedForPrivacyMatters";
 
-    private static final String USERNAME = "super";
-    private static final String PASSWORD = "Bilkay2023";
+    private static final String USERNAME = "deletedForPrivacyMatters";
+    private static final String PASSWORD = "deletedForPrivacyMatters";
 
     private static Connection connection;
 
