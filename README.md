@@ -10,8 +10,11 @@ Because of our campus' location and size, we are aware of how transportation is 
 
 # How To Use Bilkay
 1-) Follow this file direction CS-PROJECT--main\CS-PROJECT--main\bilKayCs102\src\main\java\Bilkay and open programManager.java file
+
 2-) Run programManager.java
+
 3-) Click "Register" to sign up
+
 4-) You are ready to use Bil-kay
 
 
