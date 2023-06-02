@@ -156,7 +156,6 @@ public class mainLoginMenu {
             preparedStatement.close();
             resultsSetForCurrentUser.close();
             statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -189,7 +188,6 @@ public class mainLoginMenu {
             preparedStatementForSubCatID.close();
             resultsSetForSubCatIDS.close();
             statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -223,7 +221,6 @@ public class mainLoginMenu {
             preparedStatementForCatID.close();
             resultsSetForCatIDS.close();
             statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

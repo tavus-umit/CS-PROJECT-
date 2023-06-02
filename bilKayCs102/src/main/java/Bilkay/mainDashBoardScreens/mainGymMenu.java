@@ -152,7 +152,6 @@ public class mainGymMenu {
 
         preparedStatementForExercises.close();
         resultsSetForExerciseNames.close();
-        connection.close();
 
 
     }
@@ -242,7 +241,6 @@ public class mainGymMenu {
         deleteGymRelation.setInt(1, currentUser.getUserID());
 
         deleteGymRelation.executeUpdate();
-        connection.close();
         deleteGymRelation.close();
 
 
@@ -315,7 +313,6 @@ public class mainGymMenu {
 
             preparedStatementForExercises.close();
             resultsSetForExerciseNames.close();
-            connection.close();
 
 
         } catch (SQLException e) {

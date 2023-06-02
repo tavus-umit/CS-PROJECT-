@@ -305,7 +305,6 @@ public class mainRegisterMenu {
             JOptionPane.showMessageDialog(myMainFrame, "Username Already Exists, Try Another Username.", "Username Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        connection.close();
         resultSet.close();
 
 
@@ -420,7 +419,6 @@ public class mainRegisterMenu {
                 idStatement.close();
                 resultForUserID.close();
                 statement.close();
-                connection.close();
 
 
                 for (Category chosenCategoryItem : chosenCategoryItems) {
@@ -442,7 +440,6 @@ public class mainRegisterMenu {
             }
             preparedStatement.close();
             statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -151,7 +151,7 @@ public class mainMailMenu {
 
         preparedStatementForExercises.close();
         resultsSetForExerciseNames.close();
-        connection.close();
+
 
     }
 
@@ -176,7 +176,6 @@ public class mainMailMenu {
 
         preparedStatementForExercises.close();
         resultsSetForExerciseNames.close();
-        connection.close();
         return senderUsernameFound;
 
     }
@@ -213,7 +212,6 @@ public class mainMailMenu {
         }
         preparedStatement.close();
         statement.close();
-        connection.close();
 
     }
 
@@ -242,7 +240,6 @@ public class mainMailMenu {
 
         preparedStatementForExercises.close();
         resultsSetForExerciseNames.close();
-        connection.close();
         return value;
     }
 
@@ -262,7 +259,6 @@ public class mainMailMenu {
             preparedStatement.executeUpdate();
             preparedStatement.close();
             statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -292,7 +288,6 @@ public class mainMailMenu {
 
         preparedStatementForExercises.close();
         resultsSetForExerciseNames.close();
-        connection.close();
         return value;
     }
 
@@ -311,7 +306,6 @@ public class mainMailMenu {
         if (resultSet.getInt(1) > 0) {
             return true;
         }
-        connection.close();
         resultSet.close();
         JOptionPane.showMessageDialog(myMainFrame, "Username Doest Not Exist", "Username Error", JOptionPane.ERROR_MESSAGE);
         return false;

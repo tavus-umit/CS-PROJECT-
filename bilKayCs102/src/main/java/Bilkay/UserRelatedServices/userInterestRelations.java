@@ -24,7 +24,6 @@ public class userInterestRelations {
         }
         idStatement.close();
         statement.close();
-        connection.close();
         return -1;
     }
 
@@ -45,7 +44,6 @@ public class userInterestRelations {
         }
         idStatement.close();
         statement.close();
-        connection.close();
         return -1;
     }
 
@@ -75,7 +73,6 @@ public class userInterestRelations {
 
             preparedStatement.executeUpdate();
         }
-        connection.close();
         resultSet.close();
 
     }
@@ -106,7 +103,6 @@ public class userInterestRelations {
 
             preparedStatement.executeUpdate();
         }
-        connection.close();
         resultSet.close();
 
     }

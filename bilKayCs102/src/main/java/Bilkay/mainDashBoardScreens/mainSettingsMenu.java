@@ -349,7 +349,6 @@ public class mainSettingsMenu {
         deleteSubCatPStatement.setInt(1, currentUser.getUserID());
 
         deleteSubCatPStatement.executeUpdate();
-        connection.close();
         deleteSubCatPStatement.close();
 
     }
@@ -363,7 +362,6 @@ public class mainSettingsMenu {
         deleteCatPStatement.setInt(1, currentUser.getUserID());
 
         deleteCatPStatement.executeUpdate();
-        connection.close();
         deleteCatPStatement.close();
 
     }
