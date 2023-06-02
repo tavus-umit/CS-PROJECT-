@@ -1,5 +1,5 @@
 # CS-PROJECT-
-# Bil-Kay
+# Bil-Kay "Perfecting the Bilkent Experience"
 Bil-Kay" is a friend-matcher software developed for Bilkent students. Our aim with this software is to allow Bilkent students to socialize with each other practically by finding new friends who share common areas of interest to meet. This software is based on an algorithm that matches one user to another and chooses similar categories of various interests like sports, technology, art, movies etc. 
 
 After two matched user accepted each other, they pass to the chatting section to enhance their new friendship Also, it gives the opportunity to create and to join in several community events like club events and dormitory events. 
