@@ -9,12 +9,14 @@ Moreover, Bil-Kay includes a gym program generator which is a useful tool that s
 Because of our campus' location and size, we are aware of how transportation is difficult for Bilkenteners, so that Bil-Kay serves you "Bil-Uber" to overcome with this difficulty. You can use Bil-Uber in two roles which are "Driver" and "Passenger". If you want to be a driver, then you need to create a lift which includes the following information: Date, Time, Route (From where To where), Fee (optional), and Available seats. After you created a lift, it becomes visible in "Available Lifts" list by every user and in "My Offered Lift" list by only you. If you wish to be a passenger, then the process because easier as you all need to do is selecting lifts that you want from "Available Lifts" and then those selected lifts will become visible in "Booked Lifts" list only by you.
 
 # How To Use Bilkay
-1-) Follow this file direction bilKayCs102\src\main\java\Bilkay and open programManager.java file
+1-) Open "CS-PROJECT--main" as a project
 
-2-) Run programManager.java
+2-) Follow this file direction bilKayCs102\src\main\java\Bilkay and open programManager.java file
 
-3-) Click "Register" to sign up
+3-) Run programManager.java
 
-4-) You are ready to use Bil-kay
+4-) Click "Register" to sign up
+
+5-) You are ready to use Bil-kay
 
 
